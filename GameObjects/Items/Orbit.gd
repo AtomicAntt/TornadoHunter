@@ -45,7 +45,8 @@ func update_items():
 			# `radius` moves the items away from the controller.
 			new_position.x = cos(spacing * i + orbit_angle_offset) * radius.x
 			new_position.y = sin(spacing * i + orbit_angle_offset) * radius.y
-			items[i].position = new_position
+			if is_instance_valid(items[i]): # Added this because queue_freeing items messed things up
+				items[i].position = new_position
 
 func find_items():
 	# Reset the array, otherwise we'll just keep piling on items

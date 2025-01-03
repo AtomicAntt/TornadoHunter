@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjcl1qpdnfloj"]
 
 [ext_resource type="Texture2D" uid="uid://cxyjt150hj0t4" path="res://GameAssets/Projectiles/prototype enemy projectile.png" id="1_465mm"]
-[ext_resource type="Script" path="res://GameObjects/Bosses/enemy_projectile.gd" id="1_ljosy"]
+[ext_resource type="Script" path="res://GameObjects/Bosses/EnemyProjectile.gd" id="1_ljosy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_08b40"]
 radius = 4.0
@@ -17,7 +17,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="EnemyProjectile" type="Area2D"]
+[node name="EnemyProjectile" type="Area2D" groups=["EnemyAttack"]]
 script = ExtResource("1_ljosy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

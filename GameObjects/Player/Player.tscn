@@ -99,3 +99,7 @@ rotation_duration = 3.0
 fire_multiplier = 4.0
 
 [node name="Shield" parent="Orbitor2" instance=ExtResource("14_htl8b")]
+
+[node name="Shield2" parent="Orbitor2" instance=ExtResource("14_htl8b")]
+
+[node name="Shield3" parent="Orbitor2" instance=ExtResource("14_htl8b")]
