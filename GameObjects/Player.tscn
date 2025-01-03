@@ -19,9 +19,11 @@ animations = [{
 size = Vector2(15, 18)
 
 [node name="Player" type="CharacterBody2D"]
+texture_filter = 2
 script = ExtResource("1_s0kyb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_b0b6c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
