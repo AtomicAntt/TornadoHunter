@@ -1,4 +1,3 @@
-class_name Player
 extends CharacterBody2D
 
 enum States {AIR, FLOOR, DEAD}
