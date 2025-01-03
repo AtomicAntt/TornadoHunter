@@ -3,7 +3,7 @@ extends CharacterBody2D
 enum States {NORMAL, DEAD}
 var state: States = States.NORMAL
 
-@export var SPEED: float = 200.0
+@export var SPEED: float = 150.0
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
