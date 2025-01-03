@@ -1,9 +1,11 @@
+class_name Orbitor
 extends Node2D
 
 # https://github.com/GameEndeavor/platformer-tutorials/blob/master/rotating-platforms/OrbitingPlatformsController.gd
 
 @export var radius = Vector2.ONE * 256
 @export var rotation_duration := 4.0 # How many seconds for an item to complete a rotation.
+@export var fire_multiplier: float = 6.0
 
 var items = []
 var orbit_angle_offset: float = 0
@@ -17,9 +19,15 @@ func _physics_process(delta: float) -> void:
 	if prev_child_count != get_child_count():
 		prev_child_count = get_child_count()
 	
-	orbit_angle_offset += 2 * PI * delta / float(rotation_duration)
+	var multiplier: float = 1.0
+	
+	if Input.is_action_pressed("fire"):
+		multiplier = fire_multiplier
+	
+	orbit_angle_offset += 2 * PI * delta / float(rotation_duration / multiplier)
 	# Wrap the angle to keep it nice and tidy, and to prevent unlikely overflow
 	orbit_angle_offset = wrapf(orbit_angle_offset, -PI, PI)
+	
 	update_items()
 
 func update_items():

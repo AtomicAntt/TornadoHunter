@@ -22,4 +22,5 @@ animations = [{
 shape = SubResource("RectangleShape2D_mcedo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ftbtq")

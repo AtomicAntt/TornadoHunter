@@ -12,6 +12,7 @@ func _physics_process(delta: float) -> void:
 		States.NORMAL:
 			get_basic_movement()
 			look_at_mouse()
+			
 		States.DEAD:
 			velocity = Vector2.ZERO
 
@@ -40,4 +41,3 @@ func look_at_mouse() -> void:
 		$AnimatedSprite2D.flip_h = true
 	else:
 		$AnimatedSprite2D.flip_h = false
-	

@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ccvdwsksmfjvl" path="res://GameAssets/Player/Run/run7.png" id="10_1ob1b"]
 [ext_resource type="Texture2D" uid="uid://221mmqosjsfr" path="res://GameAssets/Player/Run/run8.png" id="11_lo30c"]
 [ext_resource type="Texture2D" uid="uid://cnx3dp1lac12e" path="res://GameAssets/Player/Run/run9.png" id="12_7db05"]
-[ext_resource type="PackedScene" uid="uid://b0160sw04p7cf" path="res://GameObjects/Items/orbitor.tscn" id="14_0hc2s"]
+[ext_resource type="PackedScene" uid="uid://b0160sw04p7cf" path="res://GameObjects/Items/Orbitor.tscn" id="14_0hc2s"]
 [ext_resource type="PackedScene" uid="uid://cj8h0gsiro8s7" path="res://GameObjects/Items/Shield.tscn" id="14_htl8b"]
 [ext_resource type="PackedScene" uid="uid://dn2cspiqg0wsk" path="res://GameObjects/Items/Dagger.tscn" id="15_4sdqy"]
 
@@ -85,7 +85,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("3_vfg30")
 
-[node name="Orbitor" parent="." instance=ExtResource("14_0hc2s")]
+[node name="Orbitor" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(50, 50)
 
 [node name="Dagger" parent="Orbitor" instance=ExtResource("15_4sdqy")]
@@ -100,7 +100,7 @@ radius = Vector2(50, 50)
 
 [node name="Dagger6" parent="Orbitor" instance=ExtResource("15_4sdqy")]
 
-[node name="Orbitor2" parent="." instance=ExtResource("14_0hc2s")]
+[node name="Orbitor2" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(25, 25)
 
 [node name="Shield" parent="Orbitor2" instance=ExtResource("14_htl8b")]
