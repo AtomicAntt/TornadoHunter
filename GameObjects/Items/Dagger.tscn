@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj8h0gsiro8s7"]
+[gd_scene load_steps=5 format=3 uid="uid://dn2cspiqg0wsk"]
 
-[ext_resource type="Script" path="res://GameObjects/Player/shield.gd" id="1_bud2o"]
-[ext_resource type="Texture2D" uid="uid://dubuxgcucbbcf" path="res://GameAssets/Objects/Shield/prototype shield.png" id="1_i4qgs"]
+[ext_resource type="Script" path="res://GameObjects/Items/Orbit.gd" id="1_g17sq"]
+[ext_resource type="Texture2D" uid="uid://d4avqbsnyl724" path="res://GameAssets/Objects/Weapon/prototype knife.png" id="1_xg4gb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcedo"]
 size = Vector2(8, 8)
@@ -10,15 +10,16 @@ size = Vector2(8, 8)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_i4qgs")
+"texture": ExtResource("1_xg4gb")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Shield" type="Area2D"]
-script = ExtResource("1_bud2o")
+[node name="Dagger" type="Area2D"]
+script = ExtResource("1_g17sq")
+radius = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mcedo")
