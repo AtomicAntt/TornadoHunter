@@ -1,8 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://c24p563j7y18m"]
+[gd_scene load_steps=16 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/player.gd" id="1_s0kyb"]
 [ext_resource type="Texture2D" uid="uid://dmhse8in4473i" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
+[ext_resource type="Texture2D" uid="uid://doc44ix7xlebi" path="res://GameAssets/Player/Run/run0.png" id="3_8viku"]
 [ext_resource type="Script" path="res://GameObjects/camera_2d.gd" id="3_vfg30"]
+[ext_resource type="Texture2D" uid="uid://b16sn2xhfnxjj" path="res://GameAssets/Player/Run/run1.png" id="4_if2ng"]
+[ext_resource type="Texture2D" uid="uid://d2wsck2qxt5p2" path="res://GameAssets/Player/Run/run2.png" id="5_umrl8"]
+[ext_resource type="Texture2D" uid="uid://vmcdj77tkkf" path="res://GameAssets/Player/Run/run3.png" id="6_wlla5"]
+[ext_resource type="Texture2D" uid="uid://cbm8230jd6txd" path="res://GameAssets/Player/Run/run4.png" id="7_wd4nh"]
+[ext_resource type="Texture2D" uid="uid://h2dilwf4kmnj" path="res://GameAssets/Player/Run/run5.png" id="8_rhpnc"]
+[ext_resource type="Texture2D" uid="uid://bjpfrfmiseu3m" path="res://GameAssets/Player/Run/run6.png" id="9_djdf6"]
+[ext_resource type="Texture2D" uid="uid://ccvdwsksmfjvl" path="res://GameAssets/Player/Run/run7.png" id="10_1ob1b"]
+[ext_resource type="Texture2D" uid="uid://221mmqosjsfr" path="res://GameAssets/Player/Run/run8.png" id="11_lo30c"]
+[ext_resource type="Texture2D" uid="uid://cnx3dp1lac12e" path="res://GameAssets/Player/Run/run9.png" id="12_7db05"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b0b6c"]
 animations = [{
@@ -11,8 +21,43 @@ animations = [{
 "texture": ExtResource("2_r6fpd")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8viku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_if2ng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_umrl8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wlla5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wd4nh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rhpnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_djdf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1ob1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lo30c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7db05")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8cjyk"]
@@ -25,6 +70,8 @@ script = ExtResource("1_s0kyb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_b0b6c")
+animation = &"Run"
+frame_progress = 0.282486
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
