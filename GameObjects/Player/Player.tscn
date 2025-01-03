@@ -87,24 +87,15 @@ script = ExtResource("3_vfg30")
 
 [node name="Orbitor" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(50, 50)
+fire_multiplier = 4.0
 
 [node name="Dagger" parent="Orbitor" instance=ExtResource("15_4sdqy")]
 
 [node name="Dagger2" parent="Orbitor" instance=ExtResource("15_4sdqy")]
 
-[node name="Dagger3" parent="Orbitor" instance=ExtResource("15_4sdqy")]
-
-[node name="Dagger4" parent="Orbitor" instance=ExtResource("15_4sdqy")]
-
-[node name="Dagger5" parent="Orbitor" instance=ExtResource("15_4sdqy")]
-
-[node name="Dagger6" parent="Orbitor" instance=ExtResource("15_4sdqy")]
-
 [node name="Orbitor2" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(25, 25)
+rotation_duration = 3.0
+fire_multiplier = 4.0
 
 [node name="Shield" parent="Orbitor2" instance=ExtResource("14_htl8b")]
-
-[node name="Shield2" parent="Orbitor2" instance=ExtResource("14_htl8b")]
-
-[node name="Shield3" parent="Orbitor2" instance=ExtResource("14_htl8b")]

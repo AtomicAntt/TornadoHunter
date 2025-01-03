@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://cvuak1m5cpn5w"]
+[gd_scene load_steps=8 format=4 uid="uid://cvuak1m5cpn5w"]
 
 [ext_resource type="PackedScene" uid="uid://c24p563j7y18m" path="res://GameObjects/Player/Player.tscn" id="1_che55"]
 [ext_resource type="Texture2D" uid="uid://csufl1i04ooim" path="res://GameAssets/Tileset/Dungeon_Tileset.png" id="2_d53vr"]
 [ext_resource type="Texture2D" uid="uid://d4avqbsnyl724" path="res://GameAssets/Objects/Weapon/prototype knife.png" id="3_vqor6"]
+[ext_resource type="PackedScene" uid="uid://clu1r4atw2ywa" path="res://GameObjects/Bosses/ClockBoss.tscn" id="4_mcnvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlfey"]
 size = Vector2(1162, 54)
@@ -276,3 +277,6 @@ tile_set = SubResource("TileSet_6r7xv")
 [node name="PrototypeKnife" type="Sprite2D" parent="."]
 position = Vector2(-75, 71)
 texture = ExtResource("3_vqor6")
+
+[node name="ClockBoss" parent="." instance=ExtResource("4_mcnvs")]
+position = Vector2(-102, 2)

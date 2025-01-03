@@ -23,6 +23,11 @@ window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
+[global_group]
+
+BossHealthBar="This is a boss health bar."
+Boss="Boss entity"
+
 [input]
 
 up={
