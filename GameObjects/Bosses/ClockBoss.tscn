@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://clu1r4atw2ywa"]
+
+[ext_resource type="Texture2D" uid="uid://fmnarrqur5l4" path="res://GameAssets/ClockBoss/prototype clock boss.png" id="1_f7qvc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_utv8c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_f7qvc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qv3o"]
+size = Vector2(16, 16)
+
+[node name="ClockBoss" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_utv8c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2qv3o")

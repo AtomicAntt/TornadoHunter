@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://cvuak1m5cpn5w"]
 
-[ext_resource type="PackedScene" uid="uid://c24p563j7y18m" path="res://GameObjects/Player.tscn" id="1_che55"]
+[ext_resource type="PackedScene" uid="uid://c24p563j7y18m" path="res://GameObjects/Player/Player.tscn" id="1_che55"]
 [ext_resource type="Texture2D" uid="uid://csufl1i04ooim" path="res://GameAssets/Tileset/Dungeon_Tileset.png" id="2_d53vr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlfey"]
