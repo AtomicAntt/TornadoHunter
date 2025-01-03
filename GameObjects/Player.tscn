@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c24p563j7y18m"]
+[gd_scene load_steps=6 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/player.gd" id="1_s0kyb"]
 [ext_resource type="Texture2D" uid="uid://dmhse8in4473i" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
+[ext_resource type="Script" path="res://GameObjects/camera_2d.gd" id="3_vfg30"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b0b6c"]
 animations = [{
@@ -28,3 +29,7 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_8cjyk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("3_vfg30")
