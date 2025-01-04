@@ -1,21 +1,41 @@
-[gd_scene load_steps=19 format=3 uid="uid://c24p563j7y18m"]
+[gd_scene load_steps=39 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/player.gd" id="1_s0kyb"]
 [ext_resource type="Texture2D" uid="uid://dmhse8in4473i" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
+[ext_resource type="Texture2D" uid="uid://cwqmc6spily73" path="res://GameAssets/Player/Roll/roll0.png" id="3_6fpdd"]
 [ext_resource type="Texture2D" uid="uid://doc44ix7xlebi" path="res://GameAssets/Player/Run/run0.png" id="3_8viku"]
 [ext_resource type="Script" path="res://GameObjects/Player/camera_2d.gd" id="3_vfg30"]
+[ext_resource type="Texture2D" uid="uid://dc6k543ygegug" path="res://GameAssets/Player/Roll/roll1.png" id="4_fq3rk"]
 [ext_resource type="Texture2D" uid="uid://b16sn2xhfnxjj" path="res://GameAssets/Player/Run/run1.png" id="4_if2ng"]
+[ext_resource type="Texture2D" uid="uid://dcdt2u2xfq8iu" path="res://GameAssets/Player/Roll/roll2.png" id="5_k8q4g"]
 [ext_resource type="Texture2D" uid="uid://d2wsck2qxt5p2" path="res://GameAssets/Player/Run/run2.png" id="5_umrl8"]
+[ext_resource type="Texture2D" uid="uid://c1fn011d7bb62" path="res://GameAssets/Player/Roll/roll3.png" id="6_sbkgv"]
 [ext_resource type="Texture2D" uid="uid://vmcdj77tkkf" path="res://GameAssets/Player/Run/run3.png" id="6_wlla5"]
+[ext_resource type="Texture2D" uid="uid://dikx8e16g2nig" path="res://GameAssets/Player/Roll/roll4.png" id="7_pfu8y"]
 [ext_resource type="Texture2D" uid="uid://cbm8230jd6txd" path="res://GameAssets/Player/Run/run4.png" id="7_wd4nh"]
+[ext_resource type="Texture2D" uid="uid://blss4ovf1i183" path="res://GameAssets/Player/Roll/roll5.png" id="8_071dx"]
 [ext_resource type="Texture2D" uid="uid://h2dilwf4kmnj" path="res://GameAssets/Player/Run/run5.png" id="8_rhpnc"]
 [ext_resource type="Texture2D" uid="uid://bjpfrfmiseu3m" path="res://GameAssets/Player/Run/run6.png" id="9_djdf6"]
+[ext_resource type="Texture2D" uid="uid://d3cylaob11e33" path="res://GameAssets/Player/Roll/roll6.png" id="9_kmwna"]
 [ext_resource type="Texture2D" uid="uid://ccvdwsksmfjvl" path="res://GameAssets/Player/Run/run7.png" id="10_1ob1b"]
+[ext_resource type="Texture2D" uid="uid://blkxxtxpg4ao3" path="res://GameAssets/Player/Roll/roll7.png" id="10_frvx1"]
+[ext_resource type="Texture2D" uid="uid://pd7tp2ty614s" path="res://GameAssets/Player/Roll/roll8.png" id="11_58ly0"]
 [ext_resource type="Texture2D" uid="uid://221mmqosjsfr" path="res://GameAssets/Player/Run/run8.png" id="11_lo30c"]
 [ext_resource type="Texture2D" uid="uid://cnx3dp1lac12e" path="res://GameAssets/Player/Run/run9.png" id="12_7db05"]
+[ext_resource type="Texture2D" uid="uid://ecsbxfyffjrf" path="res://GameAssets/Player/Roll/roll9.png" id="12_g6ti1"]
+[ext_resource type="Texture2D" uid="uid://dmabxmdyty4c2" path="res://GameAssets/Player/Roll/roll10.png" id="13_gr5v5"]
 [ext_resource type="PackedScene" uid="uid://b0160sw04p7cf" path="res://GameObjects/Items/Orbitor.tscn" id="14_0hc2s"]
+[ext_resource type="Texture2D" uid="uid://dt7pubhcg2f26" path="res://GameAssets/Player/Roll/roll11.png" id="14_7crju"]
 [ext_resource type="PackedScene" uid="uid://cj8h0gsiro8s7" path="res://GameObjects/Items/Shield.tscn" id="14_htl8b"]
 [ext_resource type="PackedScene" uid="uid://dn2cspiqg0wsk" path="res://GameObjects/Items/Dagger.tscn" id="15_4sdqy"]
+[ext_resource type="Texture2D" uid="uid://benjyog8a1wy1" path="res://GameAssets/Player/Roll/roll12.png" id="15_6tkog"]
+[ext_resource type="Texture2D" uid="uid://bd1tcrut0kbf1" path="res://GameAssets/Player/Roll/roll13.png" id="16_1ogpe"]
+[ext_resource type="Texture2D" uid="uid://buo1e3susog8v" path="res://GameAssets/Player/Roll/roll14.png" id="17_72dlq"]
+[ext_resource type="Texture2D" uid="uid://dr2khxikhjb5c" path="res://GameAssets/Player/Roll/roll15.png" id="18_wri0k"]
+[ext_resource type="Texture2D" uid="uid://cuctnk4ak6h0e" path="res://GameAssets/Player/Roll/roll16.png" id="19_e4iw7"]
+[ext_resource type="Texture2D" uid="uid://bqq3dk3qufg2k" path="res://GameAssets/Player/Roll/roll17.png" id="20_g1x27"]
+[ext_resource type="Texture2D" uid="uid://d2c15hwi2leaw" path="res://GameAssets/Player/Roll/roll18.png" id="21_lnp2a"]
+[ext_resource type="Texture2D" uid="uid://ne11y2g4dghi" path="res://GameAssets/Player/Roll/roll19.png" id="22_y81v1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b0b6c"]
 animations = [{
@@ -26,6 +46,71 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6fpdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fq3rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k8q4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sbkgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pfu8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_071dx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kmwna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_frvx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_58ly0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_g6ti1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gr5v5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7crju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6tkog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1ogpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_72dlq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_wri0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_e4iw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_g1x27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_lnp2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_y81v1")
+}],
+"loop": false,
+"name": &"Roll",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -73,7 +158,7 @@ script = ExtResource("1_s0kyb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_b0b6c")
-animation = &"Idle"
+animation = &"Roll"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
@@ -87,7 +172,6 @@ script = ExtResource("3_vfg30")
 
 [node name="Orbitor" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(50, 50)
-fire_multiplier = 4.0
 
 [node name="Dagger" parent="Orbitor" instance=ExtResource("15_4sdqy")]
 
@@ -96,10 +180,11 @@ fire_multiplier = 4.0
 [node name="Orbitor2" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(25, 25)
 rotation_duration = 3.0
-fire_multiplier = 4.0
 
 [node name="Shield" parent="Orbitor2" instance=ExtResource("14_htl8b")]
 
 [node name="Shield2" parent="Orbitor2" instance=ExtResource("14_htl8b")]
 
 [node name="Shield3" parent="Orbitor2" instance=ExtResource("14_htl8b")]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
