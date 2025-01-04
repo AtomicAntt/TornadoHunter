@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cj8h0gsiro8s7"]
 
-[ext_resource type="Texture2D" uid="uid://dubuxgcucbbcf" path="res://GameAssets/Objects/Shield/prototype shield.png" id="1_i4qgs"]
+[ext_resource type="Texture2D" uid="uid://dubuxgcucbbcf" path="res://GameAssets/Items/Shield/prototype shield.png" id="1_i4qgs"]
 [ext_resource type="Script" path="res://GameObjects/Items/shield.gd" id="1_lpe3k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcedo"]

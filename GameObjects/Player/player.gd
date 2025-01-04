@@ -6,7 +6,7 @@ var state: States = States.NORMAL
 
 @export var SPEED: float = 200.0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	match state:
@@ -17,6 +17,7 @@ func _physics_process(delta: float) -> void:
 		States.DEAD:
 			velocity = Vector2.ZERO
 		States.DASHING:
+			
 			# This is called, however, it normally transitions out when the roll animation is finished.
 			if !$AnimatedSprite2D.animation == "Roll":
 				state = States.NORMAL
@@ -68,5 +69,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "Roll":
 		state = States.NORMAL
 		velocity = Vector2.ZERO
-		print("yow")
-		
+
+func add_item_orbit(item: Area2D):
+	if item.is_in_group("weapon"):
+		$Orbitor.call_deferred("add_child", item)
+	elif item.is_in_group("shield"):
+		$Orbitor2.call_deferred("add_child", item)

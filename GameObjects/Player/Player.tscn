@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c24p563j7y18m"]
+[gd_scene load_steps=40 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/player.gd" id="1_s0kyb"]
 [ext_resource type="Texture2D" uid="uid://dmhse8in4473i" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
@@ -151,6 +151,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8cjyk"]
 size = Vector2(15, 18)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0j2n"]
+size = Vector2(13, 16)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 texture_filter = 2
 script = ExtResource("1_s0kyb")
@@ -158,8 +161,7 @@ script = ExtResource("1_s0kyb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_b0b6c")
-animation = &"Run"
-frame_progress = 0.180395
+animation = &"Roll"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
@@ -182,6 +184,12 @@ radius = Vector2(50, 50)
 radius = Vector2(25, 25)
 rotation_duration = 3.0
 
-[node name="Shield" parent="Orbitor2" instance=ExtResource("14_htl8b")]
+[node name="Shield" parent="Orbitor2" groups=["shield"] instance=ExtResource("14_htl8b")]
+
+[node name="PlayerHitbox" type="Area2D" parent="." groups=["PlayerHitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_l0j2n")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

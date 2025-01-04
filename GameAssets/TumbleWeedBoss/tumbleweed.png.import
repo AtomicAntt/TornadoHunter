@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4avqbsnyl724"
-path="res://.godot/imported/prototype knife.png-0999d10ea7da4efda1d4353c557c078d.ctex"
+uid="uid://bxdhmv3mly1q4"
+path="res://.godot/imported/tumbleweed.png-6cadee77c08b9c9930fde54a6473400f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameAssets/Objects/Weapon/prototype knife.png"
-dest_files=["res://.godot/imported/prototype knife.png-0999d10ea7da4efda1d4353c557c078d.ctex"]
+source_file="res://GameAssets/TumbleWeedBoss/tumbleweed.png"
+dest_files=["res://.godot/imported/tumbleweed.png-6cadee77c08b9c9930fde54a6473400f.ctex"]
 
 [params]
 

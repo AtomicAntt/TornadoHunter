@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn2cspiqg0wsk"]
 
 [ext_resource type="Script" path="res://GameObjects/Items/PlayerWeapon.gd" id="1_0n6bh"]
-[ext_resource type="Texture2D" uid="uid://d4avqbsnyl724" path="res://GameAssets/Objects/Weapon/prototype knife.png" id="1_xg4gb"]
+[ext_resource type="Texture2D" uid="uid://d4avqbsnyl724" path="res://GameAssets/Items/Weapon/prototype knife.png" id="1_xg4gb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcedo"]
 size = Vector2(8, 8)
