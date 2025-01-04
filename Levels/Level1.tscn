@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://cvuak1m5cpn5w"]
+[gd_scene load_steps=9 format=4 uid="uid://cvuak1m5cpn5w"]
 
 [ext_resource type="PackedScene" uid="uid://c24p563j7y18m" path="res://GameObjects/Player/Player.tscn" id="1_che55"]
 [ext_resource type="Texture2D" uid="uid://csufl1i04ooim" path="res://GameAssets/Tileset/Dungeon_Tileset.png" id="2_d53vr"]
 [ext_resource type="PackedScene" uid="uid://cct8ahr34ib36" path="res://GameObjects/Items/ItemDrop.tscn" id="4_jdxye"]
+[ext_resource type="PackedScene" uid="uid://cj8h0gsiro8s7" path="res://GameObjects/Items/Shield.tscn" id="4_kermr"]
 [ext_resource type="PackedScene" uid="uid://clu1r4atw2ywa" path="res://GameObjects/Bosses/Boss.tscn" id="4_mcnvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlfey"]
@@ -275,7 +276,11 @@ tile_set = SubResource("TileSet_6r7xv")
 position = Vector2(-102, 2)
 
 [node name="ItemDrop" parent="." instance=ExtResource("4_jdxye")]
-position = Vector2(-29, 69)
+position = Vector2(33, 28)
 
 [node name="Player" parent="." instance=ExtResource("1_che55")]
 position = Vector2(-98, 83)
+
+[node name="ItemDrop2" parent="." instance=ExtResource("4_jdxye")]
+position = Vector2(-233, 10)
+item = ExtResource("4_kermr")

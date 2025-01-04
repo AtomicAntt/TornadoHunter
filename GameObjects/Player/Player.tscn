@@ -184,7 +184,7 @@ radius = Vector2(50, 50)
 radius = Vector2(25, 25)
 rotation_duration = 3.0
 
-[node name="Shield" parent="Orbitor2" groups=["shield"] instance=ExtResource("14_htl8b")]
+[node name="Shield" parent="Orbitor2" instance=ExtResource("14_htl8b")]
 
 [node name="PlayerHitbox" type="Area2D" parent="." groups=["PlayerHitbox"]]
 

@@ -2,6 +2,9 @@ extends Area2D
 
 @export var item: PackedScene
 
+func _ready() -> void:
+	refresh_sprite()
+
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerHitbox"):
 		var player: Player = get_tree().get_nodes_in_group("Player")[0]
@@ -9,4 +12,13 @@ func _on_area_entered(area: Area2D) -> void:
 			var item_instance: Area2D = item.instantiate()
 			player.add_item_orbit(item_instance)
 			queue_free()
+
+func refresh_sprite() -> void:
+	for child in get_children():
+		if child is AnimatedSprite2D:
+			child.queue_free()
 	
+	var item_instance: Area2D = item.instantiate()
+	var sprite: AnimatedSprite2D = item_instance.get_node("AnimatedSprite2D")
+	var sprite_instance: AnimatedSprite2D = sprite.duplicate()
+	add_child(sprite_instance)

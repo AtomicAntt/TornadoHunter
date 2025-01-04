@@ -30,6 +30,7 @@ Boss="Boss entity"
 Player="The player characterbody"
 EnemyAttack="The Area2D of an enemy attack. Example: Enemy projectile."
 PlayerHitbox="Area2d representing the player"
+shield="shield area2d"
 
 [input]
 

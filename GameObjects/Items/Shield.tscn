@@ -17,7 +17,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Shield" type="Area2D" groups=["item"]]
+[node name="Shield" type="Area2D" groups=["item", "shield"]]
 script = ExtResource("1_lpe3k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
