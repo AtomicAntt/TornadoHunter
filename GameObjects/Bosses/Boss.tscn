@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://clu1r4atw2ywa"]
+[gd_scene load_steps=10 format=3 uid="uid://clu1r4atw2ywa"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Boss.gd" id="1_oo5v6"]
+[ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_cfj6g"]
 [ext_resource type="Texture2D" uid="uid://bxdhmv3mly1q4" path="res://GameAssets/TumbleWeedBoss/tumbleweed.png" id="2_khonc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
+shader = ExtResource("2_cfj6g")
+shader_parameter/damaged = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_utv8c"]
 animations = [{
@@ -17,10 +22,48 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qv3o"]
 size = Vector2(63, 62)
 
+[sub_resource type="Animation" id="Animation_3j7qj"]
+resource_name = "Hurt"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/damaged")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_x2nf6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/damaged")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i5t0d"]
+_data = {
+"Hurt": SubResource("Animation_3j7qj"),
+"RESET": SubResource("Animation_x2nf6")
+}
+
 [node name="Boss" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_oo5v6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_wg85p")
 sprite_frames = SubResource("SpriteFrames_utv8c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -28,6 +71,10 @@ position = Vector2(1.5, 1)
 shape = SubResource("RectangleShape2D_2qv3o")
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i5t0d")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

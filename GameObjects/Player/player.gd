@@ -12,7 +12,8 @@ func _physics_process(_delta: float) -> void:
 	match state:
 		States.NORMAL:
 			get_basic_movement()
-			look_at_position(velocity.normalized())
+			if velocity.length() > 0.0:
+				look_at_position(velocity.normalized())
 			check_dash()
 		States.DEAD:
 			velocity = Vector2.ZERO

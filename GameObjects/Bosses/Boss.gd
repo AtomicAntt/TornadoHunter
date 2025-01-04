@@ -10,6 +10,7 @@ func hurt(damage: float) -> void:
 	health -= damage
 	for bossHealth: BossHealth in get_tree().get_nodes_in_group("BossHealthBar"):
 		bossHealth.change_health(max_health, health)
+	$AnimationPlayer.play("Hurt")
 
 func fire_at_player() -> void:
 	var player: Player = get_tree().get_nodes_in_group("Player")[0]
