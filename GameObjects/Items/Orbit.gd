@@ -5,7 +5,10 @@ extends Node2D
 
 @export var radius = Vector2.ONE * 256
 @export var rotation_duration := 4.0 # How many seconds for an item to complete a rotation.
-@export var fire_multiplier: float = 6.0
+@export var max_fire_multiplier: float = 6.0
+@export var rotation_acceleration: float = 6.0
+var fire_multiplier: float = 1.0
+
 
 var items = []
 var orbit_angle_offset: float = 0
@@ -20,12 +23,17 @@ func _physics_process(delta: float) -> void:
 		prev_child_count = get_child_count()
 		find_items()
 	
-	var multiplier: float = 1.0
+	#var multiplier: float = 1.0
 	
 	if Input.is_action_pressed("fire"):
-		multiplier = fire_multiplier
+		#multiplier = fire_multiplier
+		fire_multiplier = max_fire_multiplier
+	else:
+		fire_multiplier -= delta * rotation_acceleration
 	
-	orbit_angle_offset += 2 * PI * delta / float(rotation_duration / multiplier)
+	fire_multiplier = clampf(fire_multiplier, 1.0, max_fire_multiplier)
+	
+	orbit_angle_offset += 2 * PI * delta / float(rotation_duration / fire_multiplier)
 	# Wrap the angle to keep it nice and tidy, and to prevent unlikely overflow
 	orbit_angle_offset = wrapf(orbit_angle_offset, -PI, PI)
 	
