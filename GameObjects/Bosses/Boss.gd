@@ -11,6 +11,9 @@ func hurt(damage: float) -> void:
 	for bossHealth: BossHealth in get_tree().get_nodes_in_group("BossHealthBar"):
 		bossHealth.change_health(max_health, health)
 	$AnimationPlayer.play("Hurt")
+	
+	if health <= 0:
+		death()
 
 func fire_at_player() -> void:
 	var player: Player = get_tree().get_nodes_in_group("Player")[0]
@@ -19,7 +22,9 @@ func fire_at_player() -> void:
 		projectile_instance.set_direction(global_position.direction_to(player.global_position))
 		projectile_instance.global_position = global_position
 		get_parent().add_child(projectile_instance)
-		
+
+func death() -> void:
+	queue_free()
 
 func _on_timer_timeout() -> void:
 	fire_at_player()

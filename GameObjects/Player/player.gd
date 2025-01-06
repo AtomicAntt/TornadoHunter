@@ -5,6 +5,8 @@ enum States {NORMAL, DEAD, DASHING}
 var state: States = States.NORMAL
 
 @export var SPEED: float = 200.0
+@export var max_lives: int = 3
+@export var lives: int = 3
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -76,3 +78,12 @@ func add_item_orbit(item: Area2D):
 		$Orbitor.call_deferred("add_child", item)
 	elif item.is_in_group("shield"):
 		$Orbitor2.call_deferred("add_child", item)
+		
+func hurt():
+	lives -= 1
+	print("lives left for player: " + str(lives))
+	if lives <= 0:
+		death()
+
+func death():
+	state = States.DEAD
