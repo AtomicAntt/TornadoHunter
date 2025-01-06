@@ -5,8 +5,10 @@ enum States {NORMAL, DEAD, DASHING}
 var state: States = States.NORMAL
 
 @export var SPEED: float = 200.0
-@export var max_lives: int = 3
-@export var lives: int = 3
+@export var max_lives: int = 10
+@export var lives: int = 10
+
+var invulnerable: bool = false
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -81,7 +83,12 @@ func add_item_orbit(item: Area2D):
 		
 func hurt():
 	lives -= 1
-	print("lives left for player: " + str(lives))
+	$AnimationPlayer.play("Hurt")
+	
+	var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
+	if is_instance_valid(hearts_container):
+		hearts_container.update_hearts(lives)
+	
 	if lives <= 0:
 		death()
 

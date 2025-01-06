@@ -31,6 +31,7 @@ Player="The player characterbody"
 EnemyAttack="The Area2D of an enemy attack. Example: Enemy projectile."
 PlayerHitbox="Area2d representing the player"
 shield="shield area2d"
+HeartsContainer="hboxcontainer with change_health function to display to player visually their current health"
 
 [input]
 
