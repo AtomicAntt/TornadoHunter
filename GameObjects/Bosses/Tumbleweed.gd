@@ -4,10 +4,15 @@ enum States {STUNNED, ACCELERATING, CHARGING, IDLE, DEAD}
 var state: States = States.STUNNED
 
 var spin_speed: float = 0.0
-@export var spin_acceleration: float = 200.0
-@export var speed_to_charge: float = 1000.0
+@export var spin_acceleration: float = 300.0
+@export var speed_to_charge: float = 1500.0
+
+var warning: Resource = preload("res://GameAssets/Effects/bossWarning.png")
+var pre_warning: Resource = preload("res://GameAssets/Effects/bossPreWarning.png")
 
 var last_player_direction: Vector2 = Vector2.ZERO
+
+var pre_warning_set: bool = false
 
 func _physics_process(delta: float) -> void:
 	
@@ -21,6 +26,13 @@ func _physics_process(delta: float) -> void:
 			while rotation_degrees > 360:
 				rotation_degrees -= 360
 			
+			if spin_speed <= speed_to_charge * 0.5 && pre_warning_set == false:
+				pre_warning_set = true
+				$Node/Line2D.texture = pre_warning
+			elif spin_speed > speed_to_charge * 0.5 && pre_warning_set == true:
+				pre_warning_set = false
+				$Node/Line2D.texture = warning
+			
 			if spin_speed <= speed_to_charge * 0.75:
 				var player: Player = get_tree().get_nodes_in_group("Player")[0]
 				if is_instance_valid(player):
@@ -31,6 +43,8 @@ func _physics_process(delta: float) -> void:
 					else:
 						$Node/Line2D.set_point_position(1, position)
 						$Node/Line2D.set_point_position(0, player.position)
+			elif $AnimationPlayer:
+				$Node/Line2D/AnimationPlayer.play("Warning")
 			
 			if spin_speed >= speed_to_charge:
 				$Node/Line2D.visible = false

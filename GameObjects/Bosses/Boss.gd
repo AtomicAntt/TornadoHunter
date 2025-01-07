@@ -1,8 +1,8 @@
 class_name Boss
 extends Area2D
 
-@onready var max_health: float = 100.0
-@onready var health: float = 100.0
+@export var max_health: float = 100.0
+@export var health: float = 100.0
 
 var enemy_projectile: Resource = preload("res://GameObjects/Bosses/EnemyProjectile.tscn")
 

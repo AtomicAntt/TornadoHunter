@@ -16,9 +16,12 @@ func _physics_process(_delta: float) -> void:
 	match state:
 		States.NORMAL:
 			get_basic_movement()
-			if velocity.length() > 0.0:
+			if velocity.length() > 0.0 && !Input.is_action_pressed("fire"):
 				look_at_position(velocity.normalized())
 			check_dash()
+			
+			if Input.is_action_pressed("fire"):
+				$AnimatedSprite2D.play("Turn")
 		States.DEAD:
 			velocity = Vector2.ZERO
 		States.DASHING:
@@ -48,13 +51,19 @@ func get_basic_movement() -> void:
 	if Input.is_action_pressed("down"):
 		velocity.y = 1
 	
-	if state != States.DASHING:
+	if state != States.DASHING and !Input.is_action_pressed("fire"):
 		if velocity.length() > 0.0:
 			$AnimatedSprite2D.play("Run")
 		else:
 			$AnimatedSprite2D.play("Idle")
 	
-	velocity = velocity.normalized() * SPEED
+	var speed_multiplier: float = 1.0
+	
+	if Input.is_action_pressed("fire"):
+		$AnimatedSprite2D.play("Turn")
+		speed_multiplier = 0.4
+		
+	velocity = velocity.normalized() * SPEED * speed_multiplier
 
 func look_at_position(pos: Vector2) -> void:
 	#var pos: Vector2 = get_local_mouse_position()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://c24p563j7y18m"]
+[gd_scene load_steps=63 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/player.gd" id="1_s0kyb"]
 [ext_resource type="Texture2D" uid="uid://dmhse8in4473i" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
@@ -36,6 +36,26 @@
 [ext_resource type="Texture2D" uid="uid://bqq3dk3qufg2k" path="res://GameAssets/Player/Roll/roll17.png" id="20_g1x27"]
 [ext_resource type="Texture2D" uid="uid://d2c15hwi2leaw" path="res://GameAssets/Player/Roll/roll18.png" id="21_lnp2a"]
 [ext_resource type="Texture2D" uid="uid://ne11y2g4dghi" path="res://GameAssets/Player/Roll/roll19.png" id="22_y81v1"]
+[ext_resource type="Texture2D" uid="uid://denj441sl7f1c" path="res://GameAssets/Player/Turn/turn0.png" id="33_1h2v4"]
+[ext_resource type="Texture2D" uid="uid://di7kfl8pmb7kv" path="res://GameAssets/Player/Turn/turn1.png" id="34_fnqdi"]
+[ext_resource type="Texture2D" uid="uid://dycfrgpbnf6go" path="res://GameAssets/Player/Turn/turn2.png" id="35_6kul4"]
+[ext_resource type="Texture2D" uid="uid://b6vvujmr4aj84" path="res://GameAssets/Player/Turn/turn3.png" id="36_twj8h"]
+[ext_resource type="Texture2D" uid="uid://f450uqd8f26r" path="res://GameAssets/Player/Turn/turn4.png" id="37_hs7u2"]
+[ext_resource type="Texture2D" uid="uid://y5wirainiyvq" path="res://GameAssets/Player/Turn/turn5.png" id="38_ef25e"]
+[ext_resource type="Texture2D" uid="uid://da5pqf5gpy402" path="res://GameAssets/Player/Turn/turn6.png" id="39_xmtea"]
+[ext_resource type="Texture2D" uid="uid://d3kg73e3htoh2" path="res://GameAssets/Player/Turn/turn7.png" id="40_yhe1j"]
+[ext_resource type="Texture2D" uid="uid://cciphos2p673j" path="res://GameAssets/Player/Turn/turn8.png" id="41_md5qj"]
+[ext_resource type="Texture2D" uid="uid://coct0r845cwl7" path="res://GameAssets/Player/Turn/turn9.png" id="42_guqx5"]
+[ext_resource type="Texture2D" uid="uid://b6tnnb3f2isfj" path="res://GameAssets/Player/Turn/turn10.png" id="43_i1cud"]
+[ext_resource type="Texture2D" uid="uid://cs3q4jke2gaoy" path="res://GameAssets/Player/Turn/turn11.png" id="44_2e3m8"]
+[ext_resource type="Texture2D" uid="uid://mwdt1ilp1gqk" path="res://GameAssets/Player/Turn/turn12.png" id="45_n1pcj"]
+[ext_resource type="Texture2D" uid="uid://cmdklhrqkjbms" path="res://GameAssets/Player/Turn/turn13.png" id="46_jkl63"]
+[ext_resource type="Texture2D" uid="uid://me2og6dp6oew" path="res://GameAssets/Player/Turn/turn14.png" id="47_0xbpj"]
+[ext_resource type="Texture2D" uid="uid://cqjwfp51mmnl7" path="res://GameAssets/Player/Turn/turn15.png" id="48_p1ix1"]
+[ext_resource type="Texture2D" uid="uid://jbry57k7bo77" path="res://GameAssets/Player/Turn/turn16.png" id="49_n6qsj"]
+[ext_resource type="Texture2D" uid="uid://cobk711q8o33f" path="res://GameAssets/Player/Turn/turn17.png" id="50_wkfs8"]
+[ext_resource type="Texture2D" uid="uid://d0sixxjclv14b" path="res://GameAssets/Player/Turn/turn18.png" id="51_p520s"]
+[ext_resource type="Texture2D" uid="uid://j4rlk1a8sv5c" path="res://GameAssets/Player/Turn/turn19.png" id="52_71pll"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b0b6c"]
 animations = [{
@@ -146,6 +166,71 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_1h2v4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_fnqdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_6kul4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_twj8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_hs7u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_ef25e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_xmtea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_yhe1j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_md5qj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_guqx5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_i1cud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_2e3m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_n1pcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_jkl63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_0xbpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_p1ix1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_n6qsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_wkfs8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_p520s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_71pll")
+}],
+"loop": true,
+"name": &"Turn",
+"speed": 48.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8cjyk"]
@@ -221,7 +306,8 @@ script = ExtResource("1_s0kyb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_b0b6c")
-animation = &"Roll"
+animation = &"Turn"
+frame_progress = 0.0133373
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
