@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://brfck1ab6qwlk"]
+[gd_scene load_steps=19 format=3 uid="uid://brfck1ab6qwlk"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Tumbleweed.gd" id="1_j5o4q"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_d1eh6"]
 [ext_resource type="Texture2D" uid="uid://bxdhmv3mly1q4" path="res://GameAssets/TumbleWeedBoss/tumbleweed.png" id="3_3euah"]
 [ext_resource type="Texture2D" uid="uid://gvfvxcmkqsvf" path="res://GameAssets/Effects/Stunned-Sheet.png" id="4_1fais"]
+[ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="5_mpg18"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
 shader = ExtResource("2_d1eh6")
@@ -133,7 +134,7 @@ visible = false
 position = Vector2(0, -35)
 sprite_frames = SubResource("SpriteFrames_ctbqv")
 animation = &"Stunned"
-frame_progress = 0.256212
+frame_progress = 0.223008
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -143,6 +144,14 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeHitbox"]
 shape = SubResource("RectangleShape2D_lqq4o")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Node"]
+texture_repeat = 2
+points = PackedVector2Array(-102, 60, -144, 146)
+texture = ExtResource("5_mpg18")
+texture_mode = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Intro" to="." method="_on_intro_timeout"]

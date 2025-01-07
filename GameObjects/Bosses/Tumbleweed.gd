@@ -7,9 +7,10 @@ var spin_speed: float = 0.0
 @export var spin_acceleration: float = 200.0
 @export var speed_to_charge: float = 1000.0
 
-var last_player_position: Vector2 = Vector2.ZERO
+var last_player_direction: Vector2 = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
+	
 	match state:
 		States.IDLE:
 			pass
@@ -20,16 +21,26 @@ func _physics_process(delta: float) -> void:
 			while rotation_degrees > 360:
 				rotation_degrees -= 360
 			
-			if spin_speed >= speed_to_charge:
-				state = States.CHARGING
+			if spin_speed <= speed_to_charge * 0.75:
 				var player: Player = get_tree().get_nodes_in_group("Player")[0]
 				if is_instance_valid(player):
-					last_player_position = player.global_position
+					last_player_direction = global_position.direction_to(player.global_position) # Get this to figure out where to charge at, it decides when its 75% done charging
+					
+					$Node/Line2D.set_point_position(0, position)
+					$Node/Line2D.set_point_position(1, player.position)
+			
+			if spin_speed >= speed_to_charge:
+				$Node/Line2D.visible = false
+				state = States.CHARGING
+				
 		States.CHARGING:
 			spin_speed -= spin_acceleration * delta
 			rotation_degrees -= spin_speed * delta
 			
-			global_position += global_position.direction_to(last_player_position) * spin_speed * delta
+			while rotation_degrees < -360:
+				rotation_degrees += 360
+			
+			global_position += last_player_direction * spin_speed * delta
 		States.STUNNED:
 			pass
 
@@ -45,6 +56,7 @@ func accelerate() -> void:
 	state = States.ACCELERATING
 	$StunAnimation.visible = false
 	$StunAnimation.stop()
+	$Node/Line2D.visible = true
 
 func _on_stun_timer_timeout() -> void:
 	print("READY TO ROLL")
