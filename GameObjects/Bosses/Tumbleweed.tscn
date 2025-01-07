@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="5_mpg18"]
 [ext_resource type="AudioStream" uid="uid://crisxp07ey0rf" path="res://GameAssets/SFX/Bosses/TumbleweedHurt.wav" id="6_gthfc"]
 [ext_resource type="AudioStream" uid="uid://bvkymva1ituxm" path="res://GameAssets/SFX/Bosses/Alert.wav" id="7_dabk6"]
-[ext_resource type="AudioStream" uid="uid://dvbne4nvudc4w" path="res://GameAssets/SFX/Bosses/Magic1.wav" id="8_ney37"]
+[ext_resource type="AudioStream" uid="uid://qj1pr2dq3eg2" path="res://GameAssets/SFX/Bosses/MiniImpact.wav" id="8_pod3y"]
 [ext_resource type="AudioStream" uid="uid://ja3sjterr26g" path="res://GameAssets/SFX/Bosses/TumbleweedImpact2.wav" id="9_136fk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
@@ -210,7 +210,7 @@ stream = ExtResource("6_gthfc")
 stream = ExtResource("7_dabk6")
 
 [node name="Charging" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_ney37")
+stream = ExtResource("8_pod3y")
 
 [node name="Impact" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_136fk")

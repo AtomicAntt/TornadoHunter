@@ -321,6 +321,8 @@ script = ExtResource("3_vfg30")
 
 [node name="Orbitor" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(50, 50)
+max_fire_multiplier = 9.0
+rotation_acceleration = 9.0
 
 [node name="Dagger" parent="Orbitor" instance=ExtResource("15_4sdqy")]
 
@@ -329,6 +331,8 @@ radius = Vector2(50, 50)
 [node name="Orbitor2" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(25, 25)
 rotation_duration = 3.0
+max_fire_multiplier = 9.0
+rotation_acceleration = 9.0
 
 [node name="Shield" parent="Orbitor2" instance=ExtResource("14_htl8b")]
 
