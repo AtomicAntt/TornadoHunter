@@ -307,7 +307,7 @@ script = ExtResource("1_s0kyb")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_b0b6c")
 animation = &"Turn"
-frame_progress = 0.0133373
+frame_progress = 0.41562
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)

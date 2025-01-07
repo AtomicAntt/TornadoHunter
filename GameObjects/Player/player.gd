@@ -90,8 +90,8 @@ func add_item_orbit(item: Area2D):
 	elif item.is_in_group("shield"):
 		$Orbitor2.call_deferred("add_child", item)
 		
-func hurt():
-	lives -= 1
+func hurt(damage: int):
+	lives -= damage
 	$AnimationPlayer.play("Hurt")
 	
 	var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]

@@ -14,5 +14,5 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerHitbox"):
 		var player = get_tree().get_nodes_in_group("Player")[0]
 		if is_instance_valid(player):
-			player.hurt()
+			player.hurt(1)
 		

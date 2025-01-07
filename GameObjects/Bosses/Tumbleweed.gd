@@ -76,15 +76,27 @@ func accelerate() -> void:
 	$Node/Line2D.visible = true
 
 func _on_stun_timer_timeout() -> void:
-	print("READY TO ROLL")
 	accelerate()
 
 func _on_charge_hitbox_body_entered(body: Node2D) -> void:
 	if state == States.CHARGING:
-		stun()
-		spin_speed = 0
-		$StunTimer.start()
+		impact()
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("PlayerHitbox") and state == States.CHARGING:
+		var player: Player = get_tree().get_nodes_in_group("Player")[0]
+		if is_instance_valid(player):
+			player.hurt(4)
+	elif area.is_in_group("shield") and state == States.CHARGING:
+		var shield: Shield = area
+		shield.use_shield()
+		impact()
+
+func impact() -> void:
+	stun()
+	spin_speed = 0
+	$StunTimer.start()
 		
-		# then i stand back up
-		var tween: Tween = get_tree().create_tween()
-		tween.tween_property(self, "rotation_degrees", 0, 0.5)
+	# then i stand back up
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, "rotation_degrees", 0, 0.5)

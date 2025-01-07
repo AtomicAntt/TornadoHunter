@@ -1,3 +1,4 @@
+class_name Shield
 extends Area2D
 
 var max_recharge: float = 5.0
@@ -15,5 +16,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("EnemyAttack") && recharge >= max_recharge:
 		var enemyAttack: EnemyProjectile = area
 		enemyAttack.queue_free()
-		recharge = 0.0
-		
+		use_shield()
+
+func use_shield() -> void:
+	recharge = 0.0
