@@ -134,7 +134,7 @@ visible = false
 position = Vector2(0, -35)
 sprite_frames = SubResource("SpriteFrames_ctbqv")
 animation = &"Stunned"
-frame_progress = 0.223008
+frame_progress = 0.983896
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 5.0
