@@ -27,10 +27,11 @@ func _physics_process(delta: float) -> void:
 				$Charging.play()
 				rotation_degrees -= 360
 			
-			if spin_speed <= speed_to_charge * 0.5 && pre_warning_set == false:
+			if spin_speed >= speed_to_charge * 0.25 and spin_speed <= speed_to_charge * 0.5 and pre_warning_set == false:
+				$Node/Line2D.visible = true
 				pre_warning_set = true
 				$Node/Line2D.texture = pre_warning
-			elif spin_speed > speed_to_charge * 0.5 && pre_warning_set == true:
+			elif spin_speed > speed_to_charge * 0.5 and pre_warning_set == true:
 				pre_warning_set = false
 				$Node/Line2D.texture = warning
 				
@@ -77,7 +78,6 @@ func accelerate() -> void:
 	state = States.ACCELERATING
 	$StunAnimation.visible = false
 	$StunAnimation.stop()
-	$Node/Line2D.visible = true
 
 func _on_stun_timer_timeout() -> void:
 	accelerate()
