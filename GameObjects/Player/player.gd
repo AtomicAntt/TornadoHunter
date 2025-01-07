@@ -93,6 +93,7 @@ func add_item_orbit(item: Area2D):
 func hurt(damage: int):
 	lives -= damage
 	$AnimationPlayer.play("Hurt")
+	$Hurt.play()
 	
 	var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
 	if is_instance_valid(hearts_container):

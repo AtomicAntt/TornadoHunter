@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://c24p563j7y18m"]
+[gd_scene load_steps=64 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/player.gd" id="1_s0kyb"]
 [ext_resource type="Texture2D" uid="uid://dmhse8in4473i" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://cobk711q8o33f" path="res://GameAssets/Player/Turn/turn17.png" id="50_wkfs8"]
 [ext_resource type="Texture2D" uid="uid://d0sixxjclv14b" path="res://GameAssets/Player/Turn/turn18.png" id="51_p520s"]
 [ext_resource type="Texture2D" uid="uid://j4rlk1a8sv5c" path="res://GameAssets/Player/Turn/turn19.png" id="52_71pll"]
+[ext_resource type="AudioStream" uid="uid://c0ytf8j237nva" path="res://GameAssets/SFX/Player/PlayerHurt.wav" id="57_jmpfg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b0b6c"]
 animations = [{
@@ -346,5 +347,8 @@ shape = SubResource("RectangleShape2D_l0j2n")
 libraries = {
 "": SubResource("AnimationLibrary_yonws")
 }
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("57_jmpfg")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

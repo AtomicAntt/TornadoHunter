@@ -7,6 +7,8 @@ var spin_speed: float = 0.0
 @export var spin_acceleration: float = 300.0
 @export var speed_to_charge: float = 1900.0
 
+@export var speed: float = 1000.0
+
 var warning: Resource = preload("res://GameAssets/Effects/bossWarning.png")
 var pre_warning: Resource = preload("res://GameAssets/Effects/bossPreWarning.png")
 
@@ -62,7 +64,7 @@ func _physics_process(delta: float) -> void:
 			while rotation_degrees < -360:
 				rotation_degrees += 360
 			
-			global_position += last_player_direction * spin_speed * delta
+			global_position += last_player_direction * speed * delta
 		States.STUNNED:
 			pass
 
@@ -84,23 +86,27 @@ func _on_stun_timer_timeout() -> void:
 
 func _on_charge_hitbox_body_entered(body: Node2D) -> void:
 	if state == States.CHARGING:
-		impact()
+		impact(true)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerHitbox") and state == States.CHARGING:
 		var player: Player = get_tree().get_nodes_in_group("Player")[0]
 		if is_instance_valid(player):
 			player.hurt(4)
-	elif area.is_in_group("shield") and state == States.CHARGING:
-		var shield: Shield = area
-		shield.use_shield()
-		impact()
+			impact(false)
+	
+	# REWORK: BOSS CHARGES CANT BE BLOCKED BY SHIELDS, WILL ADD PROJECTILES TO BOSS THAT CAN BE BLOCKED INSTEAD
+	#elif area.is_in_group("shield") and state == States.CHARGING:
+		#var shield: Shield = area
+		#shield.use_shield()
+		#impact(false)
 
-func impact() -> void:
+func impact(sound: bool) -> void:
 	stun()
 	spin_speed = 0
 	$StunTimer.start()
-	$Impact.play()
+	if sound:
+		$Impact.play()
 		
 	# then i stand back up
 	var tween: Tween = get_tree().create_tween()
