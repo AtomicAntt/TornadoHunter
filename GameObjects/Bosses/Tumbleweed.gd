@@ -12,9 +12,25 @@ var spin_speed: float = 0.0
 var warning: Resource = preload("res://GameAssets/Effects/bossWarning.png")
 var pre_warning: Resource = preload("res://GameAssets/Effects/bossPreWarning.png")
 
+var tiny_tumbleweed: Resource = preload("res://GameObjects/Bosses/TinyTumbleweed.tscn")
+
 var last_player_direction: Vector2 = Vector2.ZERO
 
 var pre_warning_set: bool = false
+
+@export var NUM_RAYS: int = 12
+@export var RAY_LENGTH: float = 40
+@export var DEGREES: float = 360
+
+var raycasts = []
+
+func _ready() -> void:
+	for i in range(NUM_RAYS):
+		var raycast = RayCast2D.new()
+		raycast.target_position = Vector2(RAY_LENGTH, 0)
+		raycast.rotation_degrees = i * (DEGREES / NUM_RAYS)
+		add_child(raycast)
+		raycasts.append(raycast)
 
 func _physics_process(delta: float) -> void:
 	
@@ -27,6 +43,7 @@ func _physics_process(delta: float) -> void:
 			
 			while rotation_degrees > 360:
 				$Charging.play()
+				shoot_random_tumbleweed()
 				rotation_degrees -= 360
 			
 			if spin_speed >= speed_to_charge * 0.25 and spin_speed <= speed_to_charge * 0.5 and pre_warning_set == false:
@@ -111,3 +128,38 @@ func impact(sound: bool) -> void:
 	# then i stand back up
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(self, "rotation_degrees", 0, 0.5)
+	
+	# lets save this for hard mode
+	#for raycast: RayCast2D in raycasts:
+		#var direction: Vector2 = Vector2.RIGHT.rotated(raycast.rotation_degrees)
+		#var minion_instance: EnemyProjectile = tiny_tumbleweed.instantiate()
+		#minion_instance.set_direction(direction)
+		#minion_instance.set_speed(50)
+		#minion_instance.set_friction(25)
+		#minion_instance.global_position = global_position
+		#get_parent().call_deferred("add_child", minion_instance)
+
+func shoot_random_tumbleweed() -> void:
+	var available_raycasts: Array[RayCast2D] = []
+	for raycast: RayCast2D in raycasts:
+		if !raycast.is_colliding():
+			available_raycasts.append(raycast)
+	
+	if available_raycasts.size() > 0:
+		var random_raycast = available_raycasts[randi() % available_raycasts.size()]
+		
+		var direction: Vector2 = Vector2.RIGHT.rotated(random_raycast.rotation_degrees)
+		
+		var minion_instance: EnemyProjectile = tiny_tumbleweed.instantiate()
+		minion_instance.set_direction(direction)
+		minion_instance.set_speed(randf_range(10.0, 60.0))
+		minion_instance.set_friction(randf_range(20.0, 25.0))
+		minion_instance.global_position = global_position
+		get_parent().call_deferred("add_child", minion_instance)
+
+# to be unused :(
+func spawn_static_tumbleweed() -> void:
+	var minion_instance: EnemyProjectile = tiny_tumbleweed.instantiate()
+	minion_instance.set_speed(0)
+	minion_instance.global_position = global_position
+	get_parent().call_deferred("add_child", minion_instance)
