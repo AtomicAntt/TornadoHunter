@@ -36,12 +36,6 @@ func _physics_process(delta: float) -> void:
 func _on_intro_timeout() -> void:
 	accelerate()
 
-func _on_body_entered(body: Node2D) -> void:
-	if state == States.CHARGING:
-		stun()
-		spin_speed = 0
-		$StunTimer.start()
-
 func stun() -> void:
 	state = States.STUNNED
 	$StunAnimation.visible = true
@@ -55,3 +49,13 @@ func accelerate() -> void:
 func _on_stun_timer_timeout() -> void:
 	print("READY TO ROLL")
 	accelerate()
+
+func _on_charge_hitbox_body_entered(body: Node2D) -> void:
+	if state == States.CHARGING:
+		stun()
+		spin_speed = 0
+		$StunTimer.start()
+		
+		# then i stand back up
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(self, "rotation_degrees", 0, 0.5)
