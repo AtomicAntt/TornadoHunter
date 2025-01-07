@@ -148,6 +148,7 @@ shape = SubResource("RectangleShape2D_lqq4o")
 [node name="Node" type="Node" parent="."]
 
 [node name="Line2D" type="Line2D" parent="Node"]
+visible = false
 texture_repeat = 2
 points = PackedVector2Array(-102, 60, -144, 146)
 texture = ExtResource("5_mpg18")

@@ -25,9 +25,12 @@ func _physics_process(delta: float) -> void:
 				var player: Player = get_tree().get_nodes_in_group("Player")[0]
 				if is_instance_valid(player):
 					last_player_direction = global_position.direction_to(player.global_position) # Get this to figure out where to charge at, it decides when its 75% done charging
-					
-					$Node/Line2D.set_point_position(0, position)
-					$Node/Line2D.set_point_position(1, player.position)
+					if last_player_direction.x > 0:
+						$Node/Line2D.set_point_position(0, position)
+						$Node/Line2D.set_point_position(1, player.position)
+					else:
+						$Node/Line2D.set_point_position(1, position)
+						$Node/Line2D.set_point_position(0, player.position)
 			
 			if spin_speed >= speed_to_charge:
 				$Node/Line2D.visible = false
