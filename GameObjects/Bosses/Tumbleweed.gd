@@ -5,7 +5,7 @@ var state: States = States.STUNNED
 
 var spin_speed: float = 0.0
 @export var spin_acceleration: float = 300.0
-@export var speed_to_charge: float = 1500.0
+@export var speed_to_charge: float = 1900.0
 
 var warning: Resource = preload("res://GameAssets/Effects/bossWarning.png")
 var pre_warning: Resource = preload("res://GameAssets/Effects/bossPreWarning.png")
@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 			rotation_degrees += spin_speed * delta
 			
 			while rotation_degrees > 360:
+				$Charging.play()
 				rotation_degrees -= 360
 			
 			if spin_speed <= speed_to_charge * 0.5 && pre_warning_set == false:
@@ -32,6 +33,7 @@ func _physics_process(delta: float) -> void:
 			elif spin_speed > speed_to_charge * 0.5 && pre_warning_set == true:
 				pre_warning_set = false
 				$Node/Line2D.texture = warning
+				
 			
 			if spin_speed <= speed_to_charge * 0.75:
 				var player: Player = get_tree().get_nodes_in_group("Player")[0]
@@ -43,11 +45,13 @@ func _physics_process(delta: float) -> void:
 					else:
 						$Node/Line2D.set_point_position(1, position)
 						$Node/Line2D.set_point_position(0, player.position)
-			elif $AnimationPlayer:
+			elif !$Node/Line2D/AnimationPlayer.is_playing():
 				$Node/Line2D/AnimationPlayer.play("Warning")
+				$Warning.play()
 			
 			if spin_speed >= speed_to_charge:
 				$Node/Line2D.visible = false
+				$Node/Line2D/AnimationPlayer.stop()
 				state = States.CHARGING
 				
 		States.CHARGING:
@@ -96,6 +100,7 @@ func impact() -> void:
 	stun()
 	spin_speed = 0
 	$StunTimer.start()
+	$Impact.play()
 		
 	# then i stand back up
 	var tween: Tween = get_tree().create_tween()

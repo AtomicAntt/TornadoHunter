@@ -27,4 +27,6 @@ shape = SubResource("RectangleShape2D_mcedo")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ftbtq")
 
+[node name="Block" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

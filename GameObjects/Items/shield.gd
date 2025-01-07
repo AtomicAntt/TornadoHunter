@@ -20,3 +20,4 @@ func _on_area_entered(area: Area2D) -> void:
 
 func use_shield() -> void:
 	recharge = 0.0
+	$Block.play()

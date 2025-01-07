@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://brfck1ab6qwlk"]
+[gd_scene load_steps=26 format=3 uid="uid://brfck1ab6qwlk"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Tumbleweed.gd" id="1_j5o4q"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_d1eh6"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://gvfvxcmkqsvf" path="res://GameAssets/Effects/Stunned-Sheet.png" id="4_1fais"]
 [ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="5_mpg18"]
 [ext_resource type="AudioStream" uid="uid://crisxp07ey0rf" path="res://GameAssets/SFX/Bosses/TumbleweedHurt.wav" id="6_gthfc"]
+[ext_resource type="AudioStream" uid="uid://bvkymva1ituxm" path="res://GameAssets/SFX/Bosses/Alert.wav" id="7_dabk6"]
+[ext_resource type="AudioStream" uid="uid://dvbne4nvudc4w" path="res://GameAssets/SFX/Bosses/Magic1.wav" id="8_ney37"]
+[ext_resource type="AudioStream" uid="uid://ja3sjterr26g" path="res://GameAssets/SFX/Bosses/TumbleweedImpact2.wav" id="9_136fk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
 shader = ExtResource("2_d1eh6")
@@ -111,6 +114,7 @@ size = Vector2(12, 12)
 [sub_resource type="Animation" id="Animation_f2i8h"]
 resource_name = "Warning"
 length = 0.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -147,8 +151,8 @@ _data = {
 
 [node name="TumbleWeed" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_j5o4q")
-max_health = 200.0
-health = 200.0
+max_health = 150.0
+health = 150.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_wg85p")
@@ -201,6 +205,15 @@ libraries = {
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_gthfc")
+
+[node name="Warning" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_dabk6")
+
+[node name="Charging" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ney37")
+
+[node name="Impact" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_136fk")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
