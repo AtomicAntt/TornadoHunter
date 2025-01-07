@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://brfck1ab6qwlk"]
+[gd_scene load_steps=17 format=3 uid="uid://brfck1ab6qwlk"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Tumbleweed.gd" id="1_j5o4q"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_d1eh6"]
 [ext_resource type="Texture2D" uid="uid://bxdhmv3mly1q4" path="res://GameAssets/TumbleWeedBoss/tumbleweed.png" id="3_3euah"]
+[ext_resource type="Texture2D" uid="uid://gvfvxcmkqsvf" path="res://GameAssets/Effects/Stunned-Sheet.png" id="4_1fais"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
 shader = ExtResource("2_d1eh6")
@@ -59,6 +60,49 @@ _data = {
 "RESET": SubResource("Animation_x2nf6")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_14721"]
+atlas = ExtResource("4_1fais")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0r8o"]
+atlas = ExtResource("4_1fais")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6anq5"]
+atlas = ExtResource("4_1fais")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fqts"]
+atlas = ExtResource("4_1fais")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pa16"]
+atlas = ExtResource("4_1fais")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ctbqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14721")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0r8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6anq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fqts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pa16")
+}],
+"loop": true,
+"name": &"Stunned",
+"speed": 14.0
+}]
+
 [node name="TumbleWeed" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_j5o4q")
 
@@ -71,7 +115,6 @@ position = Vector2(1.5, 1)
 shape = SubResource("RectangleShape2D_2qv3o")
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -79,8 +122,21 @@ libraries = {
 }
 
 [node name="Intro" type="Timer" parent="."]
+one_shot = true
 autostart = true
+
+[node name="StunAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -35)
+sprite_frames = SubResource("SpriteFrames_ctbqv")
+animation = &"Stunned"
+frame_progress = 0.44155
+
+[node name="StunTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Intro" to="." method="_on_intro_timeout"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
