@@ -26,14 +26,19 @@ func _physics_process(delta: float) -> void:
 	
 	if speed <= 0:
 		if has_overlapping_bodies():
-			queue_free()
+			# Why did I do this? Sometimes the player is invulnerable and thus projectiles passing through their physics body should not disappear.
+			var player: Player = get_tree().get_nodes_in_group("Player")[0]
+			if !overlaps_body(player):
+				queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerHitbox"):
-		var player = get_tree().get_nodes_in_group("Player")[0]
+		var player: Player = get_tree().get_nodes_in_group("Player")[0]
 		if is_instance_valid(player):
-			player.hurt(1)
-			queue_free()
+			# Why do this if hurting player won't work if they are invulnerable anyway? So that the projectile does not disappear when entering their hitbox while they are invulnerable.
+			if !player.is_invulnerable():
+				player.hurt(1)
+				queue_free()
 
 func _on_expiration_timer_timeout() -> void:
 	queue_free()

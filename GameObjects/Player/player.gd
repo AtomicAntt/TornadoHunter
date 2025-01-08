@@ -8,6 +8,7 @@ var state: States = States.NORMAL
 @export var max_lives: int = 10
 @export var lives: int = 10
 
+# Remember, the invulnerability is set false and true by the AnimationPlayer
 var invulnerable: bool = false
 
 func _physics_process(_delta: float) -> void:
@@ -91,16 +92,26 @@ func add_item_orbit(item: Area2D):
 		$Orbitor2.call_deferred("add_child", item)
 		
 func hurt(damage: int):
-	lives -= damage
-	$AnimationPlayer.play("Hurt")
-	$Hurt.play()
-	
-	var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
-	if is_instance_valid(hearts_container):
-		hearts_container.update_hearts(lives)
-	
-	if lives <= 0:
-		death()
+	if !invulnerable:
+		lives -= damage
+		$AnimationPlayer.play("Hurt")
+		$Hurt.play()
+		
+		var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
+		if is_instance_valid(hearts_container):
+			hearts_container.update_hearts(lives)
+		
+		if lives <= 0:
+			death()
 
-func death():
+func death() -> void:
 	state = States.DEAD
+
+func set_invulnerable() -> void:
+	invulnerable = true
+
+func set_vulnerable() -> void:
+	invulnerable = false
+
+func is_invulnerable() -> bool:
+	return invulnerable

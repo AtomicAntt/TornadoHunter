@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://baj2uj2cxr74e"]
+[gd_scene load_steps=6 format=3 uid="uid://baj2uj2cxr74e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_s2ssk"]
 [ext_resource type="PackedScene" uid="uid://cqvl3xbl66xih" path="res://boss_health_bar.tscn" id="2_i5ic4"]
 [ext_resource type="Script" path="res://hearts_container.gd" id="3_11eeg"]
 [ext_resource type="Texture2D" uid="uid://fgmswrbolldi" path="res://GameAssets/UI/HealthBar/heart.png" id="3_bqc5u"]
+[ext_resource type="AudioStream" uid="uid://dauh7cisgaytw" path="res://GameAssets/Music/Stage 1.mp3" id="5_54wpx"]
 
 [node name="Main" type="Control"]
 texture_filter = 1
@@ -55,3 +56,8 @@ texture = ExtResource("3_bqc5u")
 [node name="5" type="TextureRect" parent="World/CanvasLayer/HeartsContainer"]
 layout_mode = 2
 texture = ExtResource("3_bqc5u")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_54wpx")
+volume_db = -8.0
+autoplay = true
