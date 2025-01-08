@@ -18,7 +18,7 @@ var last_player_direction: Vector2 = Vector2.ZERO
 
 var pre_warning_set: bool = false
 
-@export var NUM_RAYS: int = 12
+@export var NUM_RAYS: int = 36
 @export var RAY_LENGTH: float = 40
 @export var DEGREES: float = 360
 
