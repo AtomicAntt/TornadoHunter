@@ -4,7 +4,7 @@ extends CharacterBody2D
 enum States {NORMAL, DEAD, DASHING}
 var state: States = States.NORMAL
 
-@export var SPEED: float = 200.0
+@export var SPEED: float = 250.0
 @export var max_lives: int = 10
 @export var lives: int = 10
 
@@ -60,9 +60,9 @@ func get_basic_movement() -> void:
 	
 	var speed_multiplier: float = 1.0
 	
-	#if Input.is_action_pressed("fire"):
+	if Input.is_action_pressed("fire"):
 		#$AnimatedSprite2D.play("Turn")
-		#speed_multiplier = 0.4
+		speed_multiplier = 0.5
 		
 	velocity = velocity.normalized() * SPEED * speed_multiplier
 

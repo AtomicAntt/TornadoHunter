@@ -1867,7 +1867,7 @@ tile_set = SubResource("TileSet_6r7xv")
 position = Vector2(469, 63)
 
 [node name="Player" parent="." instance=ExtResource("1_che55")]
-position = Vector2(-98, 83)
+position = Vector2(-98, 99)
 
 [node name="ItemDrop2" parent="." instance=ExtResource("4_jdxye")]
 position = Vector2(203, 45)
@@ -1875,3 +1875,6 @@ item = ExtResource("4_kermr")
 
 [node name="TumbleWeed" parent="." instance=ExtResource("7_rtjbs")]
 position = Vector2(-98, 10)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-90, 61)

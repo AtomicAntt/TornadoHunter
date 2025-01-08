@@ -332,6 +332,7 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_8cjyk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -339,8 +340,8 @@ script = ExtResource("3_vfg30")
 
 [node name="Orbitor" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(50, 50)
-max_fire_multiplier = 9.0
-rotation_acceleration = 9.0
+max_fire_multiplier = 10.0
+rotation_acceleration = 10.0
 
 [node name="Dagger" parent="Orbitor" instance=ExtResource("15_4sdqy")]
 
@@ -349,8 +350,8 @@ rotation_acceleration = 9.0
 [node name="Orbitor2" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(25, 25)
 rotation_duration = 3.0
-max_fire_multiplier = 9.0
-rotation_acceleration = 9.0
+max_fire_multiplier = 10.0
+rotation_acceleration = 10.0
 
 [node name="Shield" parent="Orbitor2" instance=ExtResource("14_htl8b")]
 

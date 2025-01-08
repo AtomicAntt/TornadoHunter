@@ -17,6 +17,7 @@ var tiny_tumbleweed: Resource = preload("res://GameObjects/Bosses/TinyTumbleweed
 var last_player_direction: Vector2 = Vector2.ZERO
 
 var pre_warning_set: bool = false
+var warning_set: bool = false
 
 @export var NUM_RAYS: int = 36
 @export var RAY_LENGTH: float = 40
@@ -46,14 +47,17 @@ func _physics_process(delta: float) -> void:
 				shoot_random_tumbleweed()
 				rotation_degrees -= 360
 			
-			if spin_speed >= speed_to_charge * 0.25 and spin_speed <= speed_to_charge * 0.5 and pre_warning_set == false:
+			#if spin_speed >= speed_to_charge * 0.25 and spin_speed <= speed_to_charge * 0.5 and pre_warning_set == false:
+				#$Node/Line2D.visible = true
+				#pre_warning_set = true
+				#$Node/Line2D.texture = pre_warning
+			#elif spin_speed > speed_to_charge * 0.5 and pre_warning_set == true:
+				#pre_warning_set = false
+				#$Node/Line2D.texture = warning
+			
+			if spin_speed > speed_to_charge * 0.5 && warning_set == false:
+				warning_set = true
 				$Node/Line2D.visible = true
-				pre_warning_set = true
-				$Node/Line2D.texture = pre_warning
-			elif spin_speed > speed_to_charge * 0.5 and pre_warning_set == true:
-				pre_warning_set = false
-				$Node/Line2D.texture = warning
-				
 			
 			if spin_speed <= speed_to_charge * 0.75:
 				var player: Player = get_tree().get_nodes_in_group("Player")[0]
@@ -61,16 +65,17 @@ func _physics_process(delta: float) -> void:
 					last_player_direction = global_position.direction_to(player.global_position) # Get this to figure out where to charge at, it decides when its 75% done charging
 					if last_player_direction.x > 0:
 						$Node/Line2D.set_point_position(0, position)
-						$Node/Line2D.set_point_position(1, player.position)
+						$Node/Line2D.set_point_position(1, position + (last_player_direction * 1000))
 					else:
 						$Node/Line2D.set_point_position(1, position)
-						$Node/Line2D.set_point_position(0, player.position)
+						$Node/Line2D.set_point_position(0, position + (last_player_direction * 1000))
 			elif !$Node/Line2D/AnimationPlayer.is_playing():
 				$Node/Line2D/AnimationPlayer.play("Warning")
 				$Warning.play()
 			
 			if spin_speed >= speed_to_charge:
 				$Node/Line2D.visible = false
+				warning_set = false
 				$Node/Line2D/AnimationPlayer.stop()
 				state = States.CHARGING
 				
@@ -155,8 +160,8 @@ func shoot_random_tumbleweed() -> void:
 		
 		var minion_instance: EnemyProjectile = tiny_tumbleweed.instantiate()
 		minion_instance.set_direction(direction)
-		minion_instance.set_speed(randf_range(10.0, 60.0))
-		minion_instance.set_friction(randf_range(20.0, 25.0))
+		minion_instance.set_speed(randf_range(30.0, 60.0))
+		minion_instance.set_friction(randf_range(8.0, 10.0))
 		minion_instance.set_time(60.0)
 		minion_instance.global_position = global_position
 		get_parent().call_deferred("add_child", minion_instance)
