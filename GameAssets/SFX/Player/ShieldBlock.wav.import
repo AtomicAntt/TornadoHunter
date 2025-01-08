@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://db5ntlmak83ge"
+uid="uid://c0ytf8j237nva"
 path="res://.godot/imported/ShieldBlock.wav-9931945a6c28bc1b9ca256492cbc2b42.sample"
 
 [deps]
@@ -18,7 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
+edit/loop_mode=1
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=0

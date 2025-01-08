@@ -56,7 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://cobk711q8o33f" path="res://GameAssets/Player/Turn/turn17.png" id="50_wkfs8"]
 [ext_resource type="Texture2D" uid="uid://d0sixxjclv14b" path="res://GameAssets/Player/Turn/turn18.png" id="51_p520s"]
 [ext_resource type="Texture2D" uid="uid://j4rlk1a8sv5c" path="res://GameAssets/Player/Turn/turn19.png" id="52_71pll"]
-[ext_resource type="AudioStream" uid="uid://c0ytf8j237nva" path="res://GameAssets/SFX/Player/PlayerHurt.wav" id="57_jmpfg"]
+[ext_resource type="AudioStream" uid="uid://bw66hoflg4ecd" path="res://GameAssets/SFX/Player/PlayerHurt.wav" id="57_jmpfg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b0b6c"]
 animations = [{
