@@ -17,9 +17,7 @@ func set_speed(new_speed: float) -> void:
 	max_speed = new_speed
 
 func set_time(new_time: float) -> void:
-	$Timer.stop()
-	$Timer.wait_time = new_time
-	$Timer.start()
+	$ExpirationTimer.wait_time = new_time
 
 func _physics_process(delta: float) -> void:
 	global_position += direction * speed * delta

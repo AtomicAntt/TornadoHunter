@@ -29,7 +29,7 @@ func _ready() -> void:
 		var raycast = RayCast2D.new()
 		raycast.target_position = Vector2(RAY_LENGTH, 0)
 		raycast.rotation_degrees = i * (DEGREES / NUM_RAYS)
-		add_child(raycast)
+		$Node.add_child(raycast)
 		raycasts.append(raycast)
 
 func _physics_process(delta: float) -> void:
@@ -140,6 +140,9 @@ func impact(sound: bool) -> void:
 		#get_parent().call_deferred("add_child", minion_instance)
 
 func shoot_random_tumbleweed() -> void:
+	for raycast: RayCast2D in raycasts:
+		raycast.global_position = global_position
+	
 	var available_raycasts: Array[RayCast2D] = []
 	for raycast: RayCast2D in raycasts:
 		if !raycast.is_colliding():
@@ -148,12 +151,13 @@ func shoot_random_tumbleweed() -> void:
 	if available_raycasts.size() > 0:
 		var random_raycast = available_raycasts[randi() % available_raycasts.size()]
 		
-		var direction: Vector2 = Vector2.RIGHT.rotated(random_raycast.rotation_degrees)
+		var direction: Vector2 = Vector2.RIGHT.rotated(random_raycast.rotation)
 		
 		var minion_instance: EnemyProjectile = tiny_tumbleweed.instantiate()
 		minion_instance.set_direction(direction)
 		minion_instance.set_speed(randf_range(10.0, 60.0))
 		minion_instance.set_friction(randf_range(20.0, 25.0))
+		minion_instance.set_time(60.0)
 		minion_instance.global_position = global_position
 		get_parent().call_deferred("add_child", minion_instance)
 
