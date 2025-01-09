@@ -95,11 +95,15 @@ func hurt(damage: int):
 	if !invulnerable:
 		lives -= damage
 		$AnimationPlayer.play("Hurt")
-		$Hurt.play()
 		
 		var camera_shaker: CameraShaker = get_tree().get_nodes_in_group("Camera")[0]
 		if is_instance_valid(camera_shaker):
-			camera_shaker.apply_noise_shake()
+			if damage > 1:
+				$Hurt.play()
+				camera_shaker.apply_noise_shake()
+			else:
+				$Hit.play()
+				camera_shaker.apply_medium_shake()
 		
 		var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
 		if is_instance_valid(hearts_container):
