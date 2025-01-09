@@ -9,8 +9,8 @@ extends Camera2D
 @export var NOISE_SHAKE_SPEED: float = 30.0
 @export var NOISE_SHAKE_STRENGTH: float = 60.0
 
-@export var WEAK_SHAKE_SPEED: float = 10.0
-@export var WEAK_SHAKE_STRENGTH: float = 20.0
+@export var WEAK_SHAKE_SPEED: float = 7.0
+@export var WEAK_SHAKE_STRENGTH: float = 14.0
 
 @export var SUPER_WEAK_SPEED: float = 6.0
 @export var SUPER_WEAK_STRENGTH: float = 3.0

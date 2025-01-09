@@ -19,7 +19,7 @@ var last_player_direction: Vector2 = Vector2.ZERO
 var pre_warning_set: bool = false
 var warning_set: bool = false
 
-@export var NUM_RAYS: int = 36
+@export var NUM_RAYS: int = 24
 @export var RAY_LENGTH: float = 40
 @export var DEGREES: float = 360
 
@@ -138,15 +138,22 @@ func impact(sound: bool) -> void:
 	if is_instance_valid(camera_shaker):
 		camera_shaker.apply_noise_shake()
 	
-	# lets save this for hard mode
-	#for raycast: RayCast2D in raycasts:
-		#var direction: Vector2 = Vector2.RIGHT.rotated(raycast.rotation_degrees)
-		#var minion_instance: EnemyProjectile = tiny_tumbleweed.instantiate()
-		#minion_instance.set_direction(direction)
-		#minion_instance.set_speed(50)
-		#minion_instance.set_friction(25)
-		#minion_instance.global_position = global_position
-		#get_parent().call_deferred("add_child", minion_instance)
+	for raycast: RayCast2D in raycasts:
+		raycast.global_position = global_position
+	
+	# lets save this for hard mode (nvm)
+	for raycast: RayCast2D in raycasts:
+		raycast.force_raycast_update()
+		if !raycast.is_colliding():
+			var direction: Vector2 = Vector2.RIGHT.rotated(raycast.rotation)
+			
+			var minion_instance: EnemyProjectile = tiny_tumbleweed.instantiate()
+			minion_instance.set_direction(direction)
+			minion_instance.set_speed(100.0)
+			minion_instance.set_friction(10.0)
+			minion_instance.set_time(30.0)
+			minion_instance.global_position = global_position
+			get_parent().call_deferred("add_child", minion_instance)
 
 func shoot_random_tumbleweed() -> void:
 	for raycast: RayCast2D in raycasts:
@@ -166,7 +173,7 @@ func shoot_random_tumbleweed() -> void:
 		minion_instance.set_direction(direction)
 		minion_instance.set_speed(randf_range(30.0, 60.0))
 		minion_instance.set_friction(randf_range(8.0, 10.0))
-		minion_instance.set_time(60.0)
+		minion_instance.set_time(30.0)
 		minion_instance.global_position = global_position
 		get_parent().call_deferred("add_child", minion_instance)
 

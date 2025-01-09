@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dubuxgcucbbcf" path="res://GameAssets/Items/Shield/prototype shield.png" id="1_i4qgs"]
 [ext_resource type="Script" path="res://GameObjects/Items/shield.gd" id="1_lpe3k"]
-[ext_resource type="AudioStream" uid="uid://c0ytf8j237nva" path="res://GameAssets/SFX/Player/ShieldBlock.wav" id="3_qm33y"]
+[ext_resource type="AudioStream" uid="uid://brfcsq2my1f2a" path="res://GameAssets/SFX/Player/ShieldBlock2.wav" id="3_k7wv8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcedo"]
 size = Vector2(8, 8)
@@ -29,6 +29,6 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ftbtq")
 
 [node name="Block" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_qm33y")
+stream = ExtResource("3_k7wv8")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
