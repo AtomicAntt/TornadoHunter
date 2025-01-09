@@ -134,6 +134,10 @@ func impact(sound: bool) -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(self, "rotation_degrees", 0, 0.5)
 	
+	var camera_shaker: CameraShaker = get_tree().get_nodes_in_group("Camera")[0]
+	if is_instance_valid(camera_shaker):
+		camera_shaker.apply_noise_shake()
+	
 	# lets save this for hard mode
 	#for raycast: RayCast2D in raycasts:
 		#var direction: Vector2 = Vector2.RIGHT.rotated(raycast.rotation_degrees)

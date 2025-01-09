@@ -12,6 +12,7 @@ func hurt(damage: float) -> void:
 		bossHealth.change_health(max_health, health)
 	$AnimationPlayer.play("Hurt")
 	$Hurt.play()
+	$Hurt.set_pitch_scale(randf_range(0.5, 1.5))
 	
 	if health <= 0:
 		death()

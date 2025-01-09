@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp87wt6x5n0w5"]
+
+[ext_resource type="Script" path="res://GameObjects/Player/ScreenShake.gd" id="1_m8tcy"]
+
+[node name="Camera2D" type="Camera2D" groups=["Camera"]]
+position = Vector2(-90, 61)
+script = ExtResource("1_m8tcy")
