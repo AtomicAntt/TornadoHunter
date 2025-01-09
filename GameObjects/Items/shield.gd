@@ -21,3 +21,7 @@ func _on_area_entered(area: Area2D) -> void:
 func use_shield() -> void:
 	recharge = 0.0
 	$Block.play()
+	
+	var camera_shake: CameraShaker = get_tree().get_nodes_in_group("Camera")[0]
+	if is_instance_valid(camera_shake):
+		camera_shake.apply_weak_shake()

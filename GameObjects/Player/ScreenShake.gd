@@ -5,14 +5,21 @@ extends Camera2D
 
 @export var RANDOM_SHAKE_STRENGTH: float = 30.0
 @export var SHAKE_DECAY_RATE: float = 5.0
+
 @export var NOISE_SHAKE_SPEED: float = 30.0
 @export var NOISE_SHAKE_STRENGTH: float = 60.0
+
+@export var WEAK_SHAKE_SPEED: float = 10.0
+@export var WEAK_SHAKE_STRENGTH: float = 20.0
+
+@export var SUPER_WEAK_SPEED: float = 6.0
+@export var SUPER_WEAK_STRENGTH: float = 3.0
 
 @export var NOISE_SWAY_SPEED: float = 1.0
 @export var NOISE_SWAY_STRENGTH: float = 10.0
 
 enum ShakeType {
-	RANDOM, NOISE, SWAY
+	RANDOM, NOISE, SWAY, WEAK, SUPER_WEAK
 }
 
 var shake_type: ShakeType = ShakeType.RANDOM
@@ -36,6 +43,14 @@ func apply_noise_shake() -> void:
 	shake_strength = NOISE_SHAKE_STRENGTH
 	shake_type = ShakeType.NOISE
 
+func apply_weak_shake() -> void:
+	shake_strength = WEAK_SHAKE_STRENGTH
+	shake_type = ShakeType.WEAK
+
+func apply_super_weak_shake() -> void:
+	shake_strength = SUPER_WEAK_STRENGTH
+	shake_type = ShakeType.SUPER_WEAK
+
 func apply_noise_sway() -> void:
 	shake_type = ShakeType.SWAY
 
@@ -49,6 +64,10 @@ func _process(delta: float) -> void:
 			shake_offset = get_random_offset()
 		ShakeType.NOISE:
 			shake_offset = get_noise_offset(delta, NOISE_SHAKE_SPEED, shake_strength)
+		ShakeType.WEAK:
+			shake_offset = get_noise_offset(delta, WEAK_SHAKE_SPEED, shake_strength)
+		ShakeType.SUPER_WEAK:
+			shake_offset = get_noise_offset(delta, SUPER_WEAK_SPEED, shake_strength)
 		ShakeType.SWAY:
 			shake_offset = get_noise_offset(delta, NOISE_SWAY_SPEED, NOISE_SWAY_STRENGTH)
 	

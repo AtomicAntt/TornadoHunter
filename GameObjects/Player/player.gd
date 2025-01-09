@@ -97,6 +97,10 @@ func hurt(damage: int):
 		$AnimationPlayer.play("Hurt")
 		$Hurt.play()
 		
+		var camera_shaker: CameraShaker = get_tree().get_nodes_in_group("Camera")[0]
+		if is_instance_valid(camera_shaker):
+			camera_shaker.apply_noise_shake()
+		
 		var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
 		if is_instance_valid(hearts_container):
 			hearts_container.update_hearts(lives)
