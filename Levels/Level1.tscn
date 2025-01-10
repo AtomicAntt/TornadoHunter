@@ -1871,7 +1871,7 @@ position = Vector2(469, 63)
 position = Vector2(-98, 99)
 
 [node name="ItemDrop2" parent="." instance=ExtResource("4_jdxye")]
-position = Vector2(203, 45)
+position = Vector2(423, -7)
 item = ExtResource("4_kermr")
 
 [node name="TumbleWeed" parent="." instance=ExtResource("7_rtjbs")]

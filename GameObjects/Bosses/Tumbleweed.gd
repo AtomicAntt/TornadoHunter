@@ -106,7 +106,7 @@ func accelerate() -> void:
 func _on_stun_timer_timeout() -> void:
 	accelerate()
 
-func _on_charge_hitbox_body_entered(body: Node2D) -> void:
+func _on_charge_hitbox_body_entered(_body: Node2D) -> void:
 	if state == States.CHARGING:
 		impact(true)
 

@@ -114,6 +114,9 @@ func hurt(damage: int):
 
 func death() -> void:
 	state = States.DEAD
+	$Lose.play()
+	$AnimatedSprite2D.play("Lose")
+	
 
 func set_invulnerable() -> void:
 	invulnerable = true
