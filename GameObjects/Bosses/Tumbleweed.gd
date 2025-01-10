@@ -1,7 +1,7 @@
 extends Boss
 
-enum States {STUNNED, ACCELERATING, CHARGING, IDLE, DEAD}
-var state: States = States.STUNNED
+#enum States {STUNNED, ACCELERATING, CHARGING, IDLE, DEAD, DISABLED}
+#var state: States = States.IDLE
 
 var spin_speed: float = 0.0
 @export var spin_acceleration: float = 300.0
@@ -32,6 +32,9 @@ func _ready() -> void:
 		raycast.rotation_degrees = i * (DEGREES / NUM_RAYS)
 		$Node.add_child(raycast)
 		raycasts.append(raycast)
+
+func set_disabled() -> void:
+	state = States.DISABLED
 
 func _physics_process(delta: float) -> void:
 	
@@ -89,29 +92,34 @@ func _physics_process(delta: float) -> void:
 			global_position += last_player_direction * speed * delta
 		States.STUNNED:
 			pass
+		States.DISABLED:
+			pass
 
 func _on_intro_timeout() -> void:
 	accelerate()
 
 func stun() -> void:
-	state = States.STUNNED
-	$StunAnimation.visible = true
-	$StunAnimation.play("Stunned")
+	if state != States.DISABLED:
+		state = States.STUNNED
+		$StunAnimation.visible = true
+		$StunAnimation.play("Stunned")
 
 func accelerate() -> void:
-	state = States.ACCELERATING
-	$StunAnimation.visible = false
-	$StunAnimation.stop()
+	if state != States.DISABLED:
+		state = States.ACCELERATING
+		$StunAnimation.visible = false
+		$StunAnimation.stop()
 
 func _on_stun_timer_timeout() -> void:
-	accelerate()
+	if state == States.STUNNED:
+		accelerate()
 
 func _on_charge_hitbox_body_entered(_body: Node2D) -> void:
-	if state == States.CHARGING:
+	if state == States.CHARGING and state != States.DISABLED:
 		impact(true)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("PlayerHitbox") and state == States.CHARGING:
+	if area.is_in_group("PlayerHitbox") and state == States.CHARGING and state != States.DISABLED:
 		var player: Player = get_tree().get_nodes_in_group("Player")[0]
 		if is_instance_valid(player):
 			player.hurt(4)

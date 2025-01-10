@@ -4,7 +4,14 @@ extends Area2D
 @export var max_health: float = 100.0
 @export var health: float = 100.0
 
+enum States {STUNNED, ACCELERATING, CHARGING, IDLE, DEAD, DISABLED}
+var state: States = States.IDLE
+
 var enemy_projectile: Resource = preload("res://GameObjects/Bosses/EnemyProjectile.tscn")
+
+func set_disabled() -> void:
+	print("i am now disabled")
+	state = States.DISABLED
 
 func hurt(damage: float) -> void:
 	health -= damage

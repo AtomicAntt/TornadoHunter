@@ -116,6 +116,8 @@ func death() -> void:
 	state = States.DEAD
 	$Lose.play()
 	$AnimatedSprite2D.play("Lose")
+	for boss: Boss in get_tree().get_nodes_in_group("Boss"):
+		boss.set_disabled()
 	
 
 func set_invulnerable() -> void:
