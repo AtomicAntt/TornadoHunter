@@ -42,3 +42,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_expiration_timer_timeout() -> void:
 	queue_free()
+
+# Animation player will queue_free() it afterwards.
+func dissolve() -> void:
+	$AnimationPlayer.play("Dissolve")

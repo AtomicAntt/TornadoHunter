@@ -116,8 +116,14 @@ func death() -> void:
 	state = States.DEAD
 	$Lose.play()
 	$AnimatedSprite2D.play("Lose")
+
 	for boss: Boss in get_tree().get_nodes_in_group("Boss"):
 		boss.set_disabled()
+
+	for orbitor in get_children():
+		if orbitor.is_in_group("orbitor"):
+			for child: Area2D in orbitor.get_children():
+				child.queue_free()
 	
 
 func set_invulnerable() -> void:

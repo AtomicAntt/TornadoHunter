@@ -12,8 +12,8 @@ extends Camera2D
 @export var MEDIUM_SHAKE_SPEED: float = 20.0
 @export var MEDIUM_SHAKE_STRENGTH: float = 40.0
 
-@export var WEAK_SHAKE_SPEED: float = 7.0
-@export var WEAK_SHAKE_STRENGTH: float = 14.0
+@export var WEAK_SHAKE_SPEED: float = 6.0
+@export var WEAK_SHAKE_STRENGTH: float = 12.0
 
 @export var SUPER_WEAK_SPEED: float = 6.0
 @export var SUPER_WEAK_STRENGTH: float = 3.0
