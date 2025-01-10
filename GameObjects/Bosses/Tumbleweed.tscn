@@ -25,8 +25,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qv3o"]
-size = Vector2(63, 62)
+[sub_resource type="CircleShape2D" id="CircleShape2D_haexa"]
+radius = 36.8409
 
 [sub_resource type="Animation" id="Animation_3j7qj"]
 resource_name = "Hurt"
@@ -108,8 +108,8 @@ animations = [{
 "speed": 14.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqq4o"]
-size = Vector2(12, 12)
+[sub_resource type="CircleShape2D" id="CircleShape2D_tj0uj"]
+radius = 9.0
 
 [sub_resource type="Animation" id="Animation_k7emk"]
 length = 0.001
@@ -160,7 +160,7 @@ sprite_frames = SubResource("SpriteFrames_utv8c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 1)
-shape = SubResource("RectangleShape2D_2qv3o")
+shape = SubResource("CircleShape2D_haexa")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -187,7 +187,7 @@ one_shot = true
 [node name="ChargeHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeHitbox"]
-shape = SubResource("RectangleShape2D_lqq4o")
+shape = SubResource("CircleShape2D_tj0uj")
 
 [node name="Node" type="Node" parent="."]
 
