@@ -1,11 +1,10 @@
-[gd_scene load_steps=74 format=3 uid="uid://c24p563j7y18m"]
+[gd_scene load_steps=73 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/player.gd" id="1_s0kyb"]
 [ext_resource type="Texture2D" uid="uid://dmhse8in4473i" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
 [ext_resource type="Texture2D" uid="uid://cwqmc6spily73" path="res://GameAssets/Player/Roll/roll0.png" id="3_6fpdd"]
 [ext_resource type="Texture2D" uid="uid://doc44ix7xlebi" path="res://GameAssets/Player/Run/run0.png" id="3_8viku"]
 [ext_resource type="Texture2D" uid="uid://cwihbcdu6ilwu" path="res://GameAssets/Player/Lose/SpriteSheetSpark.png" id="3_qro5p"]
-[ext_resource type="Texture2D" uid="uid://cl5pwhxk8hwu4" path="res://GameAssets/Player/Lose/Transparent.png" id="4_erxfe"]
 [ext_resource type="Texture2D" uid="uid://dc6k543ygegug" path="res://GameAssets/Player/Roll/roll1.png" id="4_fq3rk"]
 [ext_resource type="Texture2D" uid="uid://b16sn2xhfnxjj" path="res://GameAssets/Player/Run/run1.png" id="4_if2ng"]
 [ext_resource type="Texture2D" uid="uid://dcdt2u2xfq8iu" path="res://GameAssets/Player/Roll/roll2.png" id="5_k8q4g"]
@@ -114,11 +113,8 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rjll5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_erxfe")
 }],
-"loop": false,
+"loop": true,
 "name": &"Lose",
 "speed": 12.0
 }, {
@@ -379,8 +375,7 @@ script = ExtResource("1_s0kyb")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_b0b6c")
 animation = &"Lose"
-frame = 6
-frame_progress = 1.0
+frame_progress = 0.950405
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
