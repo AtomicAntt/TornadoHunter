@@ -31,7 +31,8 @@ func _physics_process(delta: float) -> void:
 			# Why did I do this? Sometimes the player is invulnerable and thus projectiles passing through their physics body should not disappear.
 			var player: Player = get_tree().get_nodes_in_group("Player")[0]
 			if !overlaps_body(player):
-				queue_free()
+				#queue_free()
+				dissolve()
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerHitbox") and !dissolving:
@@ -43,8 +44,8 @@ func _on_area_entered(area: Area2D) -> void:
 				queue_free()
 
 func _on_expiration_timer_timeout() -> void:
-	queue_free()
-	#dissolve()
+	#queue_free()
+	dissolve()
 
 # Animation player will queue_free() it afterwards.
 func dissolve() -> void:
