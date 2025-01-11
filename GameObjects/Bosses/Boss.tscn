@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://clu1r4atw2ywa"]
+[gd_scene load_steps=14 format=3 uid="uid://clu1r4atw2ywa"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Boss.gd" id="1_oo5v6"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_cfj6g"]
 [ext_resource type="Texture2D" uid="uid://bxdhmv3mly1q4" path="res://GameAssets/TumbleWeedBoss/tumbleweed.png" id="2_khonc"]
+[ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="4_jx2wr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
 shader = ExtResource("2_cfj6g")
@@ -59,10 +60,29 @@ _data = {
 "RESET": SubResource("Animation_x2nf6")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lumu"]
+shader = ExtResource("4_jx2wr")
+shader_parameter/slice_center = Vector2(0.5, 0.5)
+shader_parameter/slice_angle = 0.75
+shader_parameter/slice_distance = 0.6
+shader_parameter/pixel_size = 4096.0
+shader_parameter/expansion_factor = 0.5
+shader_parameter/transparency = 1.0
+shader_parameter/border_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_jlx6u"]
+resource_name = "Death"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_adgp6"]
+_data = {
+"Death": SubResource("Animation_jlx6u")
+}
+
 [node name="Boss" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_oo5v6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_wg85p")
 sprite_frames = SubResource("SpriteFrames_utv8c")
 
@@ -79,5 +99,14 @@ libraries = {
 }
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
+
+[node name="DeathSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_3lumu")
+texture = ExtResource("2_khonc")
+
+[node name="DeathAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_adgp6")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

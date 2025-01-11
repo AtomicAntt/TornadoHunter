@@ -6,6 +6,8 @@ var max_speed: float = 200.0
 var speed: float = 200.0
 var friction: float = 0.0
 
+var dissolving: bool = false
+
 func set_direction(new_direction: Vector2) -> void:
 	direction = new_direction
 
@@ -32,7 +34,7 @@ func _physics_process(delta: float) -> void:
 				queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("PlayerHitbox"):
+	if area.is_in_group("PlayerHitbox") and !dissolving:
 		var player: Player = get_tree().get_nodes_in_group("Player")[0]
 		if is_instance_valid(player):
 			# Why do this if hurting player won't work if they are invulnerable anyway? So that the projectile does not disappear when entering their hitbox while they are invulnerable.
@@ -42,7 +44,9 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_expiration_timer_timeout() -> void:
 	queue_free()
+	#dissolve()
 
 # Animation player will queue_free() it afterwards.
 func dissolve() -> void:
+	dissolving = true
 	$AnimationPlayer.play("Dissolve")

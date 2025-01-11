@@ -33,10 +33,16 @@ func fire_at_player() -> void:
 		get_parent().add_child(projectile_instance)
 
 func death() -> void:
+	state = States.DISABLED
+	$AnimatedSprite2D.visible = false
+	$DeathSprite.visible = true
+	
 	for enemy_attack: EnemyProjectile in get_tree().get_nodes_in_group("EnemyAttack"):
 		enemy_attack.dissolve()
 	
-	queue_free()
+	$DeathAnimation.play("Death")
+	
+	#queue_free()
 
 func _on_timer_timeout() -> void:
 	fire_at_player()
