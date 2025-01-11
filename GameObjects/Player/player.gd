@@ -136,3 +136,4 @@ func is_invulnerable() -> bool:
 
 func get_coin() -> void:
 	$GetCoin.play()
+	#$GetCoin.set_pitch_scale(randf_range(0.9, 1.1))

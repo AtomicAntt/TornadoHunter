@@ -1,7 +1,7 @@
 [gd_scene load_steps=74 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/player.gd" id="1_s0kyb"]
-[ext_resource type="Texture2D" uid="uid://dmhse8in4473i" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
+[ext_resource type="Texture2D" uid="uid://bef07gt21eoas" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
 [ext_resource type="Texture2D" uid="uid://cwqmc6spily73" path="res://GameAssets/Player/Roll/roll0.png" id="3_6fpdd"]
 [ext_resource type="Texture2D" uid="uid://doc44ix7xlebi" path="res://GameAssets/Player/Run/run0.png" id="3_8viku"]
 [ext_resource type="Texture2D" uid="uid://cwihbcdu6ilwu" path="res://GameAssets/Player/Lose/SpriteSheetSpark.png" id="3_qro5p"]
@@ -60,7 +60,7 @@
 [ext_resource type="AudioStream" uid="uid://bw66hoflg4ecd" path="res://GameAssets/SFX/Player/PlayerHurt.wav" id="57_jmpfg"]
 [ext_resource type="AudioStream" uid="uid://crsckx2ysrks1" path="res://GameAssets/SFX/Player/PlayerHit.wav" id="58_mt3s5"]
 [ext_resource type="AudioStream" uid="uid://dbgftv2totyjg" path="res://GameAssets/SFX/Player/PlayerLose.wav" id="59_ogr4d"]
-[ext_resource type="AudioStream" uid="uid://bmec61nj1re2u" path="res://GameAssets/SFX/Player/Retro PickUp Coin 04.wav" id="61_fortb"]
+[ext_resource type="AudioStream" uid="uid://7wd458747mvt" path="res://GameAssets/SFX/Player/GetCoin.wav" id="61_0jx1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4d0dc"]
 atlas = ExtResource("3_qro5p")
@@ -427,6 +427,6 @@ stream = ExtResource("58_mt3s5")
 stream = ExtResource("59_ogr4d")
 
 [node name="GetCoin" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("61_fortb")
+stream = ExtResource("61_0jx1p")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
