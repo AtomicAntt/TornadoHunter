@@ -1,3 +1,4 @@
+class_name Main
 extends Control
 
 @onready var world = $World
@@ -19,3 +20,7 @@ func load_level(level_name: String) -> void:
 	if level_resource:
 		level_instance = level_resource.instantiate()
 		world.add_child(level_instance)
+
+func level_success() -> void:
+	#$BossMusic.stop()
+	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://brfck1ab6qwlk"]
+[gd_scene load_steps=32 format=3 uid="uid://brfck1ab6qwlk"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Tumbleweed.gd" id="1_j5o4q"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_d1eh6"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://qj1pr2dq3eg2" path="res://GameAssets/SFX/Bosses/MiniImpact.wav" id="8_pod3y"]
 [ext_resource type="AudioStream" uid="uid://ja3sjterr26g" path="res://GameAssets/SFX/Bosses/TumbleweedImpact2.wav" id="9_136fk"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="10_msu5c"]
+[ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="11_y3321"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
 shader = ExtResource("2_d1eh6")
@@ -284,8 +285,8 @@ _data = {
 
 [node name="TumbleWeed" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_j5o4q")
-max_health = 250.0
-health = 250.0
+max_health = 25.0
+health = 25.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_wg85p")
@@ -357,6 +358,9 @@ texture = ExtResource("3_3euah")
 libraries = {
 "": SubResource("AnimationLibrary_hyrxv")
 }
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_y3321")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

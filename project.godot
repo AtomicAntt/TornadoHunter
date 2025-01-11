@@ -15,6 +15,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Autoloads/Global.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -33,6 +37,7 @@ PlayerHitbox="Area2d representing the player"
 shield="shield area2d"
 HeartsContainer="hboxcontainer with change_health function to display to player visually their current health"
 Camera="Camera2D which the player sees with. You can call shake methods on this."
+Main="Main Control node that can do stuff like load and unload levels."
 
 [input]
 

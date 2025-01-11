@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://clu1r4atw2ywa"]
+[gd_scene load_steps=15 format=3 uid="uid://clu1r4atw2ywa"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Boss.gd" id="1_oo5v6"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_cfj6g"]
 [ext_resource type="Texture2D" uid="uid://bxdhmv3mly1q4" path="res://GameAssets/TumbleWeedBoss/tumbleweed.png" id="2_khonc"]
+[ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="4_imhm8"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="4_jx2wr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
@@ -99,6 +100,7 @@ libraries = {
 }
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_imhm8")
 
 [node name="DeathSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_3lumu")

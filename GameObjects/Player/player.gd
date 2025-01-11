@@ -125,7 +125,6 @@ func death() -> void:
 			for child: Area2D in orbitor.get_children():
 				child.queue_free()
 	
-
 func set_invulnerable() -> void:
 	invulnerable = true
 
@@ -134,3 +133,6 @@ func set_vulnerable() -> void:
 
 func is_invulnerable() -> bool:
 	return invulnerable
+
+func get_coin() -> void:
+	$GetCoin.play()

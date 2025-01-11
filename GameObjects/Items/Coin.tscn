@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://t4sc2onvlq6h"]
+
+[ext_resource type="Texture2D" uid="uid://deoy6r5hyg4h" path="res://GameAssets/Items/Gold/Coin2.png" id="1_mtbw3"]
+[ext_resource type="Script" path="res://GameObjects/Items/Coin.gd" id="1_xnpv5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shrxe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2drn"]
+atlas = ExtResource("1_mtbw3")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aghn"]
+atlas = ExtResource("1_mtbw3")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohrar"]
+atlas = ExtResource("1_mtbw3")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do8xl"]
+atlas = ExtResource("1_mtbw3")
+region = Rect2(30, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_520ur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2drn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aghn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohrar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do8xl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_xnpv5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shrxe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_520ur")
+frame_progress = 0.845731
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
