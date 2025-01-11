@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://baj2uj2cxr74e"]
+[gd_scene load_steps=10 format=3 uid="uid://baj2uj2cxr74e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_s2ssk"]
 [ext_resource type="PackedScene" uid="uid://cqvl3xbl66xih" path="res://boss_health_bar.tscn" id="2_i5ic4"]
 [ext_resource type="Script" path="res://hearts_container.gd" id="3_11eeg"]
 [ext_resource type="Texture2D" uid="uid://fgmswrbolldi" path="res://GameAssets/UI/HealthBar/heart.png" id="3_bqc5u"]
 [ext_resource type="AudioStream" uid="uid://dauh7cisgaytw" path="res://GameAssets/Music/Stage 1.mp3" id="5_54wpx"]
+[ext_resource type="Texture2D" uid="uid://cms4pofmnuy0o" path="res://GameAssets/Items/Gold/coin0.png" id="5_o06dv"]
+[ext_resource type="Script" path="res://coins_container.gd" id="5_slfwn"]
+[ext_resource type="FontFile" uid="uid://bcoeyr87tur5" path="res://GameAssets/Fonts/quaver.ttf" id="6_3w5jg"]
+
+[sub_resource type="Theme" id="Theme_r105y"]
 
 [node name="Main" type="Control" groups=["Main"]]
 texture_filter = 1
@@ -34,7 +39,7 @@ grow_vertical = 2
 offset_left = 7.0
 offset_top = 7.0
 offset_right = 103.0
-offset_bottom = 47.0
+offset_bottom = 73.0
 
 [node name="HeartsContainer" type="HBoxContainer" parent="World/CanvasLayer/VBoxContainer" groups=["HeartsContainer"]]
 layout_mode = 2
@@ -62,9 +67,22 @@ texture = ExtResource("3_bqc5u")
 
 [node name="CoinsContainer" type="HBoxContainer" parent="World/CanvasLayer/VBoxContainer"]
 layout_mode = 2
+script = ExtResource("5_slfwn")
 
-[node name="TextureRect" type="TextureRect" parent="World/CanvasLayer/VBoxContainer/CoinsContainer"]
+[node name="CoinIcon" type="TextureRect" parent="World/CanvasLayer/VBoxContainer/CoinsContainer"]
 layout_mode = 2
+texture = ExtResource("5_o06dv")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="World/CanvasLayer/VBoxContainer/CoinsContainer"]
+layout_mode = 2
+theme = SubResource("Theme_r105y")
+theme_override_colors/font_shadow_color = Color(0.103744, 0.103744, 0.103744, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("6_3w5jg")
+theme_override_font_sizes/font_size = 8
+text = "0
+"
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_54wpx")

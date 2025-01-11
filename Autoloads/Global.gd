@@ -2,8 +2,8 @@ extends Node
 
 var gold: int
 
-signal obtain_gold
+signal update_gold
 
 func add_gold(amount: int) -> void:
 	gold += amount
-	obtain_gold.emit()
+	update_gold.emit(gold)

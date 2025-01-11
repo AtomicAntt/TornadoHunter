@@ -1878,3 +1878,4 @@ item = ExtResource("4_kermr")
 position = Vector2(-98, 10)
 
 [node name="Camera2D" parent="." instance=ExtResource("8_bar1f")]
+position = Vector2(-90, 58)
