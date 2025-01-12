@@ -22,5 +22,6 @@ func load_level(level_name: String) -> void:
 		world.add_child(level_instance)
 
 func level_success() -> void:
-	#$BossMusic.stop()
-	pass
+	await get_tree().create_timer(3.0).timeout
+	$BossMusic.stop()
+	$ShopMusic.play()

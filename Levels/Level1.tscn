@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cj8h0gsiro8s7" path="res://GameObjects/Items/Shield.tscn" id="4_kermr"]
 [ext_resource type="PackedScene" uid="uid://brfck1ab6qwlk" path="res://GameObjects/Bosses/Tumbleweed.tscn" id="7_rtjbs"]
 [ext_resource type="PackedScene" uid="uid://dp87wt6x5n0w5" path="res://GameObjects/Player/Camera.tscn" id="8_bar1f"]
-[ext_resource type="PackedScene" uid="uid://cx3wqu64bykqr" path="res://GameObjects/Items/ShopItem.tscn" id="9_rv84w"]
+[ext_resource type="PackedScene" uid="uid://cx3wqu64bykqr" path="res://GameObjects/Items/ShopItem.tscn" id="9_446dr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fv3xd"]
 texture = ExtResource("2_d53vr")
@@ -1881,5 +1881,5 @@ position = Vector2(-98, 10)
 [node name="Camera2D" parent="." instance=ExtResource("8_bar1f")]
 position = Vector2(-90, 58)
 
-[node name="ShopItem" parent="." instance=ExtResource("9_rv84w")]
-position = Vector2(-30, 75)
+[node name="ShopItem" parent="." instance=ExtResource("9_446dr")]
+position = Vector2(-3, 85)

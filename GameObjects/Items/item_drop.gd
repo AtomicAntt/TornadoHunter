@@ -1,9 +1,13 @@
-extends Area2D
+class_name ItemDrop
+extends Pickup
 
 @export var item: PackedScene
 
 func _ready() -> void:
 	refresh_sprite()
+
+func _physics_process(delta: float) -> void:
+	moveTowardsPlayer(delta) # Remember, this only happens if it is allowed to (which is if exploded or else explicitly allowed from Pickup class)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerHitbox"):
@@ -12,6 +16,9 @@ func _on_area_entered(area: Area2D) -> void:
 			var item_instance: Area2D = item.instantiate()
 			player.add_item_orbit(item_instance)
 			queue_free()
+
+func set_item(item_set: PackedScene) -> void:
+	item = item_set
 
 func refresh_sprite() -> void:
 	for child in get_children():
