@@ -33,4 +33,8 @@ func _input(event: InputEvent) -> void:
 		main.level_instance.call_deferred("add_child", item_instance)
 		Global.add_gold(-current_cost)
 
+		item_instance.explodeMinDistance = 50
+		item_instance.explodeMaxDistance = 70
+		item_instance.explodeVelocity = 30000
+		item_instance.velocity = 360
 		item_instance.explode_outwards()

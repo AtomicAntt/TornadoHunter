@@ -6,11 +6,14 @@ extends Area2D
 @export var pickUpRange: float = 40000
 @export var canMoveTowardsPlayer: bool = false
 
+@export var explodeMinDistance: float = 5
+@export var explodeMaxDistance: float = 30
+
 var player: Player
 
 func explode_outwards() -> void:
-	var randomPositionOffsetX: float = randf_range(5, 30)
-	var randomPositionOffsetY: float = randf_range(5, 30)
+	var randomPositionOffsetX: float = randf_range(explodeMinDistance, explodeMaxDistance)
+	var randomPositionOffsetY: float = randf_range(explodeMinDistance, explodeMaxDistance)
 	if randi() % 2 + 1 == 1:
 		randomPositionOffsetX *= -1
 		
