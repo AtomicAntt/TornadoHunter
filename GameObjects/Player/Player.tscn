@@ -286,10 +286,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8cjyk"]
-size = Vector2(15, 18)
+size = Vector2(15, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0j2n"]
-size = Vector2(13, 16)
+size = Vector2(6, 4)
 
 [sub_resource type="Animation" id="Animation_sxidt"]
 resource_name = "Hurt"
@@ -378,7 +378,7 @@ sprite_frames = SubResource("SpriteFrames_b0b6c")
 animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(0.5, 7)
 shape = SubResource("RectangleShape2D_8cjyk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -409,7 +409,7 @@ rotation_acceleration = 10.0
 [node name="PlayerHitbox" type="Area2D" parent="." groups=["PlayerHitbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(0.5, 0)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_l0j2n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
