@@ -12,7 +12,7 @@ var current_cost: int = 10
 # I will be manually putting the sprite with the correct item to be compatible with shader
 
 func _ready() -> void:
-	current_cost = 10 * pow(2, get_tree().get_node_count_in_group("weapon"))
+	current_cost = 5 * pow(2, get_tree().get_node_count_in_group("weapon"))
 	refresh_status(Global.gold)
 	Global.update_gold.connect(refresh_status)
 
@@ -31,8 +31,10 @@ var purchasing: bool = false
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and player_in_range and Global.gold >= current_cost and not purchasing:
 		purchasing = true
+		Global.add_gold(-current_cost)
+		
 		# Why do I do this? Before the item is spawned for the player to grab, we should assume they will have that weapon in the future when they pick it up, so the price should be adjusted right away.
-		current_cost = 10 * pow(2, get_tree().get_node_count_in_group("weapon") + 1)
+		current_cost = 5 * pow(2, get_tree().get_node_count_in_group("weapon") + 1)
 		
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
 		var item_instance: ItemDrop = item_drop.instantiate()
@@ -42,7 +44,6 @@ func _input(event: InputEvent) -> void:
 		item_instance.global_position = global_position
 		
 		main.level_instance.call_deferred("add_child", item_instance)
-		Global.add_gold(-current_cost)
 
 		item_instance.explodeMinDistance = 50
 		item_instance.explodeMaxDistance = 70
