@@ -81,6 +81,7 @@ _data = {
 
 [node name="Boss" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_oo5v6")
+coin_value = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false

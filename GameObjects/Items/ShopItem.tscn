@@ -120,7 +120,6 @@ texture = ExtResource("5_lg6fl")
 stretch_mode = 3
 
 [node name="Instructions" type="Label" parent="."]
-visible = false
 offset_left = -42.0
 offset_top = -21.0
 offset_right = 54.0

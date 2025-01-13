@@ -86,8 +86,15 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		velocity = Vector2.ZERO
 
 func add_item_orbit(item: Area2D):
+	
+	# 2 * pi * r / 50
 	if item.is_in_group("weapon"):
-		$Orbitor.call_deferred("add_child", item)
+		if $Orbitor2.get_child_count() < 6:
+			$Orbitor2.call_deferred("add_child", item)
+		elif $Orbitor3.get_child_count() < 9:
+			$Orbitor3.call_deferred("add_child", item)
+		
+		
 	elif item.is_in_group("shield"):
 		$Orbitor2.call_deferred("add_child", item)
 		

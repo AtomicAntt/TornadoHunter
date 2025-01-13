@@ -309,8 +309,8 @@ _data = {
 
 [node name="TumbleWeed" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_j5o4q")
-max_health = 25.0
-health = 25.0
+max_health = 250.0
+health = 250.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_wg85p")

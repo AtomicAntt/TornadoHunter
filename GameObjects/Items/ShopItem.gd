@@ -11,8 +11,12 @@ var current_cost: int = 10
 
 # I will be manually putting the sprite with the correct item to be compatible with shader
 
+func _ready() -> void:
+	refresh_status(Global.gold)
+	Global.update_gold.connect(refresh_status)
+
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("PlayerHitbox"):
+	if area.is_in_group("PlayerHitbox") and Global.gold >= current_cost:
 		$Instructions.visible = true
 		player_in_range = true
 
@@ -38,3 +42,14 @@ func _input(event: InputEvent) -> void:
 		item_instance.explodeVelocity = 30000
 		item_instance.velocity = 360
 		item_instance.explode_outwards()
+
+# Call on ready or whenever gold is updated. Takes care of edge cases like if the player is in range, purchased an item, and can no longer purchase the item and thus should not be able to see instructions.
+func refresh_status(current_gold: int) -> void:
+	if current_gold < current_cost:
+		$CostContainer.modulate = Color("#ff3b2cb1")
+		$Instructions.visible = false
+	else:
+		$CostContainer.modulate = Color("#ffffff")
+		if player_in_range:
+			$Instructions.visible = true
+			

@@ -389,18 +389,23 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("53_nwfw7")
 
-[node name="Orbitor" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
+[node name="Orbitor2" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(50, 50)
 
-[node name="Dagger" parent="Orbitor" instance=ExtResource("15_4sdqy")]
+[node name="Dagger" parent="Orbitor2" instance=ExtResource("15_4sdqy")]
 
-[node name="Dagger2" parent="Orbitor" instance=ExtResource("15_4sdqy")]
+[node name="Dagger2" parent="Orbitor2" instance=ExtResource("15_4sdqy")]
 
-[node name="Orbitor2" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
+[node name="Dagger3" parent="Orbitor2" instance=ExtResource("15_4sdqy")]
+
+[node name="Orbitor3" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
+radius = Vector2(75, 75)
+
+[node name="Orbitor1" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(25, 25)
 rotation_duration = 3.0
 
-[node name="Shield" parent="Orbitor2" instance=ExtResource("14_htl8b")]
+[node name="Shield" parent="Orbitor1" instance=ExtResource("14_htl8b")]
 
 [node name="PlayerHitbox" type="Area2D" parent="." groups=["PlayerHitbox"]]
 
