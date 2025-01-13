@@ -72,4 +72,6 @@ func refresh_status(current_gold: int) -> void:
 		$CostContainer.modulate = Color("#ffffff")
 		if player_in_range:
 			$Instructions.visible = true
+		else:
+			$Instructions.visible = false
 			

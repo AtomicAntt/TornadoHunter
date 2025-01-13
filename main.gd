@@ -4,6 +4,8 @@ extends Control
 @onready var world = $World
 var level_instance: Node2D
 
+var shop: Resource = preload("res://GameObjects/Shop/Shop.tscn")
+
 func _ready() -> void:
 	load_level("Level1")
 
@@ -25,3 +27,6 @@ func level_success() -> void:
 	await get_tree().create_timer(3.0).timeout
 	$BossMusic.stop()
 	$ShopMusic.play()
+	
+	var shop_instance: Node2D = shop.instantiate()
+	level_instance.add_child(shop_instance)

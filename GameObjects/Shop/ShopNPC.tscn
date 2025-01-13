@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://elo7uc2aknvl"]
+
+[ext_resource type="Texture2D" uid="uid://chnlfv7q1ler8" path="res://GameAssets/NPC/idle.png" id="1_ii8e0"]
+[ext_resource type="Script" path="res://GameObjects/Shop/shop_npc.gd" id="1_lx3tw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i5j38"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mixpt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ii8e0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="ShopNpc" type="Area2D"]
+script = ExtResource("1_lx3tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i5j38")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mixpt")
+animation = &"Idle"

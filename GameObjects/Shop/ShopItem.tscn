@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cx3wqu64bykqr"]
 
-[ext_resource type="Script" path="res://GameObjects/Items/ShopItem.gd" id="1_kfllk"]
+[ext_resource type="Script" path="res://GameObjects/Shop/ShopItem.gd" id="1_kfllk"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Highlight.gdshader" id="1_wo701"]
 [ext_resource type="Texture2D" uid="uid://d4avqbsnyl724" path="res://GameAssets/Items/Weapon/prototype knife.png" id="2_k1x7m"]
 [ext_resource type="PackedScene" uid="uid://dn2cspiqg0wsk" path="res://GameObjects/Items/Dagger.tscn" id="2_s5c67"]
@@ -121,6 +121,7 @@ texture = ExtResource("5_lg6fl")
 stretch_mode = 3
 
 [node name="Instructions" type="Label" parent="."]
+visible = false
 offset_left = -42.0
 offset_top = -21.0
 offset_right = 54.0
