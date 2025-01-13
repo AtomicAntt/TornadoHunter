@@ -19,8 +19,9 @@ func _ready() -> void:
 	Global.update_gold.connect(refresh_status)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("PlayerHitbox") and Global.gold >= current_cost:
-		$Instructions.visible = true
+	if area.is_in_group("PlayerHitbox"):
+		if Global.gold >= current_cost:
+			$Instructions.visible = true
 		player_in_range = true
 
 func _on_area_exited(area: Area2D) -> void:
@@ -31,7 +32,7 @@ func _on_area_exited(area: Area2D) -> void:
 var purchasing: bool = false
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and player_in_range and Global.gold >= current_cost and not purchasing:
+	if event.is_action_pressed("interact") and player_in_range and Global.gold >= current_cost and not purchasing and get_tree().get_node_count_in_group("ItemDrop") <= 0:
 		purchasing = true
 		Global.add_gold(-current_cost)
 		
@@ -56,6 +57,8 @@ func _input(event: InputEvent) -> void:
 		item_instance.explode_outwards()
 		
 		purchasing = false
+	elif event.is_action_pressed("interact") and player_in_range:
+		$InvalidPurchase.play()
 
 # Call on ready or whenever gold is updated. Takes care of edge cases like if the player is in range, purchased an item, and can no longer purchase the item and thus should not be able to see instructions.
 func refresh_status(current_gold: int) -> void:

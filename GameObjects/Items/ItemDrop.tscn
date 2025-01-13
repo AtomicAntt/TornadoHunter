@@ -19,7 +19,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ItemDrop" type="Area2D"]
+[node name="ItemDrop" type="Area2D" groups=["ItemDrop"]]
 script = ExtResource("1_ayu7p")
 item = ExtResource("2_shf7w")
 
