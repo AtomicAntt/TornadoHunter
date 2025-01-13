@@ -14,5 +14,4 @@ func _on_area_entered(area: Area2D) -> void:
 		var player: Player = get_tree().get_nodes_in_group("Player")[0]
 		player.get_coin()
 		Global.add_gold(value)
-		print(str(Global.gold))
 		queue_free()

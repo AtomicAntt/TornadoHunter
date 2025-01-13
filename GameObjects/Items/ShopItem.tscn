@@ -83,7 +83,7 @@ _data = {
 [node name="ShopItem" type="Area2D"]
 script = ExtResource("1_kfllk")
 item_sold = ExtResource("2_s5c67")
-item_group = "Dagger"
+item_group = "weapon"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_a4nd5")
