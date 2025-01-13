@@ -5,6 +5,7 @@ extends Pickup
 
 func _ready() -> void:
 	refresh_sprite()
+	$Appear.play()
 
 func _physics_process(delta: float) -> void:
 	moveTowardsPlayer(delta) # Remember, this only happens if it is allowed to (which is if exploded or else explicitly allowed from Pickup class)

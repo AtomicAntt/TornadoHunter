@@ -93,11 +93,11 @@ func add_item_orbit(item: Area2D):
 			$Orbitor2.call_deferred("add_child", item)
 		elif $Orbitor3.get_child_count() < 9:
 			$Orbitor3.call_deferred("add_child", item)
-		
-		
 	elif item.is_in_group("shield"):
 		$Orbitor2.call_deferred("add_child", item)
-		
+	
+	$GetItem.play()
+
 func hurt(damage: int):
 	if !invulnerable:
 		lives -= damage

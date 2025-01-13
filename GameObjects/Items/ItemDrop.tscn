@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cct8ahr34ib36"]
+[gd_scene load_steps=7 format=3 uid="uid://cct8ahr34ib36"]
 
 [ext_resource type="Script" path="res://GameObjects/Items/item_drop.gd" id="1_ayu7p"]
 [ext_resource type="PackedScene" uid="uid://dn2cspiqg0wsk" path="res://GameObjects/Items/Dagger.tscn" id="2_shf7w"]
 [ext_resource type="Texture2D" uid="uid://d4avqbsnyl724" path="res://GameAssets/Items/Weapon/prototype knife.png" id="3_f3ehp"]
+[ext_resource type="AudioStream" uid="uid://d0sxda65thv66" path="res://GameAssets/SFX/Player/Retro Magic 06.wav" id="4_uepg4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mo6ai"]
 size = Vector2(11, 13)
@@ -28,5 +29,8 @@ shape = SubResource("RectangleShape2D_mo6ai")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ob6kp")
+
+[node name="Appear" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uepg4")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
