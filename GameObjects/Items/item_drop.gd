@@ -11,7 +11,7 @@ func _physics_process(delta: float) -> void:
 	moveTowardsPlayer(delta) # Remember, this only happens if it is allowed to (which is if exploded or else explicitly allowed from Pickup class)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("PlayerHitbox"):
+	if area.is_in_group("PlayerHitbox") and canMoveTowardsPlayer:
 		var player: Player = get_tree().get_nodes_in_group("Player")[0]
 		if is_instance_valid(player):
 			var item_instance: Area2D = item.instantiate()
