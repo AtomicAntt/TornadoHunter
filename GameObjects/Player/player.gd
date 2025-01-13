@@ -6,10 +6,15 @@ var state: States = States.NORMAL
 
 @export var SPEED: float = 200.0
 @export var max_lives: int = 10
-@export var lives: int = 10
+@export var lives: int = 6
 
 # Remember, the invulnerability is set false and true by the AnimationPlayer
 var invulnerable: bool = false
+
+func _ready() -> void:
+	var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
+	if is_instance_valid(hearts_container):
+		hearts_container.update_hearts(lives)
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -131,6 +136,9 @@ func death() -> void:
 		if orbitor.is_in_group("orbitor"):
 			for child: Area2D in orbitor.get_children():
 				child.queue_free()
+	
+	var main: Main = get_tree().get_nodes_in_group("Main")[0]
+	main.level_fail()
 	
 func set_invulnerable() -> void:
 	invulnerable = true

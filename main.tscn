@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://baj2uj2cxr74e"]
+[gd_scene load_steps=13 format=3 uid="uid://baj2uj2cxr74e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_s2ssk"]
 [ext_resource type="PackedScene" uid="uid://cqvl3xbl66xih" path="res://boss_health_bar.tscn" id="2_i5ic4"]
@@ -8,9 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://cms4pofmnuy0o" path="res://GameAssets/Items/Gold/coin0.png" id="5_o06dv"]
 [ext_resource type="Script" path="res://coins_container.gd" id="5_slfwn"]
 [ext_resource type="FontFile" uid="uid://bcoeyr87tur5" path="res://GameAssets/Fonts/quaver.ttf" id="6_3w5jg"]
+[ext_resource type="Shader" path="res://GameAssets/Shaders/SceneTransition.gdshader" id="8_7xbfr"]
 [ext_resource type="AudioStream" uid="uid://cl7vfiy2l7n1u" path="res://GameAssets/Music/headinthesand.ogg" id="9_8rh3e"]
 
 [sub_resource type="Theme" id="Theme_r105y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uysk7"]
+shader = ExtResource("8_7xbfr")
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 10.0
 
 [node name="Main" type="Control" groups=["Main"]]
 texture_filter = 1
@@ -58,14 +64,6 @@ texture = ExtResource("3_bqc5u")
 layout_mode = 2
 texture = ExtResource("3_bqc5u")
 
-[node name="4" type="TextureRect" parent="World/CanvasLayer/VBoxContainer/HeartsContainer"]
-layout_mode = 2
-texture = ExtResource("3_bqc5u")
-
-[node name="5" type="TextureRect" parent="World/CanvasLayer/VBoxContainer/HeartsContainer"]
-layout_mode = 2
-texture = ExtResource("3_bqc5u")
-
 [node name="CoinsContainer" type="HBoxContainer" parent="World/CanvasLayer/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("5_slfwn")
@@ -84,6 +82,16 @@ theme_override_fonts/font = ExtResource("6_3w5jg")
 theme_override_font_sizes/font_size = 8
 text = "0
 "
+
+[node name="SceneTransition" type="ColorRect" parent="World/CanvasLayer"]
+material = SubResource("ShaderMaterial_uysk7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_54wpx")
