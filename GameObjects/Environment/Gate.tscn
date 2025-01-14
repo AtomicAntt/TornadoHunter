@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://byxlinf7oxt6k"]
+[gd_scene load_steps=7 format=3 uid="uid://byxlinf7oxt6k"]
 
 [ext_resource type="Script" path="res://GameObjects/Environment/gate.gd" id="1_8rmik"]
 [ext_resource type="Texture2D" uid="uid://fqyb2e0vgk86" path="res://GameAssets/Tileset/Gate.png" id="1_p1hk6"]
 [ext_resource type="Script" path="res://GameObjects/Player/ScreenShake.gd" id="2_dp25o"]
+[ext_resource type="AudioStream" uid="uid://bar1aye41uh7e" path="res://GameAssets/SFX/Environment/Retro Impact 20.wav" id="4_2fen0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rads3"]
 size = Vector2(31, 16)
@@ -29,5 +30,8 @@ shape = SubResource("RectangleShape2D_j3q8k")
 [node name="Camera" type="Camera2D" parent="." groups=["Camera"]]
 enabled = false
 script = ExtResource("2_dp25o")
+
+[node name="Open" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2fen0")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

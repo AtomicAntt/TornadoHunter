@@ -23,8 +23,12 @@ func cutscene() -> void:
 	
 	await tween.finished
 	await get_tree().create_timer(0.5).timeout
+	
 	$Sprite2D.visible = false
 	$CollisionShape2D.set_deferred("disabled", true)
+	$Camera.apply_medium_shake()
+	$Open.play()
+	
 	await get_tree().create_timer(0.5).timeout
 	
 	tween = create_tween()
