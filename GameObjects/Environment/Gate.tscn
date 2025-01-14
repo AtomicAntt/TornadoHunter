@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://byxlinf7oxt6k"]
+[gd_scene load_steps=6 format=3 uid="uid://byxlinf7oxt6k"]
 
+[ext_resource type="Script" path="res://GameObjects/Environment/gate.gd" id="1_8rmik"]
 [ext_resource type="Texture2D" uid="uid://fqyb2e0vgk86" path="res://GameAssets/Tileset/Gate.png" id="1_p1hk6"]
+[ext_resource type="Script" path="res://GameObjects/Player/ScreenShake.gd" id="2_dp25o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rads3"]
 size = Vector2(31, 16)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jmvb4"]
-radius = 16.4924
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3q8k"]
+size = Vector2(32, 16)
 
-[node name="Gate" type="StaticBody2D"]
+[node name="Gate" type="StaticBody2D" groups=["Gate"]]
+z_index = -1
 position = Vector2(-96, -88)
+script = ExtResource("1_8rmik")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rads3")
@@ -20,4 +24,10 @@ texture = ExtResource("1_p1hk6")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_jmvb4")
+shape = SubResource("RectangleShape2D_j3q8k")
+
+[node name="Camera" type="Camera2D" parent="." groups=["Camera"]]
+enabled = false
+script = ExtResource("2_dp25o")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -14,9 +14,15 @@ var current_cost: int = 10
 # I will be manually putting the sprite with the correct item to be compatible with shader
 
 func _ready() -> void:
-	current_cost = 5 * pow(2, get_tree().get_node_count_in_group(item_group))
-	refresh_status(Global.gold)
+	#current_cost = 5 * pow(2, get_tree().get_node_count_in_group(item_group))
+	#refresh_status(Global.gold)
 	Global.update_gold.connect(refresh_status)
+
+func _physics_process(delta: float) -> void:
+	if get_tree().get_node_count_in_group("ItemDrop") <= 0:
+		current_cost = 5 * pow(2, get_tree().get_node_count_in_group(item_group))
+	refresh_status(Global.gold)
+	
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerHitbox"):

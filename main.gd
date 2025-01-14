@@ -48,17 +48,18 @@ func load_level(level_name: String) -> void:
 	
 	await tween.finished
 	
-	$BossMusic.play()
+	if level_name != "Shop":
+		$BossMusic.play()
+		$ShopMusic.stop()
+	else:
+		$BossMusic.stop()
+		$ShopMusic.play()
 
 func level_success() -> void:
-	pass
-	#await get_tree().create_timer(3.0).timeout
-	#$BossMusic.stop()
+	await get_tree().create_timer(1.0).timeout
 	
-	#$ShopMusic.play()
-	#
-	#var shop_instance: Node2D = shop.instantiate()
-	#level_instance.add_child(shop_instance)
+	var gate: Gate = get_tree().get_nodes_in_group("Gate")[0]
+	gate.cutscene()
 
 func restart() -> void:
 	load_level(current_level)

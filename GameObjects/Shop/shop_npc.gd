@@ -11,3 +11,5 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.flip_h = true
 		else:
 			$AnimatedSprite2D.flip_h = false
+	else:
+		player = get_tree().get_nodes_in_group("Player")[0]
