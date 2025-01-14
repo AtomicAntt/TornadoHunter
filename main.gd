@@ -51,8 +51,9 @@ func load_level(level_name: String) -> void:
 	$BossMusic.play()
 
 func level_success() -> void:
-	await get_tree().create_timer(3.0).timeout
-	$BossMusic.stop()
+	pass
+	#await get_tree().create_timer(3.0).timeout
+	#$BossMusic.stop()
 	
 	#$ShopMusic.play()
 	#
