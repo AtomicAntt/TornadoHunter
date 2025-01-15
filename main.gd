@@ -6,7 +6,8 @@ var level_instance: Node2D
 
 var shop: Resource = preload("res://GameObjects/Shop/Shop.tscn")
 
-var current_level: String
+var current_scene: String
+var current_level: int = 1
 
 func _ready() -> void:
 	load_level("Level1")
@@ -36,7 +37,7 @@ func load_level(level_name: String) -> void:
 		level_instance = level_resource.instantiate()
 		world.add_child(level_instance)
 	
-	current_level = level_name
+	current_scene = level_name
 	
 	tween = create_tween()
 	tween.tween_property(
@@ -62,7 +63,7 @@ func level_success() -> void:
 	gate.cutscene()
 
 func restart() -> void:
-	load_level(current_level)
+	load_level(current_scene)
 	#$BossMusic.play()
 
 func level_fail() -> void:
@@ -70,5 +71,7 @@ func level_fail() -> void:
 	await get_tree().create_timer(1.5).timeout
 	
 	restart()
-	
-	
+
+func load_next_level() -> void:
+	current_level += 1
+	load_level("Level" + str(current_level))

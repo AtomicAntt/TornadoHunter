@@ -8,6 +8,11 @@ var open: bool = false
 
 @export var is_shop: bool = false
 
+func _ready() -> void:
+	if is_shop:
+		$Sprite2D.visible = false
+		$CollisionShape2D.set_deferred("disabled", true)
+
 func cutscene() -> void:
 	for camera: CameraShaker in get_tree().get_nodes_in_group("Camera"):
 		if camera.enabled:
@@ -56,3 +61,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
 		if not is_shop:
 			main.load_level("Shop")
+	if area.is_in_group("PlayerHitbox") and is_shop:
+		is_shop = false # This is just so that you can't activate it again to cause weird stuff.
+		var main: Main = get_tree().get_nodes_in_group("Main")[0]
+		main.load_next_level()

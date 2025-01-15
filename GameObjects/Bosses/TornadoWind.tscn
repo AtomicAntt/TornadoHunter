@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://cdk50tcfq5xri"]
+
+[ext_resource type="Script" path="res://GameObjects/Bosses/EnemyProjectile.gd" id="1_ywspq"]
+[ext_resource type="Texture2D" uid="uid://dcpdyfujmu2f1" path="res://GameAssets/TornadoBoss/wind.png" id="2_2gtn2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4iqw8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45n0i"]
+atlas = ExtResource("2_2gtn2")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r136"]
+atlas = ExtResource("2_2gtn2")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfic1"]
+atlas = ExtResource("2_2gtn2")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t02yv"]
+atlas = ExtResource("2_2gtn2")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7042s"]
+atlas = ExtResource("2_2gtn2")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hsny"]
+atlas = ExtResource("2_2gtn2")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hudbx"]
+atlas = ExtResource("2_2gtn2")
+region = Rect2(192, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndito"]
+atlas = ExtResource("2_2gtn2")
+region = Rect2(224, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cwjg0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45n0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r136")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfic1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t02yv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7042s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hsny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hudbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndito")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="TornadoWind" type="Area2D"]
+script = ExtResource("1_ywspq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4iqw8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cwjg0")
+frame_progress = 0.672332
