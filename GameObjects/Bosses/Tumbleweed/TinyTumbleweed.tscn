@@ -1,15 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://bpiy22m5o0o6w"]
 
-[ext_resource type="Shader" path="res://GameAssets/Shaders/Dissolve.gdshader" id="1_v21au"]
-[ext_resource type="Script" path="res://GameObjects/Bosses/EnemyProjectile.gd" id="1_w0i6p"]
-[ext_resource type="Texture2D" uid="uid://dike3fmiofad7" path="res://GameAssets/TumbleWeedBoss/tinyTumbleweed.png" id="2_qd8wq"]
+[ext_resource type="Script" path="res://GameObjects/Bosses/EnemyProjectile.gd" id="1_hknsh"]
+[ext_resource type="Shader" path="res://GameAssets/Shaders/Dissolve.gdshader" id="2_ivxu3"]
+[ext_resource type="Texture2D" uid="uid://dike3fmiofad7" path="res://GameAssets/TumbleWeedBoss/tinyTumbleweed.png" id="3_derwm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1c0q"]
 size = Vector2(16, 13)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k3o1p"]
 resource_local_to_scene = true
-shader = ExtResource("1_v21au")
+shader = ExtResource("2_ivxu3")
 shader_parameter/fade = 0.0
 shader_parameter/tiling = 10.0
 
@@ -64,7 +64,7 @@ _data = {
 }
 
 [node name="TinyTumbleweed" type="Area2D" groups=["EnemyAttack"]]
-script = ExtResource("1_w0i6p")
+script = ExtResource("1_hknsh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
@@ -72,7 +72,7 @@ shape = SubResource("RectangleShape2D_y1c0q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_k3o1p")
-texture = ExtResource("2_qd8wq")
+texture = ExtResource("3_derwm")
 
 [node name="ExpirationTimer" type="Timer" parent="."]
 wait_time = 10.0

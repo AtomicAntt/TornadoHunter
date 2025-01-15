@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bsj1lrdmcabxm" path="res://GameAssets/Tileset/TilesetInteriorFloor.png" id="3_dkxdn"]
 [ext_resource type="PackedScene" uid="uid://c24p563j7y18m" path="res://GameObjects/Player/Player.tscn" id="4_etay1"]
 [ext_resource type="PackedScene" uid="uid://dp87wt6x5n0w5" path="res://GameObjects/Player/Camera.tscn" id="6_yw8f0"]
-[ext_resource type="PackedScene" uid="uid://ybj05h147s3q" path="res://GameObjects/Bosses/TornadoBoss.tscn" id="7_103vu"]
+[ext_resource type="PackedScene" uid="uid://ybj05h147s3q" path="res://GameObjects/Bosses/Tornado/TornadoBoss.tscn" id="7_103vu"]
 [ext_resource type="PackedScene" uid="uid://byxlinf7oxt6k" path="res://GameObjects/Environment/Gate.tscn" id="7_tbmqs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fv3xd"]

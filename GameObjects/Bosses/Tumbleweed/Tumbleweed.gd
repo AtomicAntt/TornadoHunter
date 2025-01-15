@@ -12,7 +12,7 @@ var spin_speed: float = 0.0
 var warning: Resource = preload("res://GameAssets/Effects/bossWarning.png")
 var pre_warning: Resource = preload("res://GameAssets/Effects/bossPreWarning.png")
 
-var tiny_tumbleweed: Resource = preload("res://GameObjects/Bosses/TinyTumbleweed.tscn")
+var tiny_tumbleweed: Resource = preload("res://GameObjects/Bosses/Tumbleweed/TinyTumbleweed.tscn")
 
 var last_player_direction: Vector2 = Vector2.ZERO
 

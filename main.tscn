@@ -16,7 +16,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uysk7"]
 shader = ExtResource("8_7xbfr")
 shader_parameter/progress = 0.0
-shader_parameter/diamondPixelSize = 10.0
+shader_parameter/diamondPixelSize = 30.0
 
 [node name="Main" type="Control" groups=["Main"]]
 texture_filter = 1

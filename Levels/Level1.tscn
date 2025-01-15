@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://csufl1i04ooim" path="res://GameAssets/Tileset/Dungeon_Tileset.png" id="2_d53vr"]
 [ext_resource type="Texture2D" uid="uid://b43b2gvy0payl" path="res://GameAssets/Tileset/TilesetFloor.png" id="2_rboh8"]
 [ext_resource type="Texture2D" uid="uid://bsj1lrdmcabxm" path="res://GameAssets/Tileset/TilesetInteriorFloor.png" id="3_wvgeo"]
-[ext_resource type="PackedScene" uid="uid://brfck1ab6qwlk" path="res://GameObjects/Bosses/Tumbleweed.tscn" id="7_rtjbs"]
+[ext_resource type="PackedScene" uid="uid://brfck1ab6qwlk" path="res://GameObjects/Bosses/Tumbleweed/Tumbleweed.tscn" id="7_rtjbs"]
 [ext_resource type="PackedScene" uid="uid://byxlinf7oxt6k" path="res://GameObjects/Environment/Gate.tscn" id="7_xk8t1"]
 [ext_resource type="PackedScene" uid="uid://dp87wt6x5n0w5" path="res://GameObjects/Player/Camera.tscn" id="8_bar1f"]
 
