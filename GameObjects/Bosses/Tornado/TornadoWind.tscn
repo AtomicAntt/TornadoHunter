@@ -8,6 +8,7 @@
 size = Vector2(9, 15)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y6o17"]
+resource_local_to_scene = true
 shader = ExtResource("2_dpyk4")
 shader_parameter/fade = 0.0
 shader_parameter/tiling = 10.0

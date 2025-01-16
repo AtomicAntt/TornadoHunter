@@ -1,3 +1,4 @@
+class_name SpinningWind
 extends Node2D
 
 # https://github.com/GameEndeavor/platformer-tutorials/blob/master/rotating-platforms/OrbitingPlatformsController.gd
@@ -10,7 +11,7 @@ var orbit_angle_offset = 0 # Angle that first platform will orbit around control
 var prev_child_count = 0 # How many children this controller had, used to check if new children added or removed
 
 var direction: Vector2 = Vector2.ZERO
-var speed: float = 0.0
+var speed: float = 100.0
 
 func set_direction(new_direction: Vector2) -> void:
 	direction = new_direction
