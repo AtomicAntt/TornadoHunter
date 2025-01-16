@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cvuak1m5cpn5w"]
+[gd_scene load_steps=13 format=4 uid="uid://cvuak1m5cpn5w"]
 
 [ext_resource type="PackedScene" uid="uid://c24p563j7y18m" path="res://GameObjects/Player/Player.tscn" id="1_che55"]
 [ext_resource type="Texture2D" uid="uid://csufl1i04ooim" path="res://GameAssets/Tileset/Dungeon_Tileset.png" id="2_d53vr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsj1lrdmcabxm" path="res://GameAssets/Tileset/TilesetInteriorFloor.png" id="3_wvgeo"]
 [ext_resource type="PackedScene" uid="uid://brfck1ab6qwlk" path="res://GameObjects/Bosses/Tumbleweed/Tumbleweed.tscn" id="7_rtjbs"]
 [ext_resource type="PackedScene" uid="uid://byxlinf7oxt6k" path="res://GameObjects/Environment/Gate.tscn" id="7_xk8t1"]
+[ext_resource type="PackedScene" uid="uid://dbktkvhpcl3yf" path="res://GameObjects/Bosses/Tornado/SpinningWind.tscn" id="8_3dqvh"]
 [ext_resource type="PackedScene" uid="uid://dp87wt6x5n0w5" path="res://GameObjects/Player/Camera.tscn" id="8_bar1f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fv3xd"]
@@ -1874,3 +1875,6 @@ coin_value = 20
 position = Vector2(-90, 58)
 
 [node name="Gate" parent="." instance=ExtResource("7_xk8t1")]
+
+[node name="SpinningWind" parent="." instance=ExtResource("8_3dqvh")]
+position = Vector2(49, 99)

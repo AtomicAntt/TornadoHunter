@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cg7axarw3pgr3"]
+[gd_scene load_steps=13 format=4 uid="uid://cg7axarw3pgr3"]
 
 [ext_resource type="Texture2D" uid="uid://csufl1i04ooim" path="res://GameAssets/Tileset/Dungeon_Tileset.png" id="1_pgrri"]
 [ext_resource type="Texture2D" uid="uid://b43b2gvy0payl" path="res://GameAssets/Tileset/TilesetFloor.png" id="2_pxmfh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dp87wt6x5n0w5" path="res://GameObjects/Player/Camera.tscn" id="6_yw8f0"]
 [ext_resource type="PackedScene" uid="uid://ybj05h147s3q" path="res://GameObjects/Bosses/Tornado/TornadoBoss.tscn" id="7_103vu"]
 [ext_resource type="PackedScene" uid="uid://byxlinf7oxt6k" path="res://GameObjects/Environment/Gate.tscn" id="7_tbmqs"]
+[ext_resource type="PackedScene" uid="uid://dbktkvhpcl3yf" path="res://GameObjects/Bosses/Tornado/SpinningWind.tscn" id="8_08t77"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fv3xd"]
 texture = ExtResource("1_pgrri")
@@ -1873,3 +1874,6 @@ position = Vector2(-90, 58)
 
 [node name="TornadoBoss" parent="." instance=ExtResource("7_103vu")]
 position = Vector2(-97, 39)
+
+[node name="SpinningWind" parent="." instance=ExtResource("8_08t77")]
+position = Vector2(47, 65)

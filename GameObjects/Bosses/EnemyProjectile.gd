@@ -2,9 +2,11 @@ class_name EnemyProjectile
 extends Area2D
 
 var direction: Vector2 = Vector2.ZERO
-var max_speed: float = 200.0
-var speed: float = 200.0
-var friction: float = 0.0
+@export var max_speed: float = 200.0
+@export var speed: float = 200.0
+@export var friction: float = 0.0
+
+@export var static_projectile: bool = false
 
 var dissolving: bool = false
 
@@ -26,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	speed -= friction * delta
 	speed = clampf(speed, 0.0, max_speed)
 	
-	if speed <= 0:
+	if speed <= 0 and !static_projectile:
 		if has_overlapping_bodies():
 			# Why did I do this? Sometimes the player is invulnerable and thus projectiles passing through their physics body should not disappear.
 			var player: Player = get_tree().get_nodes_in_group("Player")[0]
