@@ -13,15 +13,33 @@ one_shot = true
 autostart = true
 
 [node name="TornadoWind" parent="." instance=ExtResource("2_wu6oy")]
+max_speed = 0.0
+speed = 0.0
+static_projectile = true
 
 [node name="TornadoWind2" parent="." instance=ExtResource("2_wu6oy")]
+max_speed = 0.0
+speed = 0.0
+static_projectile = true
 
 [node name="TornadoWind3" parent="." instance=ExtResource("2_wu6oy")]
+max_speed = 0.0
+speed = 0.0
+static_projectile = true
 
 [node name="TornadoWind4" parent="." instance=ExtResource("2_wu6oy")]
+max_speed = 0.0
+speed = 0.0
+static_projectile = true
 
 [node name="TornadoWind5" parent="." instance=ExtResource("2_wu6oy")]
+max_speed = 0.0
+speed = 0.0
+static_projectile = true
 
 [node name="TornadoWind6" parent="." instance=ExtResource("2_wu6oy")]
+max_speed = 0.0
+speed = 0.0
+static_projectile = true
 
 [connection signal="timeout" from="ExpirationTimer" to="." method="_on_expiration_timer_timeout"]
