@@ -40,6 +40,7 @@ Camera="Camera2D which the player sees with. You can call shake methods on this.
 Main="Main Control node that can do stuff like load and unload levels."
 ItemDrop="Area2D of an item drop"
 Gate="StaticBody2D that acts as the exit point of the level."
+BossPosition="Marker2D which describes a position the boss can move towards."
 
 [input]
 

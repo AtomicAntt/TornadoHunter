@@ -1873,3 +1873,14 @@ position = Vector2(-90, 58)
 
 [node name="TornadoBoss" parent="." instance=ExtResource("7_103vu")]
 position = Vector2(-97, 39)
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Markers" groups=["BossPosition"]]
+position = Vector2(-256, -33)
+
+[node name="Marker2D2" type="Marker2D" parent="Markers" groups=["BossPosition"]]
+position = Vector2(-105, 153)
+
+[node name="Marker2D3" type="Marker2D" parent="Markers" groups=["BossPosition"]]
+position = Vector2(49, -33)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ybj05h147s3q"]
+[gd_scene load_steps=30 format=3 uid="uid://ybj05h147s3q"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Tornado/TornadoBoss.gd" id="1_h6fcf"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_1dmj2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="5_dd7pb"]
 [ext_resource type="Texture2D" uid="uid://b5fnik6kfyy5j" path="res://GameAssets/TornadoBoss/singleSandTornado.png" id="6_q3ga0"]
 [ext_resource type="AudioStream" uid="uid://bfu0hrnja4bk8" path="res://GameAssets/SFX/Bosses/HurtSound2.wav" id="7_dnokx"]
+[ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="8_42da7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qv3o"]
 size = Vector2(39, 51)
@@ -272,6 +273,44 @@ _data = {
 "RESET": SubResource("Animation_ex2x2")
 }
 
+[sub_resource type="Animation" id="Animation_k7emk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f2i8h"]
+resource_name = "Warning"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pl7i0"]
+_data = {
+"RESET": SubResource("Animation_k7emk"),
+"Warning": SubResource("Animation_f2i8h")
+}
+
 [node name="TornadoBoss" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_h6fcf")
 
@@ -311,6 +350,22 @@ stream = ExtResource("7_dnokx")
 [node name="Intro" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="Rotater" type="Node2D" parent="."]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Node"]
+visible = false
+texture_repeat = 2
+points = PackedVector2Array(-102, 60, -144, 146)
+texture = ExtResource("8_42da7")
+texture_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node/Line2D"]
+libraries = {
+"": SubResource("AnimationLibrary_pl7i0")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
