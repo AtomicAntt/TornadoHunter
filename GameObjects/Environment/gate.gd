@@ -61,7 +61,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
 		if not is_shop:
 			main.load_level("Shop")
-	if area.is_in_group("PlayerHitbox") and is_shop:
+	if area.is_in_group("PlayerHitbox") and is_shop and get_tree().get_node_count_in_group("ItemDrop") <= 0: # Item drop count must be 0 so it can save your purchases easier
 		is_shop = false # This is just so that you can't activate it again to cause weird stuff.
+		
+		Global.weapon_count = get_tree().get_node_count_in_group("weapon")
+		Global.shield_count = get_tree().get_node_count_in_group("shield")
+		
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
 		main.load_next_level()

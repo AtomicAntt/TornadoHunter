@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://c24p563j7y18m"]
+[gd_scene load_steps=73 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/player.gd" id="1_s0kyb"]
 [ext_resource type="Texture2D" uid="uid://bef07gt21eoas" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
@@ -26,8 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://dmabxmdyty4c2" path="res://GameAssets/Player/Roll/roll10.png" id="13_gr5v5"]
 [ext_resource type="PackedScene" uid="uid://b0160sw04p7cf" path="res://GameObjects/Items/Orbitor.tscn" id="14_0hc2s"]
 [ext_resource type="Texture2D" uid="uid://dt7pubhcg2f26" path="res://GameAssets/Player/Roll/roll11.png" id="14_7crju"]
-[ext_resource type="PackedScene" uid="uid://cj8h0gsiro8s7" path="res://GameObjects/Items/Shield.tscn" id="14_htl8b"]
-[ext_resource type="PackedScene" uid="uid://dn2cspiqg0wsk" path="res://GameObjects/Items/Dagger.tscn" id="15_4sdqy"]
 [ext_resource type="Texture2D" uid="uid://benjyog8a1wy1" path="res://GameAssets/Player/Roll/roll12.png" id="15_6tkog"]
 [ext_resource type="Texture2D" uid="uid://bd1tcrut0kbf1" path="res://GameAssets/Player/Roll/roll13.png" id="16_1ogpe"]
 [ext_resource type="Texture2D" uid="uid://buo1e3susog8v" path="res://GameAssets/Player/Roll/roll14.png" id="17_72dlq"]
@@ -393,20 +391,12 @@ script = ExtResource("53_nwfw7")
 [node name="Orbitor2" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(50, 50)
 
-[node name="Dagger" parent="Orbitor2" instance=ExtResource("15_4sdqy")]
-
-[node name="Dagger2" parent="Orbitor2" instance=ExtResource("15_4sdqy")]
-
-[node name="Dagger3" parent="Orbitor2" instance=ExtResource("15_4sdqy")]
-
 [node name="Orbitor3" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(75, 75)
 
 [node name="Orbitor1" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(25, 25)
 rotation_duration = 3.0
-
-[node name="Shield" parent="Orbitor1" instance=ExtResource("14_htl8b")]
 
 [node name="PlayerHitbox" type="Area2D" parent="." groups=["PlayerHitbox"]]
 

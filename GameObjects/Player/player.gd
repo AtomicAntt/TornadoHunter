@@ -8,6 +8,12 @@ var state: States = States.NORMAL
 @export var max_lives: int = 10
 @export var lives: int = 6
 
+var dagger: Resource = preload("res://GameObjects/Items/Dagger.tscn")
+var shield: Resource = preload("res://GameObjects/Items/Shield.tscn")
+
+# This bool is set false after ready function, so after initializing
+var initializing: bool = true # Purpose: so that the item drop sound does not play when the player is given all the items after each new scene.
+
 # Remember, the invulnerability is set false and true by the AnimationPlayer
 var invulnerable: bool = false
 
@@ -15,6 +21,16 @@ func _ready() -> void:
 	var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
 	if is_instance_valid(hearts_container):
 		hearts_container.update_hearts(lives)
+	
+	for i in range(Global.weapon_count):
+		var dagger_instance = dagger.instantiate()
+		add_item_orbit(dagger_instance)
+	
+	for i in range(Global.shield_count):
+		var shield_instance = shield.instantiate()
+		add_item_orbit(shield_instance)
+	
+	initializing = false
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -101,7 +117,8 @@ func add_item_orbit(item: Area2D):
 	elif item.is_in_group("shield"):
 		$Orbitor1.call_deferred("add_child", item)
 	
-	$GetItem.play()
+	if not initializing:
+		$GetItem.play()
 
 func hurt(damage: int):
 	if !invulnerable:
