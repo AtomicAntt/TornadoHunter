@@ -27,3 +27,10 @@ func shoot_spinning_wind() -> void:
 	wind_instance.set_direction(direction_to_player)
 	wind_instance.global_position = global_position
 	get_parent().call_deferred("add_child", wind_instance)
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("PlayerHitbox"):
+		var player: Player = get_tree().get_nodes_in_group("Player")[0]
+		if is_instance_valid(player):
+			if !player.is_invulnerable():
+				player.hurt(1)
