@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crdfbbf3ai7ny"]
+[gd_scene load_steps=15 format=3 uid="uid://crdfbbf3ai7ny"]
 
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Dissolve.gdshader" id="1_5yv1t"]
 [ext_resource type="Script" path="res://GameObjects/Bosses/Tornado/FlyingDebris.gd" id="1_o7crq"]
@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6caa"]
 size = Vector2(13, 6)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gduts"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfbnk"]
 resource_local_to_scene = true
 shader = ExtResource("1_5yv1t")
 shader_parameter/fade = 0.0
@@ -24,7 +24,7 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("4_1g58x")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qdexd"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3pkeu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -59,14 +59,77 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="FlyingDebris" type="Area2D" groups=["Debris"]]
+[sub_resource type="Animation" id="Animation_24yx5"]
+resource_name = "Dissolve"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:material:shader_parameter/fade")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_riaj3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/fade")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xwy3p"]
+_data = {
+"Dissolve": SubResource("Animation_24yx5"),
+"RESET": SubResource("Animation_riaj3")
+}
+
+[node name="FlyingDebris" type="Area2D" groups=["Debris", "EnemyAttack"]]
 script = ExtResource("1_o7crq")
+velocity = 170.0
+max_speed = 0.0
+speed = 0.0
+rotation_speed = 100.0
+static_projectile = true
+spinning = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_k6caa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_gduts")
-sprite_frames = SubResource("SpriteFrames_qdexd")
+material = SubResource("ShaderMaterial_mfbnk")
+sprite_frames = SubResource("SpriteFrames_3pkeu")
 animation = &"CannonBall"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xwy3p")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

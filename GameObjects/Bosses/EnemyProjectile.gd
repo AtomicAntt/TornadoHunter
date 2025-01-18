@@ -34,6 +34,10 @@ func _physics_process(delta: float) -> void:
 		var new_rotation = rotation_degrees + rotation_speed * delta
 		rotation_degrees = fmod(new_rotation, 360)
 	
+	if get_tree().get_node_count_in_group("Boss") <= 0 and !dissolving:
+		dissolving = true
+		dissolve()
+	
 	if speed <= 0 and !static_projectile:
 		if has_overlapping_bodies():
 			# Why did I do this? Sometimes the player is invulnerable and thus projectiles passing through their physics body should not disappear.

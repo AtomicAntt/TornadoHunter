@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbktkvhpcl3yf"]
+[gd_scene load_steps=4 format=3 uid="uid://dbktkvhpcl3yf"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/SpinningProjectiles.gd" id="1_1dbp7"]
+[ext_resource type="AudioStream" uid="uid://qj1pr2dq3eg2" path="res://GameAssets/SFX/Bosses/MiniImpact.wav" id="2_t6y4g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bysc2"]
 
 [node name="SpinningWind" type="Node2D" groups=["SpinningWind"]]
 script = ExtResource("1_1dbp7")
 radius = Vector2(25, 25)
+rotation_duration = 1.0
 
 [node name="ExpirationTimer" type="Timer" parent="."]
 wait_time = 30.0
@@ -17,6 +19,9 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DebrisCatcher"]
 shape = SubResource("CircleShape2D_bysc2")
+
+[node name="CatchDebris" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_t6y4g")
 
 [connection signal="timeout" from="ExpirationTimer" to="." method="_on_expiration_timer_timeout"]
 [connection signal="area_entered" from="DebrisCatcher" to="." method="_on_debris_catcher_area_entered"]

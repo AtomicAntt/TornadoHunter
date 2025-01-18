@@ -14,9 +14,13 @@ var direction: Vector2 = Vector2.ZERO
 var speed: float = 0.0
 
 var debris_projectile: Resource = preload("res://GameObjects/Bosses/Tornado/DebrisProjectile.tscn")
+var flying_debris: Resource = preload("res://GameObjects/Bosses/Tornado/FlyingDebris.tscn")
 
 # This is so when it does move, it doesnt update the positions while attacks are being absorbed
 var moving: bool = false
+var attacked: bool = false
+
+@export var debris_count: int = 9
 
 func set_direction(new_direction: Vector2) -> void:
 	direction = new_direction
@@ -26,6 +30,8 @@ func _ready() -> void:
 		# Update the variable for checking and reset platform references
 		prev_child_count = get_child_count()
 		_find_platforms()
+	
+	spawn_debris()
 
 func _physics_process(delta):
 	if prev_child_count != get_child_count() and not moving:
@@ -42,6 +48,9 @@ func _physics_process(delta):
 	_update_platforms()
 	
 	global_position += direction * speed * delta
+	
+	if get_tree().get_node_count_in_group("Boss") <= 0:
+		queue_free()
 
 # Updates platform positions by determining how far they should orbit from each other
 func _update_platforms():
@@ -77,19 +86,51 @@ func _on_expiration_timer_timeout() -> void:
 func _on_debris_catcher_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Debris"):
 		var flying_debris: FlyingDebris
+		var valid_debris: bool = false
+		
 		if area is FlyingDebris:
 			flying_debris = area
 		
-		if is_instance_valid(flying_debris):
+		if flying_debris.target == self:
+			valid_debris = true
+		
+		if is_instance_valid(flying_debris) and valid_debris:
 			var projectile_instance: EnemyProjectile = debris_projectile.instantiate()
 			# The flying debris will have a sprite name, change the generic projectile into the specific debris that was flying
 			var sprite: AnimatedSprite2D = projectile_instance.get_node("AnimatedSprite2D")
 			sprite.play(flying_debris.sprite_name)
 			call_deferred("add_child", projectile_instance)
 			
+			$CatchDebris.play()
+			
 			flying_debris.queue_free()
 
-func attack() -> void:
-	var player: Player = get_tree().get_nodes_in_group("Player")[0]
-	set_direction(global_position.direction_to(player.global_position))
+func spawn_debris() -> void:
+		for i in range(debris_count):
+			var random_offsetX: float = randf_range(150, 300)
+			var random_offsetY: float = randf_range(150, 300)
+			var random_multiplierX: int
+			var random_multiplierY: int
+			
+			if randf() < 0.5:
+				random_multiplierX = -1
+			else:
+				random_multiplierX = 1
+			
+			if randf() < 0.5:
+				random_multiplierY = -1
+			else:
+				random_multiplierY = 1
+			
+			random_offsetX *= random_multiplierX
+			random_offsetY *= random_multiplierY
+			
+			var debris_instance: FlyingDebris = flying_debris.instantiate()
+			debris_instance.global_position = Vector2(random_offsetX, random_offsetY)
+			debris_instance.target = self
+			get_parent().add_child(debris_instance)
+
+func attack(new_direction: Vector2) -> void:
+	attacked = true
+	set_direction(new_direction)
 	speed = 200
