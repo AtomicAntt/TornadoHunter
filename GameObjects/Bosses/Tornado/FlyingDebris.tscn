@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://crdfbbf3ai7ny"]
+
+[ext_resource type="Shader" path="res://GameAssets/Shaders/Dissolve.gdshader" id="1_5yv1t"]
+[ext_resource type="Script" path="res://GameObjects/Bosses/Tornado/FlyingDebris.gd" id="1_o7crq"]
+[ext_resource type="Texture2D" uid="uid://bh1df4kv3jcet" path="res://GameAssets/TornadoBoss/Arrow.png" id="2_n6w0q"]
+[ext_resource type="Texture2D" uid="uid://cgowdq81akbfq" path="res://GameAssets/TornadoBoss/CannonBall.png" id="3_nwvyt"]
+[ext_resource type="Texture2D" uid="uid://cbr7ri1yfy244" path="res://GameAssets/TornadoBoss/Rock.png" id="4_1g58x"]
+[ext_resource type="Texture2D" uid="uid://cxw04fx83ba3q" path="res://GameAssets/TornadoBoss/Shuriken.png" id="5_qonke"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6caa"]
+size = Vector2(13, 6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gduts"]
+resource_local_to_scene = true
+shader = ExtResource("1_5yv1t")
+shader_parameter/fade = 0.0
+shader_parameter/tiling = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adqds"]
+atlas = ExtResource("3_nwvyt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txwm3"]
+atlas = ExtResource("4_1g58x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdexd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n6w0q")
+}],
+"loop": true,
+"name": &"Arrow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adqds")
+}],
+"loop": true,
+"name": &"CannonBall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txwm3")
+}],
+"loop": true,
+"name": &"Rock",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qonke")
+}],
+"loop": true,
+"name": &"Shuriken",
+"speed": 5.0
+}]
+
+[node name="FlyingDebris" type="Area2D" groups=["Debris"]]
+script = ExtResource("1_o7crq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_k6caa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_gduts")
+sprite_frames = SubResource("SpriteFrames_qdexd")
+animation = &"CannonBall"

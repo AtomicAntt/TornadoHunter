@@ -5,8 +5,10 @@ var direction: Vector2 = Vector2.ZERO
 @export var max_speed: float = 200.0
 @export var speed: float = 200.0
 @export var friction: float = 0.0
+@export var rotation_speed: float = 0.0
 
 @export var static_projectile: bool = false
+@export var spinning: bool = false
 
 var dissolving: bool = false
 
@@ -27,6 +29,10 @@ func _physics_process(delta: float) -> void:
 	global_position += direction * speed * delta
 	speed -= friction * delta
 	speed = clampf(speed, 0.0, max_speed)
+	
+	if spinning:
+		var new_rotation = rotation_degrees + rotation_speed * delta
+		rotation_degrees = fmod(new_rotation, 360)
 	
 	if speed <= 0 and !static_projectile:
 		if has_overlapping_bodies():

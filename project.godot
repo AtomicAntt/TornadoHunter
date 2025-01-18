@@ -41,6 +41,8 @@ Main="Main Control node that can do stuff like load and unload levels."
 ItemDrop="Area2D of an item drop"
 Gate="StaticBody2D that acts as the exit point of the level."
 BossPosition="Marker2D which describes a position the boss can move towards."
+Debris="Flying debris from the tornado boss"
+SpinningWind="Node2D that is like an orbitor but for the tornado boss. Call the attack function to launch it to the player!"
 
 [input]
 

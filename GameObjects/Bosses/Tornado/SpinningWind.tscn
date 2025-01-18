@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbktkvhpcl3yf"]
+[gd_scene load_steps=3 format=3 uid="uid://dbktkvhpcl3yf"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/SpinningProjectiles.gd" id="1_1dbp7"]
 
-[node name="SpinningWind" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bysc2"]
+
+[node name="SpinningWind" type="Node2D" groups=["SpinningWind"]]
 script = ExtResource("1_1dbp7")
 radius = Vector2(20, 20)
 
@@ -11,4 +13,10 @@ wait_time = 30.0
 one_shot = true
 autostart = true
 
+[node name="DebrisCatcher" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DebrisCatcher"]
+shape = SubResource("CircleShape2D_bysc2")
+
 [connection signal="timeout" from="ExpirationTimer" to="." method="_on_expiration_timer_timeout"]
+[connection signal="area_entered" from="DebrisCatcher" to="." method="_on_debris_catcher_area_entered"]

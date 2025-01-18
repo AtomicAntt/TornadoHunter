@@ -13,6 +13,8 @@ var prev_child_count = 0 # How many children this controller had, used to check 
 var direction: Vector2 = Vector2.ZERO
 var speed: float = 0.0
 
+var debris_projectile: Resource = preload("res://GameObjects/Bosses/Tornado/DebrisProjectile.tscn")
+
 # This is so when it does move, it doesnt update the positions while attacks are being absorbed
 var moving: bool = false
 
@@ -71,3 +73,23 @@ func _find_platforms():
 
 func _on_expiration_timer_timeout() -> void:
 	queue_free()
+
+func _on_debris_catcher_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Debris"):
+		var flying_debris: FlyingDebris
+		if area is FlyingDebris:
+			flying_debris = area
+		
+		if is_instance_valid(flying_debris):
+			var projectile_instance: EnemyProjectile = debris_projectile.instantiate()
+			# The flying debris will have a sprite name, change the generic projectile into the specific debris that was flying
+			var sprite: AnimatedSprite2D = projectile_instance.get_node("AnimatedSprite2D")
+			sprite.play(flying_debris.sprite_name)
+			add_child(projectile_instance)
+			
+			flying_debris.queue_free()
+
+func attack() -> void:
+	var player: Player = get_tree().get_nodes_in_group("Player")[0]
+	set_direction(global_position.direction_to(player.global_position))
+	speed = 200

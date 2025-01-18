@@ -2,6 +2,7 @@ extends Boss
 
 var spinning_wind: Resource = preload("res://GameObjects/Bosses/Tornado/SpinningWind.tscn")
 var wind_attack: Resource = preload("res://GameObjects/Bosses/Tornado/TornadoWind.tscn")
+var flying_debris: Resource = preload("res://GameObjects/Bosses/Tornado/FlyingDebris.tscn")
 
 # Specifically, this is for the spiral attack
 var attack_cooldown: float = 0.1
@@ -22,6 +23,8 @@ var movement_tween: Tween
 var position_index: int = 0 # Basically this loops through the positions of 0, 1, and 2 using the modulo operator
 var new_marker: Marker2D
 
+@export var debris_count: int = 8
+
 func _ready() -> void:
 	var step: float = 2 * PI / spawn_point_count
 	
@@ -41,7 +44,8 @@ func _physics_process(delta: float) -> void:
 			charge_time += delta
 			if charge_time >= charge_cooldown:
 				charge_time = 0.0
-				set_accelerating()
+				#set_accelerating()
+				special_attack()
 		States.ACCELERATING:
 			pass
 		States.CHARGING:
@@ -53,9 +57,12 @@ func _physics_process(delta: float) -> void:
 			if is_instance_valid(movement_tween):
 				if not movement_tween.is_running():
 					set_idle()
+		States.SPECIAL:
+			pass
 
 func _on_intro_timeout() -> void:
-	set_accelerating()
+	#set_accelerating()
+	special_attack()
 
 func shoot_spinning_wind() -> void:
 	var player: Player = get_tree().get_nodes_in_group("Player")[0]
@@ -128,3 +135,37 @@ func visit_new_marker() -> void:
 func set_idle() -> void:
 	state = States.IDLE
 	attack_time = 0
+
+# Start gathering up debris
+func special_attack() -> void:
+	state = States.SPECIAL
+	
+	spawn_debris()
+
+func spawn_debris() -> void:
+	var spinning_wind_instance: SpinningWind = spinning_wind.instantiate()
+	spinning_wind_instance.global_position = global_position
+	get_parent().add_child(spinning_wind_instance)
+	
+	for i in range(debris_count):
+		var random_offsetX: float = randf_range(200, 500)
+		var random_offsetY: float = randf_range(200, 500)
+		var random_multiplierX: int
+		var random_multiplierY: int
+		
+		if randf() < 0.5:
+			random_multiplierX = -1
+		else:
+			random_multiplierX = 1
+		
+		if randf() < 0.5:
+			random_multiplierY = -1
+		else:
+			random_multiplierY = 1
+		
+		random_offsetX *= random_multiplierX
+		random_offsetY *= random_multiplierY
+		
+		var debris_instance: FlyingDebris = flying_debris.instantiate()
+		debris_instance.global_position = Vector2(random_offsetX, random_offsetY)
+		get_parent().add_child(debris_instance)
