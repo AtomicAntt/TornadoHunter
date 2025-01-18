@@ -20,7 +20,9 @@ var flying_debris: Resource = preload("res://GameObjects/Bosses/Tornado/FlyingDe
 var moving: bool = false
 var attacked: bool = false
 
-@export var debris_count: int = 9
+@export var debris_count: int = 15
+var max_capacity: int = 9
+var accumulated_debris: int = 0
 
 func set_direction(new_direction: Vector2) -> void:
 	direction = new_direction
@@ -92,9 +94,13 @@ func _on_debris_catcher_area_entered(area: Area2D) -> void:
 			flying_debris = area
 		
 		if flying_debris.target == self:
-			valid_debris = true
+			if accumulated_debris < max_capacity:
+				valid_debris = true
+			else:
+				flying_debris.enable_friction()
 		
 		if is_instance_valid(flying_debris) and valid_debris:
+			accumulated_debris += 1
 			var projectile_instance: EnemyProjectile = debris_projectile.instantiate()
 			# The flying debris will have a sprite name, change the generic projectile into the specific debris that was flying
 			var sprite: AnimatedSprite2D = projectile_instance.get_node("AnimatedSprite2D")

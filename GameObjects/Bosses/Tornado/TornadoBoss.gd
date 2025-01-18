@@ -9,7 +9,7 @@ var attack_cooldown: float = 0.1
 var attack_time: float = 0.0
 
 # This is for when the boss is in idle, how much time needed until charging again? (charging means either moving somewhere or shooting some debris)
-var charge_cooldown: float = 2.0
+var charge_cooldown: float = 1.0
 var charge_time: float = 0.0
 
 var rotation_speed: float = 100
@@ -21,6 +21,7 @@ var speed: float = 100
 var movement_tween: Tween
 
 var position_index: int = 2 # Basically this loops through the positions of 0, 1, and 2 using the modulo operator
+var attack_index: int = 0 # Basically this loops through attack 0 or 1
 var new_marker: Marker2D
 
 func _ready() -> void:
@@ -39,13 +40,17 @@ func _physics_process(delta: float) -> void:
 	
 	match state:
 		States.IDLE:
-			charge_time += delta
+			if $Intro.is_stopped():
+				charge_time += delta
+			
 			if charge_time >= charge_cooldown:
 				charge_time = 0.0
 				#set_accelerating()
-				if randf() < 0.40:
+				if attack_index % 2 == 1:
+					attack_index += 1
 					set_accelerating()
 				else:
+					attack_index += 1
 					$SpecialAttackSignal.play()
 					special_attack()
 		States.ACCELERATING:
@@ -69,6 +74,7 @@ func _physics_process(delta: float) -> void:
 func _on_intro_timeout() -> void:
 	#set_accelerating()
 	special_attack()
+	attack_index += 1
 
 func shoot_spinning_wind() -> void:
 	var player: Player = get_tree().get_nodes_in_group("Player")[0]
@@ -109,7 +115,7 @@ func set_accelerating() -> void:
 	$Node/Line2D/AnimationPlayer.play("Warning")
 	$Warning.play()
 	
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.7).timeout
 	
 	$Node/Line2D.visible = false
 	$Node/Line2D/AnimationPlayer.stop()
@@ -204,7 +210,7 @@ func shoot_debris() -> void:
 		$Node/Line2D/AnimationPlayer.play("Warning")
 		$Warning.play()
 		
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.7).timeout
 		
 		$Node/Line2D.visible = false
 		$Node/Line2D/AnimationPlayer.stop()
@@ -215,6 +221,6 @@ func shoot_debris() -> void:
 				wind_instance.attack(last_player_direction)
 				break
 		
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.7).timeout
 	
 	set_idle()

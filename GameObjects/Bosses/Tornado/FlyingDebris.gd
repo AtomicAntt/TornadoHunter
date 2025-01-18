@@ -3,12 +3,12 @@ extends EnemyProjectile
 
 @export var velocity: float = 150
 
-var target: Node2D
+var target: SpinningWind
 #var boss: Boss
 
 var sprite_name: String
 
-var friction_enabled: bool = false
+var friction_enabled: bool = false # If it is enabled, no need to count it as flying debris that still needs to be collected in order for the boss to attack.
 
 func _ready() -> void:
 	#if is_instance_valid(get_tree().get_nodes_in_group("Player")[0]):
@@ -35,6 +35,15 @@ func _ready() -> void:
 	#if get_tree().get_node_count_in_group("Boss") <= 0 and !dissolving:
 		#dissolving = true
 		#dissolve()
+func _process(delta: float) -> void:
+	if is_instance_valid(target) and not friction_enabled:
+		if target.accumulated_debris >= target.max_capacity:
+			enable_friction()
 
 func enable_friction() -> void:
-	pass
+	friction_enabled = true
+	#set_speed(randf_range(30.0, 60.0))
+	set_friction(randf_range(8.0, 10.0))
+	spinning = false
+	
+	remove_from_group("Debris")
