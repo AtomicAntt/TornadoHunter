@@ -112,8 +112,8 @@ _data = {
 [node name="FlyingDebris" type="Area2D" groups=["Debris", "EnemyAttack"]]
 script = ExtResource("1_o7crq")
 velocity = 170.0
-max_speed = 0.0
-speed = 0.0
+max_speed = 170.0
+speed = 170.0
 rotation_speed = 100.0
 static_projectile = true
 spinning = true

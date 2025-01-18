@@ -8,6 +8,8 @@ var target: Node2D
 
 var sprite_name: String
 
+var friction_enabled: bool = false
+
 func _ready() -> void:
 	#if is_instance_valid(get_tree().get_nodes_in_group("Player")[0]):
 		#boss = get_tree().get_nodes_in_group("Boss")[0]
@@ -18,13 +20,21 @@ func _ready() -> void:
 	$AnimatedSprite2D.play(sprite_name)
 
 
-func _physics_process(delta: float) -> void:
-	global_position = global_position.move_toward(target.global_position, velocity * delta)
-	
-	if spinning:
-		var new_rotation = rotation_degrees + rotation_speed * delta
-		rotation_degrees = fmod(new_rotation, 360)
-	
-	if get_tree().get_node_count_in_group("Boss") <= 0 and !dissolving:
-		dissolving = true
-		dissolve()
+#func _physics_process(delta: float) -> void:
+	#if not friction_enabled:
+		#global_position = global_position.move_toward(target.global_position, velocity * delta)
+	#else:
+		#global_position += direction * speed * delta
+		#speed -= friction * delta
+		#speed = clampf(speed, 0.0, max_speed)
+	#
+	#if spinning:
+		#var new_rotation = rotation_degrees + rotation_speed * delta
+		#rotation_degrees = fmod(new_rotation, 360)
+	#
+	#if get_tree().get_node_count_in_group("Boss") <= 0 and !dissolving:
+		#dissolving = true
+		#dissolve()
+
+func enable_friction() -> void:
+	pass

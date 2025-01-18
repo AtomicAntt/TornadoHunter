@@ -112,6 +112,8 @@ func spawn_debris() -> void:
 			var random_multiplierX: int
 			var random_multiplierY: int
 			
+			var random_position: Vector2
+			
 			if randf() < 0.5:
 				random_multiplierX = -1
 			else:
@@ -125,9 +127,12 @@ func spawn_debris() -> void:
 			random_offsetX *= random_multiplierX
 			random_offsetY *= random_multiplierY
 			
+			random_position = Vector2(random_offsetX, random_offsetY)
+			
 			var debris_instance: FlyingDebris = flying_debris.instantiate()
-			debris_instance.global_position = Vector2(random_offsetX, random_offsetY)
+			debris_instance.global_position = random_position
 			debris_instance.target = self
+			debris_instance.set_direction(random_position.direction_to(global_position))
 			get_parent().add_child(debris_instance)
 
 func attack(new_direction: Vector2) -> void:

@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 			if charge_time >= charge_cooldown:
 				charge_time = 0.0
 				#set_accelerating()
-				if randf() < 0.25:
+				if randf() < 0.40:
 					set_accelerating()
 				else:
 					$SpecialAttackSignal.play()
