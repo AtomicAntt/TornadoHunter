@@ -6,7 +6,7 @@
 
 [node name="SpinningWind" type="Node2D" groups=["SpinningWind"]]
 script = ExtResource("1_1dbp7")
-radius = Vector2(20, 20)
+radius = Vector2(25, 25)
 
 [node name="ExpirationTimer" type="Timer" parent="."]
 wait_time = 30.0

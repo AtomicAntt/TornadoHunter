@@ -23,7 +23,7 @@ var movement_tween: Tween
 var position_index: int = 0 # Basically this loops through the positions of 0, 1, and 2 using the modulo operator
 var new_marker: Marker2D
 
-@export var debris_count: int = 8
+@export var debris_count: int = 12
 
 func _ready() -> void:
 	var step: float = 2 * PI / spawn_point_count
