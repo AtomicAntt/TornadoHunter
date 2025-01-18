@@ -123,7 +123,7 @@ func visit_new_marker() -> void:
 	
 	if is_instance_valid(new_marker):
 		movement_tween = get_tree().create_tween()
-		movement_tween.tween_property(self, "global_position", new_marker.global_position, global_position.distance_to(new_marker.global_position) / speed)
+		movement_tween.tween_property(self, "global_position", new_marker.global_position, global_position.distance_to(new_marker.global_position) / speed).set_trans(Tween.TRANS_CUBIC)
 
 func set_idle() -> void:
 	state = States.IDLE
