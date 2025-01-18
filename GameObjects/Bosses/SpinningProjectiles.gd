@@ -85,7 +85,7 @@ func _on_debris_catcher_area_entered(area: Area2D) -> void:
 			# The flying debris will have a sprite name, change the generic projectile into the specific debris that was flying
 			var sprite: AnimatedSprite2D = projectile_instance.get_node("AnimatedSprite2D")
 			sprite.play(flying_debris.sprite_name)
-			add_child(projectile_instance)
+			call_deferred("add_child", projectile_instance)
 			
 			flying_debris.queue_free()
 
