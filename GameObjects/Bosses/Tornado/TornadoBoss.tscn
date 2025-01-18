@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ybj05h147s3q"]
+[gd_scene load_steps=31 format=3 uid="uid://ybj05h147s3q"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Tornado/TornadoBoss.gd" id="1_h6fcf"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_1dmj2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b5fnik6kfyy5j" path="res://GameAssets/TornadoBoss/singleSandTornado.png" id="6_q3ga0"]
 [ext_resource type="AudioStream" uid="uid://bfu0hrnja4bk8" path="res://GameAssets/SFX/Bosses/HurtSound2.wav" id="7_dnokx"]
 [ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="8_42da7"]
+[ext_resource type="AudioStream" uid="uid://bvkymva1ituxm" path="res://GameAssets/SFX/Bosses/Alert.wav" id="9_rvfcj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qv3o"]
 size = Vector2(39, 51)
@@ -366,6 +367,9 @@ texture_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_pl7i0")
 }
+
+[node name="Warning" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_rvfcj")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

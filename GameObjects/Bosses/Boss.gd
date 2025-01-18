@@ -7,7 +7,7 @@ extends Area2D
 @export var coin_value: int = 5
 @export var coin_amount: int = 20
 
-enum States {STUNNED, ACCELERATING, CHARGING, IDLE, DEAD, DISABLED, MOVING}
+enum States {STUNNED, ACCELERATING, CHARGING, IDLE, DEAD, DISABLED, SHOOTING}
 var state: States = States.IDLE
 
 var enemy_projectile: Resource = preload("res://GameObjects/Bosses/EnemyProjectile.tscn")

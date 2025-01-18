@@ -11,7 +11,10 @@ var orbit_angle_offset = 0 # Angle that first platform will orbit around control
 var prev_child_count = 0 # How many children this controller had, used to check if new children added or removed
 
 var direction: Vector2 = Vector2.ZERO
-var speed: float = 100.0
+var speed: float = 0.0
+
+# This is so when it does move, it doesnt update the positions while attacks are being absorbed
+var moving: bool = false
 
 func set_direction(new_direction: Vector2) -> void:
 	direction = new_direction
@@ -23,6 +26,11 @@ func _ready() -> void:
 		_find_platforms()
 
 func _physics_process(delta):
+	if prev_child_count != get_child_count() and not moving:
+		# Update the variable for checking and reset platform references
+		prev_child_count = get_child_count()
+		_find_platforms()
+	
 	# Increment the angle so that it completes one full rotation in the given number of seconds.
 	# TODO: If you intend to use a speed of zero, then you may want to add a zero check here
 	orbit_angle_offset += 2 * PI * delta / float(rotation_duration)
