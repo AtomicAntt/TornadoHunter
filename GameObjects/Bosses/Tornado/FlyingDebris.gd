@@ -43,7 +43,9 @@ func _process(delta: float) -> void:
 func enable_friction() -> void:
 	friction_enabled = true
 	#set_speed(randf_range(30.0, 60.0))
-	set_friction(randf_range(8.0, 10.0))
+	set_friction(randf_range(80.0, 100.0))
 	spinning = false
+	
+	acceleration = 0
 	
 	remove_from_group("Debris")

@@ -20,8 +20,8 @@ var flying_debris: Resource = preload("res://GameObjects/Bosses/Tornado/FlyingDe
 var moving: bool = false
 var attacked: bool = false
 
-@export var debris_count: int = 15
-var max_capacity: int = 9
+@export var debris_count: int = 12
+var max_capacity: int = 8
 var accumulated_debris: int = 0
 
 func set_direction(new_direction: Vector2) -> void:
@@ -113,27 +113,27 @@ func _on_debris_catcher_area_entered(area: Area2D) -> void:
 
 func spawn_debris() -> void:
 		for i in range(debris_count):
-			var random_offsetX: float = randf_range(150, 300)
-			var random_offsetY: float = randf_range(150, 300)
-			var random_multiplierX: int
-			var random_multiplierY: int
-			
+			var random_offsetX: float = randf_range(-20, 20)
+			var random_offsetY: float = randf_range(-20, 20)
+			#var random_multiplierX: int
+			#var random_multiplierY: int
+			#
 			var random_position: Vector2
+			#
+			#if randf() < 0.5:
+				#random_multiplierX = -1
+			#else:
+				#random_multiplierX = 1
+			#
+			#if randf() < 0.5:
+				#random_multiplierY = -1
+			#else:
+				#random_multiplierY = 1
 			
-			if randf() < 0.5:
-				random_multiplierX = -1
-			else:
-				random_multiplierX = 1
+			#random_offsetX *= random_multiplierX
+			#random_offsetY *= random_multiplierY
 			
-			if randf() < 0.5:
-				random_multiplierY = -1
-			else:
-				random_multiplierY = 1
-			
-			random_offsetX *= random_multiplierX
-			random_offsetY *= random_multiplierY
-			
-			random_position = Vector2(random_offsetX, random_offsetY)
+			random_position = get_random_position_around(self, 350) + Vector2(random_offsetX, random_offsetY)
 			
 			var debris_instance: FlyingDebris = flying_debris.instantiate()
 			debris_instance.global_position = random_position
@@ -145,3 +145,9 @@ func attack(new_direction: Vector2) -> void:
 	attacked = true
 	set_direction(new_direction)
 	speed = 200
+
+func get_random_position_around(node: Node2D, min_distance: float = 200) -> Vector2:
+	var random_angle = randf() * TAU # Random angle in radians
+	var random_distance = randf_range(min_distance, min_distance + 100) # Random distance beyond min_distance
+	var offset = Vector2(cos(random_angle), sin(random_angle)) * random_distance
+	return node.global_position + offset

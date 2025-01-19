@@ -6,6 +6,7 @@ var direction: Vector2 = Vector2.ZERO
 @export var speed: float = 200.0
 @export var friction: float = 0.0
 @export var rotation_speed: float = 0.0
+@export var acceleration: float = 0.0
 
 @export var static_projectile: bool = false
 @export var spinning: bool = false
@@ -28,6 +29,7 @@ func set_time(new_time: float) -> void:
 func _physics_process(delta: float) -> void:
 	global_position += direction * speed * delta
 	speed -= friction * delta
+	speed += acceleration * delta
 	speed = clampf(speed, 0.0, max_speed)
 	
 	if spinning:
