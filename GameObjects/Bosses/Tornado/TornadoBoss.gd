@@ -9,7 +9,7 @@ var attack_cooldown: float = 0.1
 var attack_time: float = 0.0
 
 # This is for when the boss is in idle, how much time needed until charging again? (charging means either moving somewhere or shooting some debris)
-var charge_cooldown: float = 1.0
+var charge_cooldown: float = 1.5
 var charge_time: float = 0.0
 
 var rotation_speed: float = 100
@@ -72,9 +72,9 @@ func _physics_process(delta: float) -> void:
 			
 
 func _on_intro_timeout() -> void:
-	#set_accelerating()
-	special_attack()
-	attack_index += 1
+	set_accelerating()
+	#special_attack()
+	#attack_index += 1
 
 func shoot_spinning_wind() -> void:
 	var player: Player = get_tree().get_nodes_in_group("Player")[0]
@@ -115,7 +115,7 @@ func set_accelerating() -> void:
 	$Node/Line2D/AnimationPlayer.play("Warning")
 	$Warning.play()
 	
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(0.8).timeout
 	
 	$Node/Line2D.visible = false
 	$Node/Line2D/AnimationPlayer.stop()
@@ -125,7 +125,7 @@ func set_charging() -> void:
 	if state != States.DISABLED:
 		state = States.CHARGING
 		charge_time = 0
-		
+		$TornadoMove.play()
 		visit_new_marker()
 
 func set_new_marker() -> void:
@@ -210,7 +210,7 @@ func shoot_debris() -> void:
 		$Node/Line2D/AnimationPlayer.play("Warning")
 		$Warning.play()
 		
-		await get_tree().create_timer(0.7).timeout
+		await get_tree().create_timer(1.0).timeout
 		
 		$Node/Line2D.visible = false
 		$Node/Line2D/AnimationPlayer.stop()
@@ -219,8 +219,9 @@ func shoot_debris() -> void:
 		for wind_instance: SpinningWind in get_tree().get_nodes_in_group("SpinningWind"): 
 			if not wind_instance.attacked:
 				wind_instance.attack(last_player_direction)
+				$TornadoThrow.play()
 				break
 		
-		await get_tree().create_timer(0.7).timeout
+		await get_tree().create_timer(1.0).timeout
 	
 	set_idle()
