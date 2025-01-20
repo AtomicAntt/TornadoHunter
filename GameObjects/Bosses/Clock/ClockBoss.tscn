@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c2un42g5g0jau"]
+[gd_scene load_steps=30 format=3 uid="uid://c2un42g5g0jau"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Clock/ClockBoss.gd" id="1_urn8p"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_6gjma"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://gvfvxcmkqsvf" path="res://GameAssets/Effects/Stunned-Sheet.png" id="4_f516p"]
 [ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="5_tdsa1"]
 [ext_resource type="AudioStream" uid="uid://bfu0hrnja4bk8" path="res://GameAssets/SFX/Bosses/HurtSound2.wav" id="6_dugyg"]
+[ext_resource type="Shader" path="res://GameAssets/Shaders/Teleport.gdshader" id="9_qxkjk"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="10_xgjrh"]
 [ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="11_rfpch"]
 
@@ -301,6 +302,14 @@ _data = {
 "RESET": SubResource("Animation_ex2x2")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wufc4"]
+shader = ExtResource("9_qxkjk")
+shader_parameter/progress = 0.0
+shader_parameter/noise_desnity = 60.0
+shader_parameter/beam_size = 0.102
+shader_parameter/color = Vector4(0, 1.02, 1.2, 1)
+shader_parameter/pixel_amount = 64
+
 [node name="ClockBoss" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_urn8p")
 
@@ -309,6 +318,7 @@ material = SubResource("ShaderMaterial_wg85p")
 sprite_frames = SubResource("SpriteFrames_utv8c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_haexa")
 
 [node name="Timer" type="Timer" parent="."]
@@ -358,6 +368,10 @@ libraries = {
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_rfpch")
+
+[node name="TeleportSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wufc4")
+texture = ExtResource("2_g81yt")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
