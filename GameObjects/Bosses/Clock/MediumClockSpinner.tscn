@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://rah8c2xyu800"]
+
+[ext_resource type="Script" path="res://GameObjects/Bosses/Clock/ClockSpinner.gd" id="1_tg3fi"]
+[ext_resource type="PackedScene" uid="uid://ccwhsikwvom1" path="res://GameObjects/Bosses/Clock/ClockProjectile.tscn" id="2_vlbw6"]
+
+[node name="MediumClockSpinner" type="Node2D"]
+script = ExtResource("1_tg3fi")
+
+[node name="Hour" type="Node2D" parent="."]
+
+[node name="ClockProjectile" parent="Hour" instance=ExtResource("2_vlbw6")]
+position = Vector2(0, -8)
+
+[node name="ClockProjectile2" parent="Hour" instance=ExtResource("2_vlbw6")]
+position = Vector2(0, -24)
+
+[node name="ClockProjectile3" parent="Hour" instance=ExtResource("2_vlbw6")]
+position = Vector2(0, -40)
+
+[node name="Minute" type="Node2D" parent="."]
+
+[node name="ClockProjectile" parent="Minute" instance=ExtResource("2_vlbw6")]
+position = Vector2(0, -8)
+
+[node name="ClockProjectile2" parent="Minute" instance=ExtResource("2_vlbw6")]
+position = Vector2(0, -24)
+
+[node name="ClockProjectile3" parent="Minute" instance=ExtResource("2_vlbw6")]
+position = Vector2(0, -40)
+
+[node name="ClockProjectile4" parent="Minute" instance=ExtResource("2_vlbw6")]
+position = Vector2(0, -56)
+
+[node name="ClockProjectile5" parent="Minute" instance=ExtResource("2_vlbw6")]
+position = Vector2(0, -72)
+
+[node name="ClockProjectile6" parent="Minute" instance=ExtResource("2_vlbw6")]
+position = Vector2(0, -88)

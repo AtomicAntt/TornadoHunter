@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8eykpdicl3yp"]
+
+[ext_resource type="Script" path="res://GameObjects/Bosses/Clock/ClockSpinner.gd" id="1_74evw"]
+[ext_resource type="PackedScene" uid="uid://ccwhsikwvom1" path="res://GameObjects/Bosses/Clock/ClockProjectile.tscn" id="2_f31ck"]
+
+[node name="SmallClockSpinner" type="Node2D"]
+script = ExtResource("1_74evw")
+hour_rotation_speed = 80.0
+minute_rotation_speed = 400.0
+
+[node name="Hour" type="Node2D" parent="."]
+
+[node name="ClockProjectile" parent="Hour" instance=ExtResource("2_f31ck")]
+position = Vector2(0, -8)
+
+[node name="Minute" type="Node2D" parent="."]
+
+[node name="ClockProjectile" parent="Minute" instance=ExtResource("2_f31ck")]
+position = Vector2(0, -8)
+
+[node name="ClockProjectile2" parent="Minute" instance=ExtResource("2_f31ck")]
+position = Vector2(0, -24)
