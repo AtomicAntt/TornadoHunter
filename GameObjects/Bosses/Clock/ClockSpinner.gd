@@ -1,16 +1,14 @@
 extends Node2D
 
-var rotation_speed: float = 100
-var spawn_point_count: int = 4
-var radius: float = 10
+var hour_rotation_speed: float = 10
+var minute_rotation_speed: float = 100
 
+@onready var hour = $Hour
+@onready var minute = $Minute
 
-func _ready() -> void:
-	var step: float = 2 * PI / spawn_point_count
+func _physics_process(delta: float) -> void:
+	var new_hour_rotation = hour.rotation_degrees + hour_rotation_speed * delta
+	hour.rotation_degrees = fmod(new_hour_rotation, 360)
 	
-	for i in range(spawn_point_count):
-		var spawn_point: Node2D = Node2D.new()
-		var pos: Vector2 = Vector2(radius, 0).rotated(step * i)
-		spawn_point.position = pos
-		spawn_point.rotation = pos.angle()
-		add_child(spawn_point)
+	var new_minute_rotation = minute.rotation_degrees + minute_rotation_speed * delta
+	minute.rotation_degrees = fmod(new_minute_rotation, 360)
