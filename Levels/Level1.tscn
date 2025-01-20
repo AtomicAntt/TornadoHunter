@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cpiamvvukqc7o"]
+[gd_scene load_steps=14 format=4 uid="uid://cpiamvvukqc7o"]
 
 [ext_resource type="PackedScene" uid="uid://c24p563j7y18m" path="res://GameObjects/Player/Player.tscn" id="1_che55"]
 [ext_resource type="Texture2D" uid="uid://csufl1i04ooim" path="res://GameAssets/Tileset/Dungeon_Tileset.png" id="2_d53vr"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bsj1lrdmcabxm" path="res://GameAssets/Tileset/TilesetInteriorFloor.png" id="3_wvgeo"]
 [ext_resource type="PackedScene" uid="uid://brfck1ab6qwlk" path="res://GameObjects/Bosses/Tumbleweed/Tumbleweed.tscn" id="7_rtjbs"]
 [ext_resource type="PackedScene" uid="uid://byxlinf7oxt6k" path="res://GameObjects/Environment/Gate.tscn" id="7_xk8t1"]
+[ext_resource type="PackedScene" uid="uid://4tnj1vwdycbv" path="res://GameObjects/Bosses/Clock/ClockSpinner.tscn" id="8_56dno"]
 [ext_resource type="PackedScene" uid="uid://dp87wt6x5n0w5" path="res://GameObjects/Player/Camera.tscn" id="8_bar1f"]
+[ext_resource type="PackedScene" uid="uid://ccwhsikwvom1" path="res://GameObjects/Bosses/Clock/ClockProjectile.tscn" id="9_xx8n1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fv3xd"]
 texture = ExtResource("2_d53vr")
@@ -1874,3 +1876,9 @@ coin_value = 20
 position = Vector2(-90, 58)
 
 [node name="Gate" parent="." instance=ExtResource("7_xk8t1")]
+
+[node name="ClockSpinner" parent="." instance=ExtResource("8_56dno")]
+position = Vector2(24, 59)
+
+[node name="ClockProjectile" parent="." instance=ExtResource("9_xx8n1")]
+position = Vector2(7, 81)
