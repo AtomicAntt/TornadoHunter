@@ -1874,13 +1874,13 @@ position = Vector2(-90, 58)
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Markers" groups=["BossPosition"]]
-position = Vector2(-256, -33)
+position = Vector2(-263, 140)
 
 [node name="Marker2D2" type="Marker2D" parent="Markers" groups=["BossPosition"]]
-position = Vector2(-105, 153)
+position = Vector2(-99, -45)
 
 [node name="Marker2D3" type="Marker2D" parent="Markers" groups=["BossPosition"]]
-position = Vector2(49, -33)
+position = Vector2(63, 141)
 
 [node name="ClockBoss" parent="." instance=ExtResource("7_srkkm")]
-position = Vector2(-99, 13)
+position = Vector2(-99, 38)
