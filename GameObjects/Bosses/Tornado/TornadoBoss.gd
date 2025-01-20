@@ -9,7 +9,7 @@ var attack_cooldown: float = 0.1
 var attack_time: float = 0.0
 
 # This is for when the boss is in idle, how much time needed until charging again? (charging means either moving somewhere or shooting some debris)
-var charge_cooldown: float = 1.5
+var charge_cooldown: float = 2.0
 var charge_time: float = 0.0
 
 var rotation_speed: float = 100
@@ -23,6 +23,8 @@ var movement_tween: Tween
 var position_index: int = 2 # Basically this loops through the positions of 0, 1, and 2 using the modulo operator
 var attack_index: int = 0 # Basically this loops through attack 0 or 1
 var new_marker: Marker2D
+
+var aim_marker: bool = false # Before throwing the collected debris, this bool is set true until it is 1 second before the actual warning
 
 func _ready() -> void:
 	var step: float = 2 * PI / spawn_point_count
@@ -68,7 +70,16 @@ func _physics_process(delta: float) -> void:
 			if get_tree().get_node_count_in_group("Debris") <= 0:
 				shoot_debris()
 		States.SHOOTING:
-			pass
+			if aim_marker:
+				var player: Player = get_tree().get_nodes_in_group("Player")[0]
+				var last_player_direction = global_position.direction_to(player.global_position)
+			
+				if last_player_direction.x > 0:
+					$Node/Line2D.set_point_position(0, position)
+					$Node/Line2D.set_point_position(1, position + (last_player_direction * 1000))
+				else:
+					$Node/Line2D.set_point_position(1, position)
+					$Node/Line2D.set_point_position(0, position + (last_player_direction * 1000))
 			
 
 func _on_intro_timeout() -> void:
@@ -115,7 +126,7 @@ func set_accelerating() -> void:
 	$Node/Line2D/AnimationPlayer.play("Warning")
 	$Warning.play()
 	
-	await get_tree().create_timer(0.8).timeout
+	await get_tree().create_timer(1.0).timeout
 	
 	$Node/Line2D.visible = false
 	$Node/Line2D/AnimationPlayer.stop()
@@ -192,6 +203,12 @@ func spawn_debris() -> void:
 
 func shoot_debris() -> void:
 	state = States.SHOOTING
+	
+	$Node/Line2D.visible = true
+	aim_marker = true
+	await get_tree().create_timer(1.0).timeout
+	aim_marker = false
+	
 	#var player: Player = get_tree().get_nodes_in_group("Player")[0]
 	#var last_player_direction = global_position.direction_to(player.global_position)
 	

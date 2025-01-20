@@ -1,20 +1,31 @@
-[gd_scene load_steps=34 format=3 uid="uid://ybj05h147s3q"]
+[gd_scene load_steps=28 format=3 uid="uid://c2un42g5g0jau"]
 
-[ext_resource type="Script" path="res://GameObjects/Bosses/Tornado/TornadoBoss.gd" id="1_h6fcf"]
-[ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_1dmj2"]
-[ext_resource type="Texture2D" uid="uid://jkovsu2w48qj" path="res://GameAssets/TornadoBoss/tornado_sand.png" id="4_bi8cn"]
-[ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="4_ecsat"]
-[ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="5_dd7pb"]
-[ext_resource type="Texture2D" uid="uid://b5fnik6kfyy5j" path="res://GameAssets/TornadoBoss/singleSandTornado.png" id="6_q3ga0"]
-[ext_resource type="AudioStream" uid="uid://bfu0hrnja4bk8" path="res://GameAssets/SFX/Bosses/HurtSound2.wav" id="7_dnokx"]
-[ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="8_42da7"]
-[ext_resource type="AudioStream" uid="uid://bvkymva1ituxm" path="res://GameAssets/SFX/Bosses/Alert.wav" id="9_rvfcj"]
-[ext_resource type="AudioStream" uid="uid://dvbne4nvudc4w" path="res://GameAssets/SFX/Bosses/Magic1.wav" id="10_8rviw"]
-[ext_resource type="AudioStream" uid="uid://bgxqnxhl8123y" path="res://GameAssets/SFX/Bosses/TornadoThrow.wav" id="11_aex33"]
-[ext_resource type="AudioStream" uid="uid://b7bgk24h1kgwl" path="res://GameAssets/SFX/Bosses/TornadoMove.wav" id="12_bngh8"]
+[ext_resource type="Script" path="res://GameObjects/Bosses/Clock/ClockBoss.gd" id="1_urn8p"]
+[ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_6gjma"]
+[ext_resource type="Texture2D" uid="uid://bft8plu3mxmmj" path="res://GameAssets/ClockBoss/ClockBoss5.png" id="2_g81yt"]
+[ext_resource type="Texture2D" uid="uid://gvfvxcmkqsvf" path="res://GameAssets/Effects/Stunned-Sheet.png" id="4_f516p"]
+[ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="5_tdsa1"]
+[ext_resource type="AudioStream" uid="uid://bfu0hrnja4bk8" path="res://GameAssets/SFX/Bosses/HurtSound2.wav" id="6_dugyg"]
+[ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="10_xgjrh"]
+[ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="11_rfpch"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qv3o"]
-size = Vector2(39, 51)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
+shader = ExtResource("2_6gjma")
+shader_parameter/damaged = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_utv8c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g81yt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_haexa"]
+radius = 33.0
 
 [sub_resource type="Animation" id="Animation_3j7qj"]
 resource_name = "Hurt"
@@ -28,7 +39,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [true, false]
 }
 
@@ -43,7 +54,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [false]
 }
 
@@ -53,76 +64,89 @@ _data = {
 "RESET": SubResource("Animation_x2nf6")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8nn7"]
-shader = ExtResource("2_1dmj2")
-shader_parameter/damaged = false
+[sub_resource type="AtlasTexture" id="AtlasTexture_14721"]
+atlas = ExtResource("4_f516p")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5nljg"]
-atlas = ExtResource("4_bi8cn")
-region = Rect2(0, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0r8o"]
+atlas = ExtResource("4_f516p")
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7rh8r"]
-atlas = ExtResource("4_bi8cn")
-region = Rect2(48, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6anq5"]
+atlas = ExtResource("4_f516p")
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0w8u0"]
-atlas = ExtResource("4_bi8cn")
-region = Rect2(96, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fqts"]
+atlas = ExtResource("4_f516p")
+region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5w28f"]
-atlas = ExtResource("4_bi8cn")
-region = Rect2(144, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pa16"]
+atlas = ExtResource("4_f516p")
+region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uk10x"]
-atlas = ExtResource("4_bi8cn")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vg3uh"]
-atlas = ExtResource("4_bi8cn")
-region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lxkx2"]
-atlas = ExtResource("4_bi8cn")
-region = Rect2(288, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w4o50"]
-atlas = ExtResource("4_bi8cn")
-region = Rect2(336, 0, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3grfg"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ctbqv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5nljg")
+"texture": SubResource("AtlasTexture_14721")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7rh8r")
+"texture": SubResource("AtlasTexture_e0r8o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0w8u0")
+"texture": SubResource("AtlasTexture_6anq5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5w28f")
+"texture": SubResource("AtlasTexture_8fqts")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uk10x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vg3uh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lxkx2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w4o50")
+"texture": SubResource("AtlasTexture_3pa16")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Stunned",
 "speed": 14.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2ccl"]
-shader = ExtResource("5_dd7pb")
+[sub_resource type="Animation" id="Animation_k7emk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f2i8h"]
+resource_name = "Warning"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pl7i0"]
+_data = {
+"RESET": SubResource("Animation_k7emk"),
+"Warning": SubResource("Animation_f2i8h")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lg5s5"]
+shader = ExtResource("10_xgjrh")
 shader_parameter/slice_center = Vector2(0.5, 0.5)
 shader_parameter/slice_angle = 0.75
 shader_parameter/slice_distance = 0.0
@@ -277,52 +301,15 @@ _data = {
 "RESET": SubResource("Animation_ex2x2")
 }
 
-[sub_resource type="Animation" id="Animation_k7emk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+[node name="ClockBoss" type="Area2D" groups=["Boss"]]
+script = ExtResource("1_urn8p")
 
-[sub_resource type="Animation" id="Animation_f2i8h"]
-resource_name = "Warning"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pl7i0"]
-_data = {
-"RESET": SubResource("Animation_k7emk"),
-"Warning": SubResource("Animation_f2i8h")
-}
-
-[node name="TornadoBoss" type="Area2D" groups=["Boss"]]
-script = ExtResource("1_h6fcf")
-max_health = 400.0
-health = 400.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_wg85p")
+sprite_frames = SubResource("SpriteFrames_utv8c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -1.5)
-shape = SubResource("RectangleShape2D_2qv3o")
+shape = SubResource("CircleShape2D_haexa")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -331,33 +318,16 @@ libraries = {
 "": SubResource("AnimationLibrary_i5t0d")
 }
 
-[node name="Death" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_ecsat")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_b8nn7")
-sprite_frames = SubResource("SpriteFrames_3grfg")
-autoplay = "default"
-frame_progress = 0.31985
-
-[node name="DeathSprite" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_r2ccl")
-texture = ExtResource("6_q3ga0")
-
-[node name="DeathAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_hyrxv")
-}
-
-[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_dnokx")
-
 [node name="Intro" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
-[node name="Rotater" type="Node2D" parent="."]
+[node name="StunAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -35)
+sprite_frames = SubResource("SpriteFrames_ctbqv")
+animation = &"Stunned"
+frame_progress = 0.983896
 
 [node name="Node" type="Node" parent="."]
 
@@ -365,7 +335,7 @@ autostart = true
 visible = false
 texture_repeat = 2
 points = PackedVector2Array(-102, 60, -144, 146)
-texture = ExtResource("8_42da7")
+texture = ExtResource("5_tdsa1")
 texture_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node/Line2D"]
@@ -373,17 +343,21 @@ libraries = {
 "": SubResource("AnimationLibrary_pl7i0")
 }
 
-[node name="Warning" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_rvfcj")
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_dugyg")
 
-[node name="SpecialAttackSignal" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_8rviw")
+[node name="DeathSprite" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_lg5s5")
+texture = ExtResource("2_g81yt")
 
-[node name="TornadoThrow" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_aex33")
+[node name="DeathAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hyrxv")
+}
 
-[node name="TornadoMove" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_bngh8")
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_rfpch")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -144,7 +144,7 @@ func spawn_debris() -> void:
 func attack(new_direction: Vector2) -> void:
 	attacked = true
 	set_direction(new_direction)
-	speed = 200
+	speed = 250
 
 func get_random_position_around(node: Node2D, min_distance: float = 200) -> Vector2:
 	var random_angle = randf() * TAU # Random angle in radians
