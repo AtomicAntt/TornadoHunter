@@ -1,7 +1,7 @@
 extends Node2D
 
-var hour_rotation_speed: float = 10
-var minute_rotation_speed: float = 100
+@export var hour_rotation_speed: float = 20
+@export var minute_rotation_speed: float = 100
 
 @onready var hour = $Hour
 @onready var minute = $Minute
