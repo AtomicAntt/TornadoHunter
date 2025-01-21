@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c2un42g5g0jau"]
+[gd_scene load_steps=33 format=3 uid="uid://c2un42g5g0jau"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Clock/ClockBoss.gd" id="1_urn8p"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_6gjma"]
@@ -310,6 +310,108 @@ shader_parameter/beam_size = 0.102
 shader_parameter/color = Vector4(0, 1.02, 1.2, 1)
 shader_parameter/pixel_amount = 64
 
+[sub_resource type="Animation" id="Animation_dqkrq"]
+resource_name = "Teleport"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeleportSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TeleportSprite:material:shader_parameter/progress")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"visit_new_marker"
+}, {
+"args": [],
+"method": &"summon_clocks"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_07q4c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeleportSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TeleportSprite:material:shader_parameter/progress")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8slpe"]
+_data = {
+"RESET": SubResource("Animation_07q4c"),
+"Teleport": SubResource("Animation_dqkrq")
+}
+
 [node name="ClockBoss" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_urn8p")
 
@@ -318,7 +420,6 @@ material = SubResource("ShaderMaterial_wg85p")
 sprite_frames = SubResource("SpriteFrames_utv8c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_haexa")
 
 [node name="Timer" type="Timer" parent="."]
@@ -370,8 +471,14 @@ libraries = {
 stream = ExtResource("11_rfpch")
 
 [node name="TeleportSprite" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_wufc4")
 texture = ExtResource("2_g81yt")
+
+[node name="TeleportAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8slpe")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

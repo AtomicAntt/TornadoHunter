@@ -6,7 +6,19 @@ extends Node2D
 @onready var hour = $Hour
 @onready var minute = $Minute
 
+var direction: Vector2 = Vector2.ZERO
+
+@onready var speed: float = 100
+
+func set_direction(new_direction: Vector2) -> void:
+	direction = new_direction
+
+func set_speed(new_speed: float) -> void:
+	speed = new_speed
+	
 func _physics_process(delta: float) -> void:
+	global_position += direction * speed * delta
+	
 	var new_hour_rotation = hour.rotation_degrees + hour_rotation_speed * delta
 	hour.rotation_degrees = fmod(new_hour_rotation, 360)
 	
