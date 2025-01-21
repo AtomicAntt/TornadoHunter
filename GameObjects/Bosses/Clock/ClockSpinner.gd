@@ -1,3 +1,4 @@
+class_name ClockSpinner
 extends Node2D
 
 @export var hour_rotation_speed: float = 20
@@ -8,7 +9,7 @@ extends Node2D
 
 var direction: Vector2 = Vector2.ZERO
 
-@onready var speed: float = 100
+@export var speed: float = 100
 
 func set_direction(new_direction: Vector2) -> void:
 	direction = new_direction
