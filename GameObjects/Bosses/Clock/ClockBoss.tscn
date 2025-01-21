@@ -402,7 +402,7 @@ tracks/3/keys = {
 "method": &"visit_new_marker"
 }, {
 "args": [],
-"method": &"summon_clocks"
+"method": &"set_shooting"
 }]
 }
 
