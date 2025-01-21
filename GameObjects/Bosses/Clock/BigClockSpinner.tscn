@@ -7,7 +7,7 @@
 script = ExtResource("1_6jd8v")
 hour_rotation_speed = 10.0
 minute_rotation_speed = 50.0
-speed = 40.0
+speed = 60.0
 
 [node name="Hour" type="Node2D" parent="."]
 

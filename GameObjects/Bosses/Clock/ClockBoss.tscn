@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c2un42g5g0jau"]
+[gd_scene load_steps=35 format=3 uid="uid://c2un42g5g0jau"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Clock/ClockBoss.gd" id="1_urn8p"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_6gjma"]
@@ -9,6 +9,7 @@
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Teleport.gdshader" id="9_qxkjk"]
 [ext_resource type="AudioStream" uid="uid://dvbne4nvudc4w" path="res://GameAssets/SFX/Bosses/Magic1.wav" id="10_n7i88"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="10_xgjrh"]
+[ext_resource type="AudioStream" uid="uid://bvkymva1ituxm" path="res://GameAssets/SFX/Bosses/Alert.wav" id="11_0g403"]
 [ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="11_rfpch"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
@@ -352,7 +353,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_dqkrq"]
 resource_name = "Teleport"
-length = 1.5
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -396,11 +397,14 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.5, 1.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.5, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
 "method": &"visit_new_marker"
+}, {
+"args": [],
+"method": &"create_warning"
 }, {
 "args": [],
 "method": &"set_shooting"
@@ -483,6 +487,9 @@ libraries = {
 
 [node name="ClockSpawn" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_n7i88")
+
+[node name="Warning" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_0g403")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

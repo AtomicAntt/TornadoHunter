@@ -115,10 +115,38 @@ func visit_new_marker() -> void:
 	set_new_marker()
 	global_position = new_marker.global_position
 
+func create_warning() -> void:
+	var current_position: int = position_index % get_tree().get_node_count_in_group("BossPosition")
+	var point_position_1: Vector2
+	var point_position_2: Vector2
+	
+	match current_position:
+		0: # Left location
+			point_position_1 = Vector2(-390, -90)
+			point_position_2 = Vector2(-390, 190)
+		1: # Top Location
+			point_position_1 = Vector2(-340, -119)
+			point_position_2 = Vector2(150, -119)
+		2: # Right Location
+			point_position_1 = Vector2(200, -90)
+			point_position_2 = Vector2(200, 190)
+	
+	$Node/Line2D.set_point_position(0, point_position_1)
+	$Node/Line2D.set_point_position(1, point_position_2)
+	$Node/Line2D.visible = true
+	
+	$Node/Line2D/AnimationPlayer.play("Warning")
+	
+	$Warning.play()
+
 # This will be called by TeleportAnimation
 func set_shooting() -> void:
 	state = States.SHOOTING
 	$ClockSpawn.play()
+	
+	$Node/Line2D/AnimationPlayer.stop()
+	$Node/Line2D.visible = false
+	
 
 # ====================================== SIGNAL METHODS =================================
 
