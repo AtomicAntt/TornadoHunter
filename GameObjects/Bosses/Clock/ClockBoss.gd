@@ -53,12 +53,12 @@ func set_new_marker() -> void:
 # current_position is either 0, 1, or 2
 func get_random_projectile_position(current_position: int) -> Vector2:
 	match current_position:
-		0: # Top location
-			return Vector2(randf_range(-340, 150), -119)
-		1: # Right Location
-			return Vector2(200, randf_range(-90, 190))
-		2: # Left Location
-			return Vector2(-390, randf_range(-90, 190))
+		0: # Left location
+			return Vector2(-390, randf_range(-90, 190)) + Vector2(randf_range(-40, 10), 0)
+		1: # Top Location
+			return Vector2(randf_range(-340, 150), -119) + Vector2(0, randf_range(-40, 10))
+		2: # Right Location
+			return Vector2(200, randf_range(-90, 190)) + Vector2(randf_range(-10, 40), 0)
 	
 	print("ERROR: current_position of get_random_projectile_position is not a valid number!")
 	return Vector2.ZERO
@@ -76,22 +76,24 @@ func summon_clocks() -> void:
 	var current_position: int = position_index % get_tree().get_node_count_in_group("BossPosition")
 	
 	match current_position:
-		0: # Top location
-			direction_to_shoot = Vector2.DOWN
-		1: # Right Location
-			direction_to_shoot = Vector2.LEFT
-		2: # Left Location
+		0: # Left location
 			direction_to_shoot = Vector2.RIGHT
+		1: # Top Location
+			direction_to_shoot = Vector2.DOWN
+		2: # Right Location
+			direction_to_shoot = Vector2.LEFT
 	
-	var big_spinner_instance: ClockSpinner = big_clock_spinner.instantiate()
-	big_spinner_instance.set_direction(direction_to_shoot)
-	big_spinner_instance.global_position = get_random_projectile_position(current_position)
-	get_parent().add_child(big_spinner_instance)
+	for i in range(2):
+		var big_spinner_instance: ClockSpinner = big_clock_spinner.instantiate()
+		big_spinner_instance.set_direction(direction_to_shoot)
+		big_spinner_instance.global_position = get_random_projectile_position(current_position)
+		get_parent().add_child(big_spinner_instance)
 	
-	var medium_spinner_instance: ClockSpinner = medium_clock_spinner.instantiate()
-	medium_spinner_instance.set_direction(direction_to_shoot)
-	medium_spinner_instance.global_position = get_random_projectile_position(current_position)
-	get_parent().add_child(medium_spinner_instance)
+	for i in range(2):
+		var medium_spinner_instance: ClockSpinner = medium_clock_spinner.instantiate()
+		medium_spinner_instance.set_direction(direction_to_shoot)
+		medium_spinner_instance.global_position = get_random_projectile_position(current_position)
+		get_parent().add_child(medium_spinner_instance)
 	
 	for i in range(2):
 		var spinner_instance: ClockSpinner = clock_spinner.instantiate()
