@@ -10,7 +10,7 @@ var move_time: float = 0.0
 var shooting_cooldown: float = 5.0 # Time it takes before it goes back into being idle again
 var shooting_time: float = 0.0
 
-var fire_cooldown: float = 0.2 # Time it takes to fire a spinning clock projectile
+var fire_cooldown: float = 0.3 # Time it takes to fire a spinning clock projectile
 var fire_time: float = 0.0
 
 var small_clock_spinner: Resource = preload("res://GameObjects/Bosses/Clock/SmallClockSpinner.tscn")
@@ -62,11 +62,11 @@ func set_new_marker() -> void:
 func get_random_projectile_position(current_position: int) -> Vector2:
 	match current_position:
 		0: # Left location
-			return Vector2(-390, randf_range(-90, 190)) + Vector2(randf_range(-40, 10), 0)
+			return Vector2(-390, randf_range(-90, 190))# + Vector2(randf_range(-40, 10), 0)
 		1: # Top Location
-			return Vector2(randf_range(-340, 150), -119) + Vector2(0, randf_range(-40, 10))
+			return Vector2(randf_range(-340, 150), -119)# + Vector2(0, randf_range(-40, 10))
 		2: # Right Location
-			return Vector2(200, randf_range(-90, 190)) + Vector2(randf_range(-10, 40), 0)
+			return Vector2(200, randf_range(-90, 190))# + Vector2(randf_range(-10, 40), 0)
 	
 	print("ERROR: current_position of get_random_projectile_position is not a valid number!")
 	return Vector2.ZERO
@@ -84,29 +84,30 @@ func summon_clock() -> void:
 			direction_to_shoot = Vector2.LEFT
 	
 	var random_float = randf()
-	if random_float < 0.2:
+	if random_float < 0.1:
 		var big_spinner_instance: ClockSpinner = big_clock_spinner.instantiate()
 		big_spinner_instance.set_direction(direction_to_shoot)
 		big_spinner_instance.global_position = get_random_projectile_position(current_position)
 		get_parent().add_child(big_spinner_instance)
-	elif random_float < 0.4:
+	elif random_float < 0.2:
 		var medium_spinner_instance: ClockSpinner = medium_clock_spinner.instantiate()
 		medium_spinner_instance.set_direction(direction_to_shoot)
 		medium_spinner_instance.global_position = get_random_projectile_position(current_position)
 		get_parent().add_child(medium_spinner_instance)
-	elif random_float < 0.6:
+	elif random_float < 0.5:
 		var spinner_instance: ClockSpinner = clock_spinner.instantiate()
 		spinner_instance.set_direction(direction_to_shoot)
 		spinner_instance.global_position = get_random_projectile_position(current_position)
 		get_parent().add_child(spinner_instance)
-	elif random_float >= 0.6 and random_float <= 1.0:
+	elif random_float >= 0.5 and random_float <= 1.0:
 		var small_spinner_instance: ClockSpinner = small_clock_spinner.instantiate()
 		small_spinner_instance.set_direction(direction_to_shoot)
 		small_spinner_instance.global_position = get_random_projectile_position(current_position)
 		get_parent().add_child(small_spinner_instance)
 	else:
 		print("ERROR: could not spawn a clock instance.")
-	
+
+
 # ====================================== METHODS CALLED BY ANIMATIONPLAYER ================================
 
 # This will be called by TeleportAnimation
@@ -117,6 +118,7 @@ func visit_new_marker() -> void:
 # This will be called by TeleportAnimation
 func set_shooting() -> void:
 	state = States.SHOOTING
+	$ClockSpawn.play()
 
 # ====================================== SIGNAL METHODS =================================
 

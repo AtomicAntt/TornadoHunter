@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c2un42g5g0jau"]
+[gd_scene load_steps=34 format=3 uid="uid://c2un42g5g0jau"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Clock/ClockBoss.gd" id="1_urn8p"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_6gjma"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="5_tdsa1"]
 [ext_resource type="AudioStream" uid="uid://bfu0hrnja4bk8" path="res://GameAssets/SFX/Bosses/HurtSound2.wav" id="6_dugyg"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Teleport.gdshader" id="9_qxkjk"]
+[ext_resource type="AudioStream" uid="uid://dvbne4nvudc4w" path="res://GameAssets/SFX/Bosses/Magic1.wav" id="10_n7i88"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="10_xgjrh"]
 [ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="11_rfpch"]
 
@@ -479,6 +480,9 @@ texture = ExtResource("2_g81yt")
 libraries = {
 "": SubResource("AnimationLibrary_8slpe")
 }
+
+[node name="ClockSpawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_n7i88")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
