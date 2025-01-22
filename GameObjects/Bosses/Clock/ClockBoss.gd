@@ -10,7 +10,7 @@ var move_time: float = 0.0
 var shooting_cooldown: float = 5.0 # Time it takes before it goes back into being idle again
 var shooting_time: float = 0.0
 
-var fire_cooldown: float = 0.3 # Time it takes to fire a spinning clock projectile
+var fire_cooldown: float = 0.25 # Time it takes to fire a spinning clock projectile
 var fire_time: float = 0.0
 
 var small_clock_spinner: Resource = preload("res://GameObjects/Bosses/Clock/SmallClockSpinner.tscn")

@@ -319,6 +319,7 @@ _data = {
 script = ExtResource("1_h6fcf")
 max_health = 400.0
 health = 400.0
+coin_value = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -1.5)
