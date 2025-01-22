@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://bqxo4f1j1065a"]
+
+[ext_resource type="Texture2D" uid="uid://ca7x54j7rxw6g" path="res://GameAssets/ClockBoss/Hourglass-Sheet.png" id="1_2ns7x"]
+[ext_resource type="Texture2D" uid="uid://gvfvxcmkqsvf" path="res://GameAssets/Effects/Stunned-Sheet.png" id="2_d1uq1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4uyo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7b1k"]
+atlas = ExtResource("1_2ns7x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj3xf"]
+atlas = ExtResource("1_2ns7x")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfrj7"]
+atlas = ExtResource("1_2ns7x")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uarbf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7b1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj3xf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfrj7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14721"]
+atlas = ExtResource("2_d1uq1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0r8o"]
+atlas = ExtResource("2_d1uq1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6anq5"]
+atlas = ExtResource("2_d1uq1")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fqts"]
+atlas = ExtResource("2_d1uq1")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pa16"]
+atlas = ExtResource("2_d1uq1")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ti8wf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14721")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0r8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6anq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fqts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pa16")
+}],
+"loop": true,
+"name": &"Stunned",
+"speed": 14.0
+}]
+
+[node name="Hourglass" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c4uyo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uarbf")
+autoplay = "default"
+frame_progress = 0.712392
+
+[node name="StunAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -20)
+sprite_frames = SubResource("SpriteFrames_ti8wf")
+animation = &"Stunned"
+autoplay = "Stunned"
+frame_progress = 0.854812
