@@ -4,7 +4,7 @@ extends Boss
 var position_index: int = 0 # Basically this loops through the positions of 0, 1, and 2 using the modulo operator
 var new_marker: Marker2D
 
-var move_cooldown: float = 2.0 # Time it takes before it takes an action and gets out of idle state
+var move_cooldown: float = 3.0 # Time it takes before it takes an action and gets out of idle state
 var move_time: float = 0.0
 
 var shooting_cooldown: float = 5.0 # Time it takes before it goes back into being idle again
@@ -115,6 +115,7 @@ func visit_new_marker() -> void:
 	set_new_marker()
 	global_position = new_marker.global_position
 
+# This will be called by TeleportAnimation
 func create_warning() -> void:
 	var current_position: int = position_index % get_tree().get_node_count_in_group("BossPosition")
 	var point_position_1: Vector2
@@ -144,9 +145,14 @@ func set_shooting() -> void:
 	state = States.SHOOTING
 	$ClockSpawn.play()
 	
+	# Hide the warnings
 	$Node/Line2D/AnimationPlayer.stop()
 	$Node/Line2D.visible = false
-	
+
+
+# ----------------- SPECIAL ATTACK ----------------
+
+
 
 # ====================================== SIGNAL METHODS =================================
 

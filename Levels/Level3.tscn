@@ -1882,5 +1882,7 @@ position = Vector2(-99, -45)
 [node name="Marker2D3" type="Marker2D" parent="Markers" groups=["BossPosition"]]
 position = Vector2(94, 68)
 
+[node name="CenterMarker" type="Marker2D" parent="Markers" groups=["CenterMarker"]]
+
 [node name="ClockBoss" parent="." instance=ExtResource("7_srkkm")]
 position = Vector2(-99, 38)
