@@ -28,6 +28,9 @@ var last_player_direction: Vector2
 enum States {DISABLED, IDLE, CHARGING, STUNNED, MOVING, WARNING}
 var state: States = States.IDLE
 
+func _ready() -> void:
+	$TeleportAnimation.play("Teleport")
+
 func _physics_process(delta: float) -> void:
 	match state:
 		States.IDLE:
@@ -47,7 +50,6 @@ func _physics_process(delta: float) -> void:
 		States.MOVING: # When moving is set (likely from IDLE), a tween is ran. When the tween is no longer running, the minion has reached its destination and will send a warning to charge at the player.
 			if is_instance_valid(movement_tween):
 				if not movement_tween.is_running():
-					print("its warning time from the minion")
 					start_warning()
 		States.WARNING: # After moving, the minion will warn the player where it is going to go.
 			charge_time += delta

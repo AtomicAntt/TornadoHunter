@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bqxo4f1j1065a"]
+[gd_scene load_steps=42 format=3 uid="uid://bqxo4f1j1065a"]
 
 [ext_resource type="Texture2D" uid="uid://ca7x54j7rxw6g" path="res://GameAssets/ClockBoss/Hourglass-Sheet.png" id="1_2ns7x"]
 [ext_resource type="Script" path="res://GameObjects/Bosses/Clock/Minion.gd" id="1_snorn"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="11_ukxe5"]
 [ext_resource type="AudioStream" uid="uid://ja3sjterr26g" path="res://GameAssets/SFX/Bosses/TumbleweedImpact2.wav" id="12_xiwnm"]
 [ext_resource type="AudioStream" uid="uid://bvkymva1ituxm" path="res://GameAssets/SFX/Bosses/Alert.wav" id="13_1wjb6"]
+[ext_resource type="Shader" path="res://GameAssets/Shaders/Teleport.gdshader" id="14_1pq1k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4uyo"]
 
@@ -129,16 +130,6 @@ _data = {
 "Hurt": SubResource("Animation_d3p2k"),
 "RESET": SubResource("Animation_ob2iy")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8t0u"]
-shader = ExtResource("9_cmyh5")
-shader_parameter/slice_center = Vector2(0.5, 0.5)
-shader_parameter/slice_angle = 0.75
-shader_parameter/slice_distance = 0.0
-shader_parameter/pixel_size = 4096.0
-shader_parameter/expansion_factor = 0.5
-shader_parameter/transparency = 1.0
-shader_parameter/border_color = Vector4(0, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_oa3ja"]
 resource_name = "Death"
@@ -327,6 +318,110 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_r18lx"]
 radius = 4.12311
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8t0u"]
+shader = ExtResource("9_cmyh5")
+shader_parameter/slice_center = Vector2(0.5, 0.5)
+shader_parameter/slice_angle = 0.75
+shader_parameter/slice_distance = 0.0
+shader_parameter/pixel_size = 4096.0
+shader_parameter/expansion_factor = 0.5
+shader_parameter/transparency = 1.0
+shader_parameter/border_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o1dtc"]
+resource_local_to_scene = true
+shader = ExtResource("14_1pq1k")
+shader_parameter/progress = 0.0
+shader_parameter/noise_desnity = 60.0
+shader_parameter/beam_size = 0.105
+shader_parameter/color = Vector4(0, 1.02, 1.2, 1)
+shader_parameter/pixel_amount = 32
+
+[sub_resource type="Animation" id="Animation_ak2oy"]
+resource_name = "Teleport"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeleportSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TeleportSprite:material:shader_parameter/progress")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ysr6p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeleportSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TeleportSprite:material:shader_parameter/progress")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86ysq"]
+_data = {
+"RESET": SubResource("Animation_ysr6p"),
+"Teleport": SubResource("Animation_ak2oy")
+}
+
 [node name="Hourglass" type="Area2D" groups=["Minion"]]
 script = ExtResource("1_snorn")
 
@@ -334,11 +429,11 @@ script = ExtResource("1_snorn")
 shape = SubResource("RectangleShape2D_c4uyo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_u07mj")
 sprite_frames = SubResource("SpriteFrames_uarbf")
 autoplay = "default"
-frame = 2
-frame_progress = 0.792877
+frame_progress = 0.194537
 
 [node name="StunAnimation" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -369,11 +464,6 @@ libraries = {
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_mnidp")
-
-[node name="DeathSprite" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_e8t0u")
-texture = ExtResource("10_7vu02")
 
 [node name="DeathAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -407,6 +497,20 @@ stream = ExtResource("12_xiwnm")
 
 [node name="Warning" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_1wjb6")
+
+[node name="DeathSprite" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_e8t0u")
+texture = ExtResource("10_7vu02")
+
+[node name="TeleportSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_o1dtc")
+texture = ExtResource("10_7vu02")
+
+[node name="TeleportAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_86ysq")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="ChargeHitbox" to="." method="_on_charge_hitbox_body_entered"]

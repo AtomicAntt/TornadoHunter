@@ -2,6 +2,8 @@ class_name ClockBoss
 extends Boss
 
 var position_index: int = 0 # Basically this loops through the positions of 0, 1, and 2 using the modulo operator
+var attack_index: int = 0 # Basically this loops through the positions of 0 and 1 using the modulo operator
+
 var new_marker: Marker2D
 
 var move_cooldown: float = 3.0 # Time it takes before it takes an action and gets out of idle state
@@ -13,10 +15,20 @@ var shooting_time: float = 0.0
 var fire_cooldown: float = 0.25 # Time it takes to fire a spinning clock projectile
 var fire_time: float = 0.0
 
+var special_cooldown: float = 3.0
+var special_time: float = 0.0
+
+var special_attack_time: float = 0.0 # The cooldown will be calculated by special_cooldown / summon_amount. Ex.: If there is 9 to be summoned, it takes only 1/3 seconds to summon one.
+
+var summon_amount: int = 3
+var max_amount: int = 9
+
 var small_clock_spinner: Resource = preload("res://GameObjects/Bosses/Clock/SmallClockSpinner.tscn")
 var clock_spinner: Resource = preload("res://GameObjects/Bosses/Clock/ClockSpinner.tscn")
 var medium_clock_spinner: Resource = preload("res://GameObjects/Bosses/Clock/MediumClockSpinner.tscn")
 var big_clock_spinner: Resource = preload("res://GameObjects/Bosses/Clock/BigClockSpinner.tscn")
+
+var hour_glass: Resource = preload("res://GameObjects/Bosses/Clock/hourglass.tscn")
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -28,7 +40,7 @@ func _physics_process(delta: float) -> void:
 				set_moving()
 		States.MOVING: # This state is done as an intermission to the shooting state. When the animationplayer for this finishes, it will switch to the shooting state.
 			pass
-		States.SHOOTING: # Goes into shooting state once it shoots clocks. When it does that, it will shoot them and then go back to idle state in this logic below.
+		States.SHOOTING: # It can go into shooting state after it teleports and the warning was given in the TeleportAnimation animation player ("Teleport").
 			shooting_time += delta
 			fire_time += delta
 			
@@ -37,6 +49,17 @@ func _physics_process(delta: float) -> void:
 				summon_clock()
 			
 			if shooting_time >= shooting_cooldown:
+				set_idle()
+		States.SPECIAL: # It can go into the special state after it teleports and warning was given in the TeleportAnimation animation player ("TeleportSpecial").
+			special_time += delta
+			special_attack_time += delta
+			
+			# Ex.: If there is 9 to be summoned, it takes only 1/3 seconds to summon one.
+			if special_attack_time >= (special_cooldown / summon_amount): 
+				special_attack_time = 0.0
+				summon_hourglass()
+			
+			if special_time >= special_cooldown:
 				set_idle()
 
 func set_idle() -> void:
@@ -50,7 +73,12 @@ func set_idle() -> void:
 func set_moving() -> void:
 	state = States.MOVING
 	move_time = 0.0 # Reset time needed to enter the moving state from idle state.
-	$TeleportAnimation.play("Teleport")
+	if attack_index % 2 == 0:
+		$TeleportAnimation.play("Teleport")
+	else:
+		$TeleportAnimation.play("TeleportSpecial")
+	
+	attack_index += 1
 
 func set_new_marker() -> void:
 	position_index += 1
@@ -70,6 +98,22 @@ func get_random_projectile_position(current_position: int) -> Vector2:
 	
 	print("ERROR: current_position of get_random_projectile_position is not a valid number!")
 	return Vector2.ZERO
+
+func get_random_position_around(node: Node2D, min_distance: float = 200) -> Vector2:
+	var random_angle = randf() * TAU # Random angle in radians
+	var random_distance = randf_range(min_distance, min_distance + 100) # Random distance beyond min_distance
+	var offset = Vector2(cos(random_angle), sin(random_angle)) * random_distance
+	return node.global_position + offset
+
+func summon_hourglass() -> void:
+	var random_offsetX: float = randf_range(-4, 4)
+	var random_offsetY: float = randf_range(-4, 4)
+	
+	var random_position: Vector2 = get_random_position_around(self, 48) + Vector2(random_offsetX, random_offsetY)
+	
+	var minion_instance: Minion = hour_glass.instantiate()
+	minion_instance.global_position = random_position
+	get_parent().add_child(minion_instance)
 
 func summon_clock() -> void:
 	var direction_to_shoot: Vector2
@@ -148,11 +192,12 @@ func set_shooting() -> void:
 	# Hide the warnings
 	$Node/Line2D/AnimationPlayer.stop()
 	$Node/Line2D.visible = false
-
-
+	
 # ----------------- SPECIAL ATTACK ----------------
 
-
+# This will be called by TeleportAnimation ("TeleportSpecial")
+func set_special() -> void:
+	state = States.SPECIAL
 
 # ====================================== SIGNAL METHODS =================================
 
