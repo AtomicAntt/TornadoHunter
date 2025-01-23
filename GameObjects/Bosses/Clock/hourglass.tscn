@@ -1,7 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqxo4f1j1065a"]
+[gd_scene load_steps=18 format=3 uid="uid://bqxo4f1j1065a"]
 
 [ext_resource type="Texture2D" uid="uid://ca7x54j7rxw6g" path="res://GameAssets/ClockBoss/Hourglass-Sheet.png" id="1_2ns7x"]
+[ext_resource type="Script" path="res://GameObjects/Bosses/Clock/hourglass.gd" id="1_snorn"]
 [ext_resource type="Texture2D" uid="uid://gvfvxcmkqsvf" path="res://GameAssets/Effects/Stunned-Sheet.png" id="2_d1uq1"]
+[ext_resource type="Texture2D" uid="uid://bqgux00qc20a6" path="res://GameAssets/ClockBoss/SmallHealthBar.png" id="4_v02m6"]
+[ext_resource type="Texture2D" uid="uid://bdh7qlr10aii8" path="res://GameAssets/ClockBoss/SmallProgressUnder.png" id="5_84l44"]
+[ext_resource type="Texture2D" uid="uid://bqqg4tlxnb13x" path="res://GameAssets/ClockBoss/SmallDamageBar.png" id="6_1gyh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4uyo"]
 
@@ -78,6 +82,7 @@ animations = [{
 }]
 
 [node name="Hourglass" type="Area2D"]
+script = ExtResource("1_snorn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c4uyo")
@@ -85,11 +90,26 @@ shape = SubResource("RectangleShape2D_c4uyo")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uarbf")
 autoplay = "default"
-frame_progress = 0.712392
+frame = 2
+frame_progress = 0.792877
 
 [node name="StunAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -20)
 sprite_frames = SubResource("SpriteFrames_ti8wf")
 animation = &"Stunned"
 autoplay = "Stunned"
-frame_progress = 0.854812
+frame_progress = 0.32726
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -14.0
+offset_top = -22.0
+offset_right = 26.0
+offset_bottom = 18.0
+texture_progress = ExtResource("4_v02m6")
+
+[node name="DamageBar" type="TextureProgressBar" parent="HealthBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("5_84l44")
+texture_progress = ExtResource("6_1gyh4")
