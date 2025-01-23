@@ -1,13 +1,23 @@
-[gd_scene load_steps=18 format=3 uid="uid://bqxo4f1j1065a"]
+[gd_scene load_steps=31 format=3 uid="uid://bqxo4f1j1065a"]
 
 [ext_resource type="Texture2D" uid="uid://ca7x54j7rxw6g" path="res://GameAssets/ClockBoss/Hourglass-Sheet.png" id="1_2ns7x"]
-[ext_resource type="Script" path="res://GameObjects/Bosses/Clock/hourglass.gd" id="1_snorn"]
+[ext_resource type="Script" path="res://GameObjects/Bosses/Clock/Minion.gd" id="1_snorn"]
 [ext_resource type="Texture2D" uid="uid://gvfvxcmkqsvf" path="res://GameAssets/Effects/Stunned-Sheet.png" id="2_d1uq1"]
+[ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_r8lak"]
 [ext_resource type="Texture2D" uid="uid://bqgux00qc20a6" path="res://GameAssets/ClockBoss/SmallHealthBar.png" id="4_v02m6"]
 [ext_resource type="Texture2D" uid="uid://bdh7qlr10aii8" path="res://GameAssets/ClockBoss/SmallProgressUnder.png" id="5_84l44"]
 [ext_resource type="Texture2D" uid="uid://bqqg4tlxnb13x" path="res://GameAssets/ClockBoss/SmallDamageBar.png" id="6_1gyh4"]
+[ext_resource type="AudioStream" uid="uid://bfu0hrnja4bk8" path="res://GameAssets/SFX/Bosses/HurtSound2.wav" id="8_mnidp"]
+[ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="9_cmyh5"]
+[ext_resource type="Texture2D" uid="uid://crvimrcs61whp" path="res://GameAssets/ClockBoss/SingleHourglass2.png" id="10_7vu02"]
+[ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="11_0t08h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4uyo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u07mj"]
+resource_local_to_scene = true
+shader = ExtResource("2_r8lak")
+shader_parameter/damaged = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7b1k"]
 atlas = ExtResource("1_2ns7x")
@@ -81,19 +91,214 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="Hourglass" type="Area2D"]
+[sub_resource type="Animation" id="Animation_d3p2k"]
+resource_name = "Hurt"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/damaged")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ob2iy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/damaged")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yna43"]
+_data = {
+"Hurt": SubResource("Animation_d3p2k"),
+"RESET": SubResource("Animation_ob2iy")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8t0u"]
+shader = ExtResource("9_cmyh5")
+shader_parameter/slice_center = Vector2(0.5, 0.5)
+shader_parameter/slice_angle = 0.75
+shader_parameter/slice_distance = 0.0
+shader_parameter/pixel_size = 4096.0
+shader_parameter/expansion_factor = 0.5
+shader_parameter/transparency = 1.0
+shader_parameter/border_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_oa3ja"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathSprite:material:shader_parameter/slice_distance")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathSprite:material:shader_parameter/transparency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:material:shader_parameter/slice_distance")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DeathSprite:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ex2x2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathSprite:material:shader_parameter/slice_distance")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathSprite:material:shader_parameter/transparency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/slice_distance")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeathSprite:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hyrxv"]
+_data = {
+"Death": SubResource("Animation_oa3ja"),
+"RESET": SubResource("Animation_ex2x2")
+}
+
+[node name="Hourglass" type="Area2D" groups=["Minion"]]
 script = ExtResource("1_snorn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c4uyo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_u07mj")
 sprite_frames = SubResource("SpriteFrames_uarbf")
 autoplay = "default"
 frame = 2
 frame_progress = 0.792877
 
 [node name="StunAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(1, -20)
 sprite_frames = SubResource("SpriteFrames_ti8wf")
 animation = &"Stunned"
@@ -113,3 +318,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture_under = ExtResource("5_84l44")
 texture_progress = ExtResource("6_1gyh4")
+
+[node name="HurtAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yna43")
+}
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_mnidp")
+
+[node name="DeathSprite" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_e8t0u")
+texture = ExtResource("10_7vu02")
+
+[node name="DeathAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hyrxv")
+}
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_0t08h")
