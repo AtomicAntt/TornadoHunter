@@ -1971,6 +1971,3 @@ position = Vector2(-254, 136)
 position = Vector2(-99, 38)
 
 [node name="Hourglass" parent="." instance=ExtResource("8_7br7l")]
-
-[node name="Hourglass2" parent="." instance=ExtResource("8_7br7l")]
-position = Vector2(-237, 88)

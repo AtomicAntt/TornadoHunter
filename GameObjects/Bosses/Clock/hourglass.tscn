@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bqxo4f1j1065a"]
+[gd_scene load_steps=37 format=3 uid="uid://bqxo4f1j1065a"]
 
 [ext_resource type="Texture2D" uid="uid://ca7x54j7rxw6g" path="res://GameAssets/ClockBoss/Hourglass-Sheet.png" id="1_2ns7x"]
 [ext_resource type="Script" path="res://GameObjects/Bosses/Clock/Minion.gd" id="1_snorn"]
@@ -10,6 +10,9 @@
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="9_cmyh5"]
 [ext_resource type="Texture2D" uid="uid://crvimrcs61whp" path="res://GameAssets/ClockBoss/SingleHourglass2.png" id="10_7vu02"]
 [ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="11_0t08h"]
+[ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="11_ukxe5"]
+[ext_resource type="AudioStream" uid="uid://ja3sjterr26g" path="res://GameAssets/SFX/Bosses/TumbleweedImpact2.wav" id="12_xiwnm"]
+[ext_resource type="AudioStream" uid="uid://bvkymva1ituxm" path="res://GameAssets/SFX/Bosses/Alert.wav" id="13_1wjb6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4uyo"]
 
@@ -283,6 +286,47 @@ _data = {
 "RESET": SubResource("Animation_ex2x2")
 }
 
+[sub_resource type="Animation" id="Animation_k7emk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f2i8h"]
+resource_name = "Warning"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pl7i0"]
+_data = {
+"RESET": SubResource("Animation_k7emk"),
+"Warning": SubResource("Animation_f2i8h")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r18lx"]
+radius = 4.12311
+
 [node name="Hourglass" type="Area2D" groups=["Minion"]]
 script = ExtResource("1_snorn")
 
@@ -338,3 +382,31 @@ libraries = {
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_0t08h")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Node"]
+visible = false
+texture_repeat = 2
+points = PackedVector2Array(-102, 60, -144, 146)
+texture = ExtResource("11_ukxe5")
+texture_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node/Line2D"]
+libraries = {
+"": SubResource("AnimationLibrary_pl7i0")
+}
+
+[node name="ChargeHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeHitbox"]
+shape = SubResource("CircleShape2D_r18lx")
+
+[node name="Impact" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_xiwnm")
+
+[node name="Warning" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_1wjb6")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="ChargeHitbox" to="." method="_on_charge_hitbox_body_entered"]
