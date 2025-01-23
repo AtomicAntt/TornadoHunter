@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c2un42g5g0jau"]
+[gd_scene load_steps=37 format=3 uid="uid://c2un42g5g0jau"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Clock/ClockBoss.gd" id="1_urn8p"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_6gjma"]
@@ -11,6 +11,7 @@
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="10_xgjrh"]
 [ext_resource type="AudioStream" uid="uid://bvkymva1ituxm" path="res://GameAssets/SFX/Bosses/Alert.wav" id="11_0g403"]
 [ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="11_rfpch"]
+[ext_resource type="AudioStream" uid="uid://qj1pr2dq3eg2" path="res://GameAssets/SFX/Bosses/MiniImpact.wav" id="12_6obnd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
 shader = ExtResource("2_6gjma")
@@ -413,7 +414,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_hhjw8"]
 resource_name = "TeleportSpecial"
-length = 2.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -457,7 +458,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.5, 2),
+"times": PackedFloat32Array(0.5, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -550,6 +551,9 @@ stream = ExtResource("10_n7i88")
 
 [node name="Warning" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_0g403")
+
+[node name="HourglassSpawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_6obnd")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

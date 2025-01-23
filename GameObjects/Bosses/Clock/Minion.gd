@@ -20,7 +20,7 @@ var move_time: float = 0.0
 var charging_cooldown: float = 1.0 # Time it takes to warn the player before charging
 var charge_time: float = 0.0
 
-var stun_cooldown: float = 3.0 # Time it takes to get unstunned
+var stun_cooldown: float = 5.0 # Time it takes to get unstunned
 var stun_time: float = 0.0
 
 var last_player_direction: Vector2

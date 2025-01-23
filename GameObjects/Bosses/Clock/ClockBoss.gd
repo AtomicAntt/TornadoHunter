@@ -78,10 +78,8 @@ func set_moving() -> void:
 	move_time = 0.0 # Reset time needed to enter the moving state from idle state.
 	
 	if attack_index % 2 == 0:
-		print("Teleporting with attack_index: " + str(attack_index))
 		$TeleportAnimation.play("Teleport")
 	else:
-		print("Special Teleporting with attack_index: " + str(attack_index))
 		$TeleportAnimation.play("TeleportSpecial")
 	
 	attack_index += 1
@@ -112,8 +110,6 @@ func get_random_position_around(node: Node2D, min_distance: float = 200) -> Vect
 	return node.global_position + offset
 
 func summon_hourglass() -> void:
-	print("I SUMMONED AN HOUR GLASS")
-	
 	var random_offsetX: float = randf_range(-4, 4)
 	var random_offsetY: float = randf_range(-4, 4)
 	
@@ -122,6 +118,8 @@ func summon_hourglass() -> void:
 	var minion_instance: Minion = hour_glass.instantiate()
 	minion_instance.global_position = random_position
 	get_parent().add_child(minion_instance)
+	
+	$HourglassSpawn.play()
 
 func summon_clock() -> void:
 	var direction_to_shoot: Vector2
