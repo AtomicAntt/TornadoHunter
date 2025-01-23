@@ -69,13 +69,19 @@ func set_idle() -> void:
 		# Reset the times needed to switch to idle and to shoot a clock projectile.
 		shooting_time = 0.0
 		fire_time = 0.0
+		
+		special_attack_time = 0.0
+		special_time = 0.0
 
 func set_moving() -> void:
 	state = States.MOVING
 	move_time = 0.0 # Reset time needed to enter the moving state from idle state.
+	
 	if attack_index % 2 == 0:
+		print("Teleporting with attack_index: " + str(attack_index))
 		$TeleportAnimation.play("Teleport")
 	else:
+		print("Special Teleporting with attack_index: " + str(attack_index))
 		$TeleportAnimation.play("TeleportSpecial")
 	
 	attack_index += 1
@@ -106,6 +112,8 @@ func get_random_position_around(node: Node2D, min_distance: float = 200) -> Vect
 	return node.global_position + offset
 
 func summon_hourglass() -> void:
+	print("I SUMMONED AN HOUR GLASS")
+	
 	var random_offsetX: float = randf_range(-4, 4)
 	var random_offsetY: float = randf_range(-4, 4)
 	
