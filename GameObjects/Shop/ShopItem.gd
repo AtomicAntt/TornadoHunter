@@ -11,6 +11,8 @@ var item_drop: Resource = preload("res://GameObjects/Items/ItemDrop.tscn")
 
 var current_cost: int = 10
 
+@export var single_purchase: bool = false # Ex.: Shield is single purchase since having many is too good.
+
 # I will be manually putting the sprite with the correct item to be compatible with shader
 
 func _ready() -> void:
@@ -20,7 +22,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if get_tree().get_node_count_in_group("ItemDrop") <= 0:
-		current_cost = 5 * pow(2, get_tree().get_node_count_in_group(item_group))
+		current_cost = 20 * (get_tree().get_node_count_in_group(item_group))
 	refresh_status(Global.gold)
 	
 
@@ -43,7 +45,8 @@ func _input(event: InputEvent) -> void:
 		Global.add_gold(-current_cost)
 		
 		# Why do I do this? Before the item is spawned for the player to grab, we should assume they will have that weapon in the future when they pick it up, so the price should be adjusted right away.
-		current_cost = 5 * pow(2, get_tree().get_node_count_in_group(item_group) + 1)
+		#current_cost = 5 * pow(2, get_tree().get_node_count_in_group(item_group) + 1)
+		current_cost = 20 * (get_tree().get_node_count_in_group(item_group) + 1)
 		
 		refresh_status(Global.gold)
 		
