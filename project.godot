@@ -45,6 +45,7 @@ Debris="Flying debris from the tornado boss"
 SpinningWind="Node2D that is like an orbitor but for the tornado boss. Call the attack function to launch it to the player!"
 CenterMarker="Marker2D that resembles the middle of the arena."
 Minion="Area2D that you can hurt(). These are summoned by bosses."
+MinionPosition="Marker2D representing a position which a minion can move to."
 
 [input]
 
