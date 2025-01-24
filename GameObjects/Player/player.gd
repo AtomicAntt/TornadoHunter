@@ -110,18 +110,21 @@ func add_item_orbit(item: Area2D):
 	
 	# 2 * pi * r / 50
 	if item.is_in_group("weapon"):
-		if $Orbitor2.get_child_count() < 6:
-			$Orbitor2.call_deferred("add_child", item)
-		elif $Orbitor3.get_child_count() < 9:
-			$Orbitor3.call_deferred("add_child", item)
+		if $Orbitor2.get_child_count() < 8:
+			#$Orbitor2.call_deferred("add_child", item)
+			$Orbitor2.add_child(item)
+		elif $Orbitor3.get_child_count() < 15:
+			#$Orbitor3.call_deferred("add_child", item)
+			$Orbitor3.add_child(item)
 	elif item.is_in_group("shield"):
-		$Orbitor1.call_deferred("add_child", item)
+		#$Orbitor1.call_deferred("add_child", item)
+		$Orbitor1.add_child(item)
 	
 	if not initializing:
 		$GetItem.play()
 
 func hurt(damage: int):
-	if !invulnerable:
+	if !invulnerable and state != States.DEAD:
 		lives -= damage
 		$AnimationPlayer.play("Hurt")
 		

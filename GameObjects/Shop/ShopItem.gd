@@ -12,6 +12,7 @@ var item_drop: Resource = preload("res://GameObjects/Items/ItemDrop.tscn")
 var current_cost: int = 10
 
 @export var single_purchase: bool = false # Ex.: Shield is single purchase since having many is too good.
+var available: bool = true # Once a single purchase is made, you may remove the 
 
 # I will be manually putting the sprite with the correct item to be compatible with shader
 
