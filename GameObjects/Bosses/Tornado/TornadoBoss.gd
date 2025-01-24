@@ -9,7 +9,7 @@ var attack_cooldown: float = 0.1
 var attack_time: float = 0.0
 
 # This is for when the boss is in idle, how much time needed until charging again? (charging means either moving somewhere or shooting some debris)
-var charge_cooldown: float = 2.0
+var charge_cooldown: float = 1.5
 var charge_time: float = 0.0
 
 var rotation_speed: float = 100

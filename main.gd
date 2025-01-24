@@ -63,8 +63,12 @@ func level_success() -> void:
 	gate.cutscene()
 
 func restart() -> void:
-	load_level(current_scene)
+	#load_level(current_scene)
 	#$BossMusic.play()
+	
+	load_level("Shop")
+	current_level = 0
+	Global.health = 6
 
 func level_fail() -> void:
 	$BossMusic.stop()

@@ -355,6 +355,7 @@ libraries = {
 stream = ExtResource("7_dnokx")
 
 [node name="Intro" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
 autostart = true
 

@@ -5,8 +5,8 @@ enum States {NORMAL, DEAD, DASHING}
 var state: States = States.NORMAL
 
 @export var SPEED: float = 200.0
-@export var max_lives: int = 10
-@export var lives: int = 6
+#@export var max_lives: int = 10
+#@export var lives: int = 6
 
 var dagger: Resource = preload("res://GameObjects/Items/Dagger.tscn")
 var shield: Resource = preload("res://GameObjects/Items/Shield.tscn")
@@ -20,7 +20,7 @@ var invulnerable: bool = false
 func _ready() -> void:
 	var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
 	if is_instance_valid(hearts_container):
-		hearts_container.update_hearts(lives)
+		hearts_container.update_hearts(Global.health)
 	
 	for i in range(Global.weapon_count):
 		var dagger_instance = dagger.instantiate()
@@ -125,7 +125,7 @@ func add_item_orbit(item: Area2D):
 
 func hurt(damage: int):
 	if !invulnerable and state != States.DEAD:
-		lives -= damage
+		Global.health -= damage
 		$AnimationPlayer.play("Hurt")
 		
 		var camera_shaker: CameraShaker = get_tree().get_nodes_in_group("Camera")[0]
@@ -139,9 +139,9 @@ func hurt(damage: int):
 		
 		var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
 		if is_instance_valid(hearts_container):
-			hearts_container.update_hearts(lives)
+			hearts_container.update_hearts(Global.health)
 		
-		if lives <= 0:
+		if Global.health <= 0:
 			death()
 
 func death() -> void:
