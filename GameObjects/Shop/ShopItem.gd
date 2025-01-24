@@ -9,22 +9,23 @@ var player_in_range: bool = false
 
 var item_drop: Resource = preload("res://GameObjects/Items/ItemDrop.tscn")
 
-var current_cost: int = 10
+@export var current_cost: int = 10
 
-@export var single_purchase: bool = false # Ex.: Shield is single purchase since having many is too good.
-var available: bool = true # Once a single purchase is made, you may remove the 
+# Im just gonna make a shield expensive
+#@export var single_purchase: bool = false # Ex.: Shield is single purchase since having many is too good.
+#var available: bool = true # Once a single purchase is made, you may remove the 
 
 # I will be manually putting the sprite with the correct item to be compatible with shader
 
 func _ready() -> void:
 	#current_cost = 5 * pow(2, get_tree().get_node_count_in_group(item_group))
-	#refresh_status(Global.gold)
+	refresh_status(Global.gold)
 	Global.update_gold.connect(refresh_status)
 
-func _physics_process(delta: float) -> void:
-	if get_tree().get_node_count_in_group("ItemDrop") <= 0:
-		current_cost = 20 * (get_tree().get_node_count_in_group(item_group))
-	refresh_status(Global.gold)
+#func _physics_process(delta: float) -> void:
+	#if get_tree().get_node_count_in_group("ItemDrop") <= 0:
+		#current_cost = 20 * (get_tree().get_node_count_in_group(item_group))
+	#refresh_status(Global.gold)
 	
 
 func _on_area_entered(area: Area2D) -> void:
@@ -41,13 +42,9 @@ func _on_area_exited(area: Area2D) -> void:
 var purchasing: bool = false
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and player_in_range and Global.gold >= current_cost and not purchasing and get_tree().get_node_count_in_group("ItemDrop") <= 0:
+	if event.is_action_pressed("interact") and player_in_range and Global.gold >= current_cost and not purchasing:
 		purchasing = true
 		Global.add_gold(-current_cost)
-		
-		# Why do I do this? Before the item is spawned for the player to grab, we should assume they will have that weapon in the future when they pick it up, so the price should be adjusted right away.
-		#current_cost = 5 * pow(2, get_tree().get_node_count_in_group(item_group) + 1)
-		current_cost = 20 * (get_tree().get_node_count_in_group(item_group) + 1)
 		
 		refresh_status(Global.gold)
 		

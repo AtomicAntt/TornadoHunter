@@ -11,6 +11,8 @@ var direction: Vector2 = Vector2.ZERO
 @export var static_projectile: bool = false
 @export var spinning: bool = false
 
+@export var damage: int = 1
+
 var dissolving: bool = false
 
 func set_direction(new_direction: Vector2) -> void:
@@ -54,7 +56,7 @@ func _on_area_entered(area: Area2D) -> void:
 		if is_instance_valid(player):
 			# Why do this if hurting player won't work if they are invulnerable anyway? So that the projectile does not disappear when entering their hitbox while they are invulnerable.
 			if !player.is_invulnerable():
-				player.hurt(1)
+				player.hurt(damage)
 				queue_free()
 
 func _on_expiration_timer_timeout() -> void:

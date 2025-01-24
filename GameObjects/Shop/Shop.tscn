@@ -9,11 +9,13 @@
 
 [node name="ShopItem" parent="." instance=ExtResource("1_riuag")]
 position = Vector2(-45, 85)
+current_cost = 35
 
 [node name="ShopItem2" parent="." instance=ExtResource("1_riuag")]
 position = Vector2(-149, 85)
 item_sold = ExtResource("2_jjkpr")
 item_group = "shield"
+current_cost = 80
 
 [node name="Sprite2D" parent="ShopItem2" index="1"]
 texture = ExtResource("3_wyk2l")

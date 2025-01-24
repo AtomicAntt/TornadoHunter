@@ -109,7 +109,10 @@ func _on_area_entered(area: Area2D) -> void:
 		var player: Player = get_tree().get_nodes_in_group("Player")[0]
 		if is_instance_valid(player):
 			if !player.is_invulnerable():
-				player.hurt(1)
+				if state == States.CHARGING:
+					player.hurt(2)
+				else:
+					player.hurt(1)
 
 func set_accelerating() -> void:
 	state = States.ACCELERATING

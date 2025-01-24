@@ -45,6 +45,9 @@ func death() -> void:
 		for enemy_attack: EnemyProjectile in get_tree().get_nodes_in_group("EnemyAttack"):
 			enemy_attack.dissolve()
 		
+		for minion: Minion in get_tree().get_nodes_in_group("Minion"):
+			minion.hurt(minion.minion_max_health)
+		
 		$DeathAnimation.play("Death")
 		$Death.play()
 		

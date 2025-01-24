@@ -311,6 +311,7 @@ _data = {
 script = ExtResource("1_j5o4q")
 max_health = 300.0
 health = 300.0
+coin_value = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_wg85p")
