@@ -18,9 +18,13 @@ animations = [{
 
 [node name="PlayerTumbleweed" type="Area2D"]
 script = ExtResource("1_exuo2")
+spinning = true
+rotation_speed = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4ut0o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_m3mwp")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,8 +1,11 @@
 class_name PlayerProjectile
 extends Area2D
 
-@export var speed: float = 100
-@export var steer_force = 5
+@export var speed: float = 200
+@export var steer_force: float = 5
+@export var damage: float = 5
+@export var spinning: bool = false
+@export var rotation_speed: float = 0.0
 
 var velocity: Vector2 = Vector2.ZERO
 var acceleration: Vector2 = Vector2.ZERO
@@ -49,3 +52,17 @@ func _physics_process(delta: float) -> void:
 	velocity += acceleration * delta
 	velocity = velocity.limit_length(speed)
 	position += velocity * delta
+	
+	if spinning:
+		var new_rotation = rotation_degrees + rotation_speed * delta
+		rotation_degrees = fmod(new_rotation, 360)
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Boss"):
+		var boss: Boss = area
+		boss.hurt(damage)
+		queue_free()
+	elif area.is_in_group("Minion"):
+		var minion: Minion = area
+		minion.hurt(damage)
+		queue_free()
