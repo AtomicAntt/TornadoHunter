@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bqxo4f1j1065a"]
+[gd_scene load_steps=43 format=3 uid="uid://bqxo4f1j1065a"]
 
 [ext_resource type="Texture2D" uid="uid://ca7x54j7rxw6g" path="res://GameAssets/ClockBoss/Hourglass-Sheet.png" id="1_2ns7x"]
 [ext_resource type="Script" path="res://GameObjects/Bosses/Clock/Minion.gd" id="1_snorn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_r8lak"]
 [ext_resource type="Texture2D" uid="uid://bqgux00qc20a6" path="res://GameAssets/ClockBoss/SmallHealthBar.png" id="4_v02m6"]
 [ext_resource type="Texture2D" uid="uid://bqqg4tlxnb13x" path="res://GameAssets/ClockBoss/SmallDamageBar.png" id="6_1gyh4"]
+[ext_resource type="Texture2D" uid="uid://cxykayfyr6o5k" path="res://GameAssets/ClockBoss/SmallProgressUnderModified.png" id="6_otygl"]
 [ext_resource type="AudioStream" uid="uid://bfu0hrnja4bk8" path="res://GameAssets/SFX/Bosses/HurtSound2.wav" id="8_mnidp"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="9_cmyh5"]
 [ext_resource type="Texture2D" uid="uid://crvimrcs61whp" path="res://GameAssets/ClockBoss/SingleHourglass2.png" id="10_7vu02"]
@@ -446,6 +447,7 @@ autoplay = "Stunned"
 frame_progress = 0.32726
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0)
 offset_left = -14.0
 offset_top = -22.0
 offset_right = 26.0
@@ -457,6 +459,7 @@ show_behind_parent = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture_under = ExtResource("6_otygl")
 texture_progress = ExtResource("6_1gyh4")
 
 [node name="HurtAnimation" type="AnimationPlayer" parent="."]

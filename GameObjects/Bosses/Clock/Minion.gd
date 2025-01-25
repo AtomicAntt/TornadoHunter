@@ -5,6 +5,7 @@ extends Area2D
 @export var minion_health: float = 100
 
 @onready var progress_under: TextureProgressBar = $HealthBar/DamageBar
+@onready var health_bar: TextureProgressBar = $HealthBar
 var duration: float = 0.3
 
 @export var speed: float = 100
@@ -67,7 +68,10 @@ func set_idle() -> void:
 
 func change_health(max_health: float, health: float) -> void:
 	var new_value: float = (health/max_health) * 100
-	$HealthBar.value = new_value
+	health_bar.value = new_value
+	
+	var visibility_tween: Tween = get_tree().create_tween()
+	visibility_tween.tween_property(health_bar, "modulate:a", 1.0, 0.5)
 	
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(progress_under, "value", new_value, duration)
