@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ybj05h147s3q"]
+[gd_scene load_steps=35 format=3 uid="uid://ybj05h147s3q"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Tornado/TornadoBoss.gd" id="1_h6fcf"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_1dmj2"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dvbne4nvudc4w" path="res://GameAssets/SFX/Bosses/Magic1.wav" id="10_8rviw"]
 [ext_resource type="AudioStream" uid="uid://bgxqnxhl8123y" path="res://GameAssets/SFX/Bosses/TornadoThrow.wav" id="11_aex33"]
 [ext_resource type="AudioStream" uid="uid://b7bgk24h1kgwl" path="res://GameAssets/SFX/Bosses/TornadoMove.wav" id="12_bngh8"]
+[ext_resource type="AudioStream" uid="uid://c4khbsb8i5hrw" path="res://GameAssets/SFX/Bosses/Sword2.wav" id="13_q4c83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qv3o"]
 size = Vector2(39, 51)
@@ -386,6 +387,9 @@ stream = ExtResource("11_aex33")
 
 [node name="TornadoMove" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_bngh8")
+
+[node name="Hurt2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_q4c83")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

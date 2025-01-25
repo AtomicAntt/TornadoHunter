@@ -22,8 +22,12 @@ func hurt(damage: float) -> void:
 	for bossHealth: BossHealth in get_tree().get_nodes_in_group("BossHealthBar"):
 		bossHealth.change_health(max_health, health)
 	$AnimationPlayer.play("Hurt")
-	$Hurt.play()
+	if damage < 5:
+		$Hurt.play()
+	else:
+		$Hurt2.play()
 	$Hurt.set_pitch_scale(randf_range(0.5, 1.5))
+	$Hurt2.set_pitch_scale(randf_range(0.5, 1.5))
 	
 	if health <= 0:
 		death()

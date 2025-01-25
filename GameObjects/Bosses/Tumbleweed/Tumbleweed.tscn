@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://brfck1ab6qwlk"]
+[gd_scene load_steps=33 format=3 uid="uid://brfck1ab6qwlk"]
 
 [ext_resource type="Script" path="res://GameObjects/Bosses/Tumbleweed/Tumbleweed.gd" id="1_j5o4q"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Boss.gdshader" id="2_d1eh6"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://ja3sjterr26g" path="res://GameAssets/SFX/Bosses/TumbleweedImpact2.wav" id="9_136fk"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="10_msu5c"]
 [ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="11_y3321"]
+[ext_resource type="AudioStream" uid="uid://c4khbsb8i5hrw" path="res://GameAssets/SFX/Bosses/Sword2.wav" id="12_ytokm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
 shader = ExtResource("2_d1eh6")
@@ -385,6 +386,9 @@ libraries = {
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_y3321")
+
+[node name="Hurt2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_ytokm")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
