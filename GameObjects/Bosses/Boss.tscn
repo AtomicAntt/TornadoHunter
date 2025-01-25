@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="4_imhm8"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="4_jx2wr"]
 [ext_resource type="AudioStream" uid="uid://bfu0hrnja4bk8" path="res://GameAssets/SFX/Bosses/HurtSound2.wav" id="6_aqvxi"]
-[ext_resource type="AudioStream" uid="uid://c4khbsb8i5hrw" path="res://GameAssets/SFX/Bosses/Sword2.wav" id="7_pvt3r"]
+[ext_resource type="AudioStream" uid="uid://crisxp07ey0rf" path="res://GameAssets/SFX/Bosses/TumbleweedHurt.wav" id="7_e5bnm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wg85p"]
 shader = ExtResource("2_cfj6g")
@@ -118,6 +118,6 @@ libraries = {
 stream = ExtResource("6_aqvxi")
 
 [node name="Hurt2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_pvt3r")
+stream = ExtResource("7_e5bnm")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
