@@ -39,7 +39,9 @@ func _physics_process(delta: float) -> void:
 			if move_time >= move_cooldown:
 				move_randomly() # Also resets move time
 		States.DISABLED: # Dead
-			pass
+			if is_instance_valid(movement_tween):
+				if movement_tween.is_running():
+					movement_tween.stop()
 		States.CHARGING: # Goes towards the player until it hits the wall or the player. Afterwards, it gets stunned.
 			global_position += last_player_direction * charging_speed * delta
 		States.STUNNED: # Do nothing for a time, then go back to IDLE.

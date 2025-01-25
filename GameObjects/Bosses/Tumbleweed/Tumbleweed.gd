@@ -160,6 +160,9 @@ func impact(sound: bool) -> void:
 			minion_instance.set_speed(100.0)
 			minion_instance.set_friction(10.0)
 			minion_instance.set_time(30.0)
+			minion_instance.spinning = true
+			minion_instance.rotation_speed = 400
+			
 			minion_instance.global_position = global_position
 			get_parent().call_deferred("add_child", minion_instance)
 

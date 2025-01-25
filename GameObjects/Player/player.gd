@@ -113,7 +113,7 @@ func add_item_orbit(item: Area2D):
 		if $Orbitor2.get_child_count() < 8:
 			#$Orbitor2.call_deferred("add_child", item)
 			$Orbitor2.add_child(item)
-		elif $Orbitor3.get_child_count() < 15:
+		elif $Orbitor3.get_child_count() < 12:
 			#$Orbitor3.call_deferred("add_child", item)
 			$Orbitor3.add_child(item)
 	elif item.is_in_group("shield"):
