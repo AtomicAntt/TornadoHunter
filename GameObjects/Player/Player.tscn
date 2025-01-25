@@ -474,13 +474,13 @@ stream = ExtResource("61_0jx1p")
 [node name="GetItem" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("62_ockwp")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="WeaponActivator" type="Area2D" parent="." groups=["WeaponActivator"]]
 position = Vector2(0, -45)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponActivator"]
 shape = SubResource("CircleShape2D_txmct")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WeaponActivator"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_t5qkq")
 frame_progress = 0.906226
