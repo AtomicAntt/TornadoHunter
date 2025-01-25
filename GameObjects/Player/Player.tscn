@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://c24p563j7y18m"]
+[gd_scene load_steps=82 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/player.gd" id="1_s0kyb"]
 [ext_resource type="Texture2D" uid="uid://bef07gt21eoas" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
@@ -60,6 +60,7 @@
 [ext_resource type="AudioStream" uid="uid://crsckx2ysrks1" path="res://GameAssets/SFX/Player/PlayerHit.wav" id="58_mt3s5"]
 [ext_resource type="AudioStream" uid="uid://dbgftv2totyjg" path="res://GameAssets/SFX/Player/PlayerLose.wav" id="59_ogr4d"]
 [ext_resource type="AudioStream" uid="uid://7wd458747mvt" path="res://GameAssets/SFX/Player/GetCoin.wav" id="61_0jx1p"]
+[ext_resource type="Texture2D" uid="uid://uwc32wyji0w5" path="res://GameAssets/Items/Weapon/ItemEnhancer.png" id="62_76ns8"]
 [ext_resource type="AudioStream" uid="uid://d27aoky7b5vur" path="res://GameAssets/SFX/Player/Retro PickUp 18.wav" id="62_ockwp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4d0dc"]
@@ -368,8 +369,54 @@ _data = {
 "RESET": SubResource("Animation_awhd7")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_txmct"]
+radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpuxl"]
+atlas = ExtResource("62_76ns8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqe18"]
+atlas = ExtResource("62_76ns8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrxk4"]
+atlas = ExtResource("62_76ns8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4notv"]
+atlas = ExtResource("62_76ns8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c250"]
+atlas = ExtResource("62_76ns8")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t5qkq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpuxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqe18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrxk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4notv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c250")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-texture_filter = 2
+texture_filter = 1
 script = ExtResource("1_s0kyb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -426,5 +473,16 @@ stream = ExtResource("61_0jx1p")
 
 [node name="GetItem" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("62_ockwp")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_txmct")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_t5qkq")
+frame_progress = 0.906226
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
