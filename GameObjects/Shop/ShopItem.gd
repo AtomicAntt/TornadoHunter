@@ -62,6 +62,7 @@ func _input(event: InputEvent) -> void:
 		item_instance.explodeVelocity = 30000
 		item_instance.velocity = 360
 		item_instance.explode_outwards()
+		$Appear.play()
 		
 		purchasing = false
 	elif event.is_action_pressed("interact") and player_in_range:

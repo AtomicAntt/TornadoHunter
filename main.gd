@@ -72,6 +72,7 @@ func level_success() -> void:
 	item_instance.explodeVelocity = 0
 	item_instance.velocity = 0
 	item_instance.explode_outwards()
+	item_instance.god_ray()
 	
 	await get_tree().create_timer(1.0).timeout
 	

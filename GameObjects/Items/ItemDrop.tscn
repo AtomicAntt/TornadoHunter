@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cct8ahr34ib36"]
+[gd_scene load_steps=12 format=3 uid="uid://cct8ahr34ib36"]
 
 [ext_resource type="Script" path="res://GameObjects/Items/item_drop.gd" id="1_ayu7p"]
 [ext_resource type="PackedScene" uid="uid://dn2cspiqg0wsk" path="res://GameObjects/Items/Dagger.tscn" id="2_shf7w"]
 [ext_resource type="Texture2D" uid="uid://d4avqbsnyl724" path="res://GameAssets/Items/Weapon/prototype knife.png" id="3_f3ehp"]
-[ext_resource type="AudioStream" uid="uid://d0sxda65thv66" path="res://GameAssets/SFX/Player/Retro Magic 06.wav" id="4_uepg4"]
+[ext_resource type="Shader" path="res://GameAssets/Shaders/Godrays.gdshader" id="5_osqxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mo6ai"]
 size = Vector2(11, 13)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d0v67"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ob6kp"]
 animations = [{
@@ -19,6 +21,58 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ib6og"]
+shader = ExtResource("5_osqxu")
+shader_parameter/angle = 0.0
+shader_parameter/position = 0.0
+shader_parameter/spread = 0.163
+shader_parameter/cutoff = 0.415
+shader_parameter/falloff = 0.2
+shader_parameter/edge_fade = 0.522
+shader_parameter/speed = 4.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="Animation" id="Animation_ex7q2"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GodRay:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.415, 0.1]
+}
+
+[sub_resource type="Animation" id="Animation_6abcn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GodRay:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.415]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdvup"]
+_data = {
+"Open": SubResource("Animation_ex7q2"),
+"RESET": SubResource("Animation_6abcn")
+}
+
 [node name="ItemDrop" type="Area2D" groups=["ItemDrop"]]
 script = ExtResource("1_ayu7p")
 item = ExtResource("2_shf7w")
@@ -28,9 +82,20 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_mo6ai")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_d0v67")
 sprite_frames = SubResource("SpriteFrames_ob6kp")
 
-[node name="Appear" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_uepg4")
+[node name="GodRay" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ib6og")
+offset_left = -18.0
+offset_top = -412.0
+offset_right = 22.0
+offset_bottom = 8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pdvup")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

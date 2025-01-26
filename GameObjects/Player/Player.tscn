@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://c24p563j7y18m"]
+[gd_scene load_steps=81 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/player.gd" id="1_s0kyb"]
 [ext_resource type="Texture2D" uid="uid://bef07gt21eoas" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
@@ -55,7 +55,6 @@
 [ext_resource type="Texture2D" uid="uid://d0sixxjclv14b" path="res://GameAssets/Player/Turn/turn18.png" id="51_p520s"]
 [ext_resource type="Texture2D" uid="uid://j4rlk1a8sv5c" path="res://GameAssets/Player/Turn/turn19.png" id="52_71pll"]
 [ext_resource type="Script" path="res://GameObjects/Player/ScreenShake.gd" id="53_nwfw7"]
-[ext_resource type="PackedScene" uid="uid://dfifaxgiu5hxa" path="res://GameObjects/Items/TumbleweedDagger.tscn" id="56_yc0xc"]
 [ext_resource type="AudioStream" uid="uid://bw66hoflg4ecd" path="res://GameAssets/SFX/Player/PlayerHurt.wav" id="57_jmpfg"]
 [ext_resource type="AudioStream" uid="uid://crsckx2ysrks1" path="res://GameAssets/SFX/Player/PlayerHit.wav" id="58_mt3s5"]
 [ext_resource type="AudioStream" uid="uid://dbgftv2totyjg" path="res://GameAssets/SFX/Player/PlayerLose.wav" id="59_ogr4d"]
@@ -438,8 +437,6 @@ script = ExtResource("53_nwfw7")
 
 [node name="Orbitor2" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(50, 50)
-
-[node name="TumbleweedDagger" parent="Orbitor2" instance=ExtResource("56_yc0xc")]
 
 [node name="Orbitor3" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(75, 75)

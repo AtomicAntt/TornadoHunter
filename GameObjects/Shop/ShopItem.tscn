@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cx3wqu64bykqr"]
+[gd_scene load_steps=14 format=3 uid="uid://cx3wqu64bykqr"]
 
 [ext_resource type="Script" path="res://GameObjects/Shop/ShopItem.gd" id="1_kfllk"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Highlight.gdshader" id="1_wo701"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://dj388qh6rsv5c" path="res://GameAssets/UI/Themes/GameText.tres" id="4_37t3g"]
 [ext_resource type="Texture2D" uid="uid://cms4pofmnuy0o" path="res://GameAssets/Items/Gold/coin0.png" id="5_lg6fl"]
 [ext_resource type="AudioStream" uid="uid://dhpp16gds6xl" path="res://GameAssets/SFX/Player/InvalidPurchase.wav" id="7_a4p0s"]
+[ext_resource type="AudioStream" uid="uid://d0sxda65thv66" path="res://GameAssets/SFX/Player/Retro Magic 06.wav" id="8_6myjg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a4nd5"]
 radius = 27.074
@@ -131,6 +132,9 @@ text = "Press 'F' to purchase!"
 
 [node name="InvalidPurchase" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_a4p0s")
+
+[node name="Appear" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_6myjg")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

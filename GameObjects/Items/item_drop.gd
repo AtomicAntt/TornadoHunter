@@ -5,7 +5,6 @@ extends Pickup
 
 func _ready() -> void:
 	refresh_sprite()
-	$Appear.play()
 
 func _physics_process(delta: float) -> void:
 	moveTowardsPlayer(delta) # Remember, this only happens if it is allowed to (which is if exploded or else explicitly allowed from Pickup class)
@@ -30,3 +29,7 @@ func refresh_sprite() -> void:
 	var sprite: AnimatedSprite2D = item_instance.get_node("AnimatedSprite2D")
 	var sprite_instance: AnimatedSprite2D = sprite.duplicate()
 	add_child(sprite_instance)
+
+func god_ray() -> void:
+	$GodRay.visible = true
+	$AnimationPlayer.play("Open")
