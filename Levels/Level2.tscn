@@ -1884,3 +1884,6 @@ position = Vector2(-105, 153)
 
 [node name="Marker2D3" type="Marker2D" parent="Markers" groups=["BossPosition"]]
 position = Vector2(49, -33)
+
+[node name="CenterMarker" type="Marker2D" parent="Markers" groups=["CenterMarker"]]
+position = Vector2(-96, 54)

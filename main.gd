@@ -5,6 +5,8 @@ extends Control
 var level_instance: Node2D
 
 var shop: Resource = preload("res://GameObjects/Shop/Shop.tscn")
+var item_drop: Resource = preload("res://GameObjects/Items/ItemDrop.tscn")
+var boss_drop: PackedScene = preload("res://GameObjects/Items/TumbleweedDagger.tscn")
 
 var current_scene: String
 var current_level: int = 1
@@ -57,6 +59,20 @@ func load_level(level_name: String) -> void:
 		$ShopMusic.play()
 
 func level_success() -> void:
+	var item_instance: ItemDrop = item_drop.instantiate()
+		
+	item_instance.set_item(boss_drop)
+	item_instance.refresh_sprite()
+	item_instance.global_position = get_tree().get_nodes_in_group("CenterMarker")[0].global_position
+		
+	call_deferred("add_child", item_instance)
+
+	item_instance.explodeMinDistance = 0
+	item_instance.explodeMaxDistance = 0
+	item_instance.explodeVelocity = 0
+	item_instance.velocity = 0
+	item_instance.explode_outwards()
+	
 	await get_tree().create_timer(1.0).timeout
 	
 	var gate: Gate = get_tree().get_nodes_in_group("Gate")[0]

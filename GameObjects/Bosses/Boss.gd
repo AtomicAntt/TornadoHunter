@@ -62,8 +62,9 @@ func death() -> void:
 			coin_instance.explode_outwards()
 			coin_instance.set_value(coin_value)
 		
-		# Later, if there are double bosses, you must check if there are any boss instances left
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
+		
+		# Later, if there are double bosses, you must check if there are any boss instances left
 		if is_instance_valid(main):
 			main.level_success()
 		
