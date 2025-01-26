@@ -1875,4 +1875,4 @@ position = Vector2(-90, 58)
 [node name="Gate" parent="." instance=ExtResource("7_xk8t1")]
 
 [node name="CenterMarker" type="Marker2D" parent="." groups=["CenterMarker"]]
-position = Vector2(-98, 50)
+position = Vector2(-169, 50)

@@ -23,6 +23,10 @@ func _ready() -> void:
 	if is_instance_valid(hearts_container):
 		hearts_container.update_hearts(Global.health)
 	
+	if Global.special_weapon_count >= 1:
+		var tumbleweed_dagger_instance = tumbleweed_weapon.instantiate()
+		add_item_orbit(tumbleweed_dagger_instance)
+	
 	for i in range(Global.weapon_count):
 		var dagger_instance = dagger.instantiate()
 		add_item_orbit(dagger_instance)
@@ -31,9 +35,6 @@ func _ready() -> void:
 		var shield_instance = shield.instantiate()
 		add_item_orbit(shield_instance)
 		
-	if Global.special_weapon_count >= 1:
-		var tumbleweed_dagger_instance = tumbleweed_weapon.instantiate()
-		add_item_orbit(tumbleweed_dagger_instance)
 	
 	initializing = false
 

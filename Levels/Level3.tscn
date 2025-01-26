@@ -1883,7 +1883,7 @@ position = Vector2(-99, -45)
 position = Vector2(94, 68)
 
 [node name="CenterMarker" type="Marker2D" parent="Markers" groups=["CenterMarker"]]
-position = Vector2(-97, 42)
+position = Vector2(-192, 38)
 
 [node name="MinionMarkers" type="Node2D" parent="."]
 
