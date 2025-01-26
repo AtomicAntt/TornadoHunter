@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	var _delta: float = delta * Global.time_scale
 	if is_instance_valid(movement_tween):
 		movement_tween.set_speed_scale(Global.time_scale)
+	$AnimatedSprite2D.speed_scale = Global.time_scale
 	
 	match state:
 		States.IDLE:
