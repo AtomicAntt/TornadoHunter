@@ -31,18 +31,20 @@ var big_clock_spinner: Resource = preload("res://GameObjects/Bosses/Clock/BigClo
 var hour_glass: Resource = preload("res://GameObjects/Bosses/Clock/hourglass.tscn")
 
 func _physics_process(delta: float) -> void:
+	var _delta: float = delta * Global.time_scale
+	
 	match state:
 		States.IDLE:
 			if $Intro.is_stopped():
-				move_time += delta
+				move_time += _delta
 			
 			if move_time >= move_cooldown:
 				set_moving()
 		States.MOVING: # This state is done as an intermission to the shooting state. When the animationplayer for this finishes, it will switch to the shooting state.
 			pass
 		States.SHOOTING: # It can go into shooting state after it teleports and the warning was given in the TeleportAnimation animation player ("Teleport").
-			shooting_time += delta
-			fire_time += delta
+			shooting_time += _delta
+			fire_time += _delta
 			
 			if fire_time >= fire_cooldown:
 				fire_time = 0.0
@@ -51,8 +53,8 @@ func _physics_process(delta: float) -> void:
 			if shooting_time >= shooting_cooldown:
 				set_idle()
 		States.SPECIAL: # It can go into the special state after it teleports and warning was given in the TeleportAnimation animation player ("TeleportSpecial").
-			special_time += delta
-			special_attack_time += delta
+			special_time += _delta
+			special_attack_time += _delta
 			
 			# Ex.: If there is 9 to be summoned, it takes only 1/3 seconds to summon one.
 			if special_attack_time >= (special_cooldown / summon_amount): 

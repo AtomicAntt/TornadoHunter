@@ -33,9 +33,13 @@ func _ready() -> void:
 	$TeleportAnimation.play("Teleport")
 
 func _physics_process(delta: float) -> void:
+	var _delta: float = delta * Global.time_scale
+	if is_instance_valid(movement_tween):
+		movement_tween.set_speed_scale(Global.time_scale)
+	
 	match state:
 		States.IDLE:
-			move_time += delta
+			move_time += _delta
 			
 			if move_time >= move_cooldown:
 				move_randomly() # Also resets move time
@@ -44,9 +48,9 @@ func _physics_process(delta: float) -> void:
 				if movement_tween.is_running():
 					movement_tween.stop()
 		States.CHARGING: # Goes towards the player until it hits the wall or the player. Afterwards, it gets stunned.
-			global_position += last_player_direction * charging_speed * delta
+			global_position += last_player_direction * charging_speed * _delta
 		States.STUNNED: # Do nothing for a time, then go back to IDLE.
-			stun_time += delta
+			stun_time += _delta
 			
 			if stun_time >= stun_cooldown:
 				set_idle()
@@ -55,7 +59,7 @@ func _physics_process(delta: float) -> void:
 				if not movement_tween.is_running():
 					start_warning()
 		States.WARNING: # After moving, the minion will warn the player where it is going to go.
-			charge_time += delta
+			charge_time += _delta
 			
 			if charge_time >= charging_cooldown:
 				charge_time = 0.0

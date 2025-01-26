@@ -29,13 +29,14 @@ func set_time(new_time: float) -> void:
 	$ExpirationTimer.wait_time = new_time
 
 func _physics_process(delta: float) -> void:
-	global_position += direction * speed * delta
-	speed -= friction * delta
-	speed += acceleration * delta
+	var _delta: float = delta * Global.time_scale
+	global_position += direction * speed * _delta
+	speed -= friction * _delta
+	speed += acceleration * _delta
 	speed = clampf(speed, 0.0, max_speed)
 	
 	if spinning:
-		var new_rotation = rotation_degrees + rotation_speed * delta
+		var new_rotation = rotation_degrees + rotation_speed * _delta
 		rotation_degrees = fmod(new_rotation, 360)
 	
 	if get_tree().get_node_count_in_group("Boss") <= 0 and !dissolving:

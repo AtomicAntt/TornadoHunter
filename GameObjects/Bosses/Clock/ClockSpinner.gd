@@ -18,10 +18,11 @@ func set_speed(new_speed: float) -> void:
 	speed = new_speed
 	
 func _physics_process(delta: float) -> void:
-	global_position += direction * speed * delta
+	var _delta: float = delta * Global.time_scale
+	global_position += direction * speed * _delta
 	
-	var new_hour_rotation = hour.rotation_degrees + hour_rotation_speed * delta
+	var new_hour_rotation = hour.rotation_degrees + hour_rotation_speed * _delta
 	hour.rotation_degrees = fmod(new_hour_rotation, 360)
 	
-	var new_minute_rotation = minute.rotation_degrees + minute_rotation_speed * delta
+	var new_minute_rotation = minute.rotation_degrees + minute_rotation_speed * _delta
 	minute.rotation_degrees = fmod(new_minute_rotation, 360)
