@@ -47,6 +47,7 @@ CenterMarker="Marker2D that resembles the middle of the arena."
 Minion="Area2D that you can hurt(). These are summoned by bosses."
 MinionPosition="Marker2D representing a position which a minion can move to."
 WeaponActivator="Area2D that is a child of the Player. If a weapon touches it and has a special effect, you should activate that effect!"
+BossItem="Area2D that is an item but also from a boss. This group exists so that I can give priority to this item."
 
 [input]
 

@@ -18,7 +18,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="TumbleweedDagger" type="Area2D" groups=["item", "weapon"]]
+[node name="TumbleweedDagger" type="Area2D" groups=["BossItem", "item", "weapon"]]
 script = ExtResource("1_xbe2b")
 weapon = 1
 damage = 5.0

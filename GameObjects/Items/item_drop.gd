@@ -2,6 +2,7 @@ class_name ItemDrop
 extends Pickup
 
 @export var item: PackedScene
+var stored_item_instance: Area2D
 
 func _ready() -> void:
 	refresh_sprite()
@@ -15,6 +16,7 @@ func _on_area_entered(area: Area2D) -> void:
 		if is_instance_valid(player):
 			var item_instance: Area2D = item.instantiate()
 			player.add_item_orbit(item_instance)
+			
 			queue_free()
 
 func set_item(item_set: PackedScene) -> void:
@@ -26,6 +28,7 @@ func refresh_sprite() -> void:
 			child.queue_free()
 	
 	var item_instance: Area2D = item.instantiate()
+	stored_item_instance = item_instance
 	var sprite: AnimatedSprite2D = item_instance.get_node("AnimatedSprite2D")
 	var sprite_instance: AnimatedSprite2D = sprite.duplicate()
 	add_child(sprite_instance)

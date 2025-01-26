@@ -100,3 +100,30 @@ func level_fail() -> void:
 func load_next_level() -> void:
 	current_level += 1
 	load_level("Level" + str(current_level))
+
+var time_frozen: float = 0.0
+var is_frozen: bool = false
+
+func _physics_process(delta: float) -> void:
+	time_frozen -= delta
+	if time_frozen <= 0:
+		time_frozen = 0.0
+		resume_time()
+
+func freeze_time() -> void:
+	is_frozen = true
+	var tween: Tween = create_tween()
+	tween.tween_method(set_time, Global.time_scale, 0.0, 0.2).set_trans(Tween.TRANS_CUBIC)
+	tween.set_parallel()
+	tween.tween_property($World/CanvasLayer/Grayscale.material, "shader_parameter/grayness", 1.0, 0.2).from(0.0).set_trans(Tween.TRANS_CUBIC)
+	
+
+func resume_time() -> void:
+	is_frozen = false
+	var tween: Tween = create_tween()
+	tween.tween_method(set_time, Global.time_scale, 1.0, 0.2).set_trans(Tween.TRANS_CUBIC)
+	tween.set_parallel()
+	tween.tween_property($World/CanvasLayer/Grayscale.material, "shader_parameter/grayness", 0.0, 0.2).from(1.0).set_trans(Tween.TRANS_CUBIC)
+	
+func set_time(value: float) -> void:
+	Global.time_scale = value

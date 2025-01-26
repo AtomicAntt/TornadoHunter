@@ -10,6 +10,8 @@ var special_weapon_count: int = 0
 
 var health: int = 6
 
+var time_scale: float = 1.0
+
 signal update_gold
 
 func add_gold(amount: int) -> void:

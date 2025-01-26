@@ -18,11 +18,7 @@ var initializing: bool = true # Purpose: so that the item drop sound does not pl
 # Remember, the invulnerability is set false and true by the AnimationPlayer
 var invulnerable: bool = false
 
-func _ready() -> void:
-	var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
-	if is_instance_valid(hearts_container):
-		hearts_container.update_hearts(Global.health)
-	
+func restore_items() -> void:
 	if Global.special_weapon_count >= 1:
 		var tumbleweed_dagger_instance = tumbleweed_weapon.instantiate()
 		add_item_orbit(tumbleweed_dagger_instance)
@@ -34,8 +30,14 @@ func _ready() -> void:
 	for i in range(Global.shield_count):
 		var shield_instance = shield.instantiate()
 		add_item_orbit(shield_instance)
-		
+
+func _ready() -> void:
+	var hearts_container: HeartsContainer = get_tree().get_nodes_in_group("HeartsContainer")[0]
+	if is_instance_valid(hearts_container):
+		hearts_container.update_hearts(Global.health)
 	
+	restore_items()
+		
 	initializing = false
 
 func _physics_process(_delta: float) -> void:
@@ -65,7 +67,7 @@ func _physics_process(_delta: float) -> void:
 				get_basic_movement()
 				if velocity.length() > 0: # Looks like the player started moving after checking their input! Lets get them back to normal state.
 					state = States.NORMAL
-			
+
 
 func get_basic_movement() -> void:
 	velocity = Vector2.ZERO
@@ -113,10 +115,14 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		velocity = Vector2.ZERO
 
 func add_item_orbit(item: Area2D):
+	var normal_weapon_count: int = 0
+	for i in $Orbitor2.get_children():
+		if i.is_in_group("weapon") and not i.is_in_group("BossItem"):
+			normal_weapon_count += 1
 	
 	# 2 * pi * r / 50
 	if item.is_in_group("weapon"):
-		if $Orbitor2.get_child_count() < 8:
+		if normal_weapon_count < 6 or item.is_in_group("BossItem"):
 			#$Orbitor2.call_deferred("add_child", item)
 			$Orbitor2.add_child(item)
 		elif $Orbitor3.get_child_count() < 12:
