@@ -110,7 +110,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Label" type="Label" parent="World/CanvasLayer"]
+[node name="TimeCounterLabel" type="Label" parent="World/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

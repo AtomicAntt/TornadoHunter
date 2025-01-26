@@ -90,11 +90,16 @@ func hurt(damage: float) -> void:
 func death() -> void:
 	if state != States.DISABLED:
 		state = States.DISABLED
+		
 		$AnimatedSprite2D.visible = false
 		$DeathSprite.visible = true
 		
 		$DeathAnimation.play("Death")
 		$Death.play()
+		
+		var main: Main = get_tree().get_nodes_in_group("Main")[0]
+		main.freeze_time(3.0)
+		
 
 func move_randomly() -> void:
 	state = States.MOVING
