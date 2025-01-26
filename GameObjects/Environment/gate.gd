@@ -49,15 +49,16 @@ func cutscene() -> void:
 	# If the player is standing next to the gate already
 	
 	for area in $Area2D.get_overlapping_areas():
-		if area.is_in_group("PlayerHitbox"):
+		if area.is_in_group("PlayerHitbox") and get_tree().get_node_count_in_group("ItemDrop") <= 0:
 			open = false
 			var main: Main = get_tree().get_nodes_in_group("Main")[0]
 			if not is_shop:
 				main.load_level("Shop")
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("PlayerHitbox") and open:
+	if area.is_in_group("PlayerHitbox") and open and get_tree().get_node_count_in_group("ItemDrop") <= 0:
 		open = false
+		print(get_tree().get_node_count_in_group("ItemDrop"))
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
 		if not is_shop:
 			main.load_level("Shop")

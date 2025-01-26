@@ -6,6 +6,8 @@ var gold: int
 var weapon_count: int = 3
 var shield_count: int = 1
 
+var special_weapon_count: int = 0
+
 var health: int = 6
 
 signal update_gold

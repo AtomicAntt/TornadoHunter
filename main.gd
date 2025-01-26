@@ -74,6 +74,10 @@ func level_success() -> void:
 	item_instance.explode_outwards()
 	item_instance.god_ray()
 	
+	# Logic is that since players can go back levels, the special weapon amount only increments when the level is newly defeated.
+	if Global.special_weapon_count <= current_level:
+		Global.special_weapon_count += 1
+	
 	await get_tree().create_timer(1.0).timeout
 	
 	var gate: Gate = get_tree().get_nodes_in_group("Gate")[0]
