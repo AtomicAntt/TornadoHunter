@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn2cspiqg0wsk"]
+[gd_scene load_steps=6 format=3 uid="uid://dn2cspiqg0wsk"]
 
 [ext_resource type="Script" path="res://GameObjects/Items/PlayerWeapon.gd" id="1_0n6bh"]
 [ext_resource type="Texture2D" uid="uid://d4avqbsnyl724" path="res://GameAssets/Items/Weapon/prototype knife.png" id="1_xg4gb"]
+[ext_resource type="AudioStream" uid="uid://c41lnqlrdckar" path="res://GameAssets/SFX/Player/PlayerProjectile.wav" id="3_2ixgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcedo"]
 size = Vector2(8, 8)
@@ -28,5 +29,8 @@ shape = SubResource("RectangleShape2D_mcedo")
 z_index = 1
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ftbtq")
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2ixgn")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

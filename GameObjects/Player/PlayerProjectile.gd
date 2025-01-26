@@ -2,7 +2,7 @@ class_name PlayerProjectile
 extends Area2D
 
 @export var speed: float = 200
-@export var steer_force: float = 5
+@export var steer_force: float = 10
 @export var damage: float = 5
 @export var spinning: bool = false
 @export var rotation_speed: float = 0.0
@@ -66,3 +66,6 @@ func _on_area_entered(area: Area2D) -> void:
 		var minion: Minion = area
 		minion.hurt(damage)
 		queue_free()
+
+func _on_expiration_timer_timeout() -> void:
+	queue_free()

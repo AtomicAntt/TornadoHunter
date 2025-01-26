@@ -30,6 +30,7 @@ func activate_ability() -> void:
 			projectile_instance.global_position = global_position
 			
 			main.level_instance.call_deferred("add_child", projectile_instance)
+			$Spawn.play()
 		Weapons.TORNADO:
 			pass
 		Weapons.CLOCK:
