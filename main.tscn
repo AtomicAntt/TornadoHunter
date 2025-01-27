@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://baj2uj2cxr74e"]
+[gd_scene load_steps=23 format=3 uid="uid://baj2uj2cxr74e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_s2ssk"]
 [ext_resource type="Texture2D" uid="uid://bxdggoe8dhc3i" path="res://GameAssets/UI/MainMenu/Tornado.png" id="2_02bol"]
@@ -6,10 +6,14 @@
 [ext_resource type="Script" path="res://hearts_container.gd" id="3_11eeg"]
 [ext_resource type="Texture2D" uid="uid://fgmswrbolldi" path="res://GameAssets/UI/HealthBar/heart.png" id="3_bqc5u"]
 [ext_resource type="Texture2D" uid="uid://bauitb44gp2lt" path="res://GameAssets/UI/MainMenu/Hunter.png" id="3_omy0u"]
+[ext_resource type="Texture2D" uid="uid://bclisvnonr1qr" path="res://GameAssets/UI/MainMenu/Start2.png" id="4_g366e"]
 [ext_resource type="AudioStream" uid="uid://dauh7cisgaytw" path="res://GameAssets/Music/Stage 1.mp3" id="5_54wpx"]
+[ext_resource type="Texture2D" uid="uid://0uufhk560o1o" path="res://GameAssets/UI/MainMenu/StartSelected2.png" id="5_lu6vs"]
 [ext_resource type="Texture2D" uid="uid://cms4pofmnuy0o" path="res://GameAssets/Items/Gold/coin0.png" id="5_o06dv"]
 [ext_resource type="Script" path="res://coins_container.gd" id="5_slfwn"]
+[ext_resource type="Texture2D" uid="uid://cdfxkf10fl8xh" path="res://GameAssets/UI/MainMenu/Quit.png" id="6_0mfis"]
 [ext_resource type="FontFile" uid="uid://bcoeyr87tur5" path="res://GameAssets/Fonts/quaver.ttf" id="6_3w5jg"]
+[ext_resource type="Texture2D" uid="uid://crrh5xy2xexs1" path="res://GameAssets/UI/MainMenu/QuitSelected.png" id="7_68u6e"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/SceneTransition.gdshader" id="8_7xbfr"]
 [ext_resource type="AudioStream" uid="uid://cl7vfiy2l7n1u" path="res://GameAssets/Music/headinthesand.ogg" id="9_8rh3e"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/GrayScale.gdshader" id="9_qxw1m"]
@@ -76,6 +80,37 @@ stretch_mode = 3
 [node name="TextureRect2" type="TextureRect" parent="MainMenu/TitleScreen"]
 layout_mode = 2
 texture = ExtResource("3_omy0u")
+stretch_mode = 3
+
+[node name="TextureButton" type="TextureButton" parent="MainMenu/TitleScreen"]
+layout_mode = 2
+
+[node name="MenuButtons" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -20.0
+offset_right = 39.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="TextureButton" parent="MainMenu/MenuButtons"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("4_g366e")
+texture_hover = ExtResource("5_lu6vs")
+stretch_mode = 3
+
+[node name="QuitButton" type="TextureButton" parent="MainMenu/MenuButtons"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("6_0mfis")
+texture_hover = ExtResource("7_68u6e")
 stretch_mode = 3
 
 [node name="World" type="Node2D" parent="."]
