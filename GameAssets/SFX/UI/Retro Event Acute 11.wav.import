@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dta34e4y5xb04"
+path="res://.godot/imported/Retro Event Acute 11.wav-2ce93abf6627281e73448d053b1e3c94.sample"
+
+[deps]
+
+source_file="res://GameAssets/SFX/UI/Retro Event Acute 11.wav"
+dest_files=["res://.godot/imported/Retro Event Acute 11.wav-2ce93abf6627281e73448d053b1e3c94.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=1
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

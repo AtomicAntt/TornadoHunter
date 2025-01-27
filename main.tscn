@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://baj2uj2cxr74e"]
+[gd_scene load_steps=30 format=3 uid="uid://baj2uj2cxr74e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_s2ssk"]
 [ext_resource type="Texture2D" uid="uid://bxdggoe8dhc3i" path="res://GameAssets/UI/MainMenu/Tornado.png" id="2_02bol"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dx01m8sa43qqr" path="res://GameAssets/UI/MainMenu/QuitPressed.png" id="11_me4q4"]
 [ext_resource type="AudioStream" uid="uid://dj4ywrt2c8cuw" path="res://GameAssets/Music/lassolady.ogg" id="14_gygnk"]
 [ext_resource type="AudioStream" uid="uid://cfgg57ns4cgl2" path="res://GameAssets/SFX/UI/Menu3.wav" id="24_8tq22"]
+[ext_resource type="AudioStream" uid="uid://dta34e4y5xb04" path="res://GameAssets/SFX/UI/Retro Event Acute 11.wav" id="25_m1e3u"]
 
 [sub_resource type="Theme" id="Theme_r105y"]
 
@@ -232,6 +233,9 @@ autoplay = true
 
 [node name="ButtonHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_8tq22")
+
+[node name="ButtonPressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_m1e3u")
 
 [connection signal="mouse_entered" from="MainMenu/MenuButtons/StartButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MainMenu/MenuButtons/StartButton" to="." method="_on_start_button_pressed"]
