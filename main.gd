@@ -152,6 +152,15 @@ func _on_start_button_pressed() -> void:
 	$MainMenu/MenuButtons/StartButton.disabled = true # Remember to re-enable it if the player ever comes back to the main menu!
 	$MenuMusic.stop()
 	load_level("Level1")
+
+
 	
 	# I will set it during load_level() function
 	#$MainMenu.visible = false 
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
+
+
+func _on_button_mouse_entered() -> void:
+	$ButtonHover.play()
