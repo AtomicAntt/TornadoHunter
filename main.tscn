@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://baj2uj2cxr74e"]
+[gd_scene load_steps=28 format=3 uid="uid://baj2uj2cxr74e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_s2ssk"]
 [ext_resource type="Texture2D" uid="uid://bxdggoe8dhc3i" path="res://GameAssets/UI/MainMenu/Tornado.png" id="2_02bol"]
@@ -17,9 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://b6qepv3d0by2l" path="res://GameAssets/UI/MainMenu/Settings.png" id="6_cmf1k"]
 [ext_resource type="Texture2D" uid="uid://vuipn4x2elo7" path="res://GameAssets/UI/MainMenu/QuitSelected.png" id="7_68u6e"]
 [ext_resource type="Texture2D" uid="uid://bci4jypbvo8c0" path="res://GameAssets/UI/MainMenu/SettingsSelected.png" id="7_imeof"]
+[ext_resource type="Texture2D" uid="uid://cjp73byoo8x6k" path="res://GameAssets/UI/MainMenu/SettingsPressed.png" id="8_6drnd"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/SceneTransition.gdshader" id="8_7xbfr"]
 [ext_resource type="AudioStream" uid="uid://cl7vfiy2l7n1u" path="res://GameAssets/Music/headinthesand.ogg" id="9_8rh3e"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/GrayScale.gdshader" id="9_qxw1m"]
+[ext_resource type="Texture2D" uid="uid://dx01m8sa43qqr" path="res://GameAssets/UI/MainMenu/QuitPressed.png" id="11_me4q4"]
 [ext_resource type="AudioStream" uid="uid://dj4ywrt2c8cuw" path="res://GameAssets/Music/lassolady.ogg" id="14_gygnk"]
 
 [sub_resource type="Theme" id="Theme_r105y"]
@@ -111,10 +113,11 @@ texture_pressed = ExtResource("5_gj4hj")
 texture_hover = ExtResource("5_lu6vs")
 stretch_mode = 3
 
-[node name="StartButton2" type="TextureButton" parent="MainMenu/MenuButtons"]
+[node name="SettingsButton" type="TextureButton" parent="MainMenu/MenuButtons"]
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("6_cmf1k")
+texture_pressed = ExtResource("8_6drnd")
 texture_hover = ExtResource("7_imeof")
 stretch_mode = 3
 
@@ -122,6 +125,7 @@ stretch_mode = 3
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("6_0mfis")
+texture_pressed = ExtResource("11_me4q4")
 texture_hover = ExtResource("7_68u6e")
 stretch_mode = 3
 
