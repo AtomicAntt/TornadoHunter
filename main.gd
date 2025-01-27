@@ -31,6 +31,7 @@ func load_level(level_name: String) -> void:
 	
 	await tween.finished
 	
+	$MainMenu.visible = false
 	unload_level()
 	var level_path: String = "res://Levels/%s.tscn" % level_name
 	var level_resource: Resource = load(level_path)
@@ -137,3 +138,11 @@ func resume_time() -> void:
 	
 func set_time(value: float) -> void:
 	Global.time_scale = value
+
+func _on_start_button_pressed() -> void:
+	$MenuMusic.stop()
+	$World.visible = true
+	load_level("Level1")
+	
+	# I will set it during load_level() function
+	#$MainMenu.visible = false 
