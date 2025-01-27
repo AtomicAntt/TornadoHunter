@@ -11,8 +11,8 @@ var boss_drop: PackedScene = preload("res://GameObjects/Items/TumbleweedDagger.t
 var current_scene: String
 var current_level: int = 1
 
-func _ready() -> void:
-	load_level("Level3")
+#func _ready() -> void:
+	#load_level("Level1")
 
 func unload_level() -> void:
 	if is_instance_valid(level_instance):

@@ -38,6 +38,7 @@ func _physics_process(delta: float) -> void:
 		movement_tween.set_speed_scale(Global.time_scale)
 	$AnimatedSprite2D.speed_scale = Global.time_scale
 	
+	
 	match state:
 		States.IDLE:
 			move_time += _delta

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cfd043fyb63cy"]
+[gd_scene load_steps=11 format=4 uid="uid://cfd043fyb63cy"]
 
 [ext_resource type="Texture2D" uid="uid://csufl1i04ooim" path="res://GameAssets/Tileset/Dungeon_Tileset.png" id="1_uvtrb"]
 [ext_resource type="Texture2D" uid="uid://b43b2gvy0payl" path="res://GameAssets/Tileset/TilesetFloor.png" id="2_ymhtj"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c24p563j7y18m" path="res://GameObjects/Player/Player.tscn" id="4_8t6au"]
 [ext_resource type="PackedScene" uid="uid://dp87wt6x5n0w5" path="res://GameObjects/Player/Camera.tscn" id="5_flel1"]
 [ext_resource type="PackedScene" uid="uid://byxlinf7oxt6k" path="res://GameObjects/Environment/Gate.tscn" id="6_dcdr4"]
-[ext_resource type="PackedScene" uid="uid://pj70g6s5tnl5" path="res://GameObjects/Shop/Shop.tscn" id="7_at1aa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fv3xd"]
 texture = ExtResource("1_uvtrb")
@@ -1871,5 +1870,3 @@ position = Vector2(-90, 58)
 
 [node name="Gate" parent="." instance=ExtResource("6_dcdr4")]
 is_shop = true
-
-[node name="Shop" parent="." instance=ExtResource("7_at1aa")]

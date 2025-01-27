@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://baj2uj2cxr74e"]
+[gd_scene load_steps=19 format=3 uid="uid://baj2uj2cxr74e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_s2ssk"]
+[ext_resource type="Texture2D" uid="uid://bxdggoe8dhc3i" path="res://GameAssets/UI/MainMenu/Tornado.png" id="2_02bol"]
 [ext_resource type="PackedScene" uid="uid://cqvl3xbl66xih" path="res://boss_health_bar.tscn" id="2_i5ic4"]
 [ext_resource type="Script" path="res://hearts_container.gd" id="3_11eeg"]
 [ext_resource type="Texture2D" uid="uid://fgmswrbolldi" path="res://GameAssets/UI/HealthBar/heart.png" id="3_bqc5u"]
+[ext_resource type="Texture2D" uid="uid://bauitb44gp2lt" path="res://GameAssets/UI/MainMenu/Hunter.png" id="3_omy0u"]
 [ext_resource type="AudioStream" uid="uid://dauh7cisgaytw" path="res://GameAssets/Music/Stage 1.mp3" id="5_54wpx"]
 [ext_resource type="Texture2D" uid="uid://cms4pofmnuy0o" path="res://GameAssets/Items/Gold/coin0.png" id="5_o06dv"]
 [ext_resource type="Script" path="res://coins_container.gd" id="5_slfwn"]
@@ -11,6 +13,7 @@
 [ext_resource type="Shader" path="res://GameAssets/Shaders/SceneTransition.gdshader" id="8_7xbfr"]
 [ext_resource type="AudioStream" uid="uid://cl7vfiy2l7n1u" path="res://GameAssets/Music/headinthesand.ogg" id="9_8rh3e"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/GrayScale.gdshader" id="9_qxw1m"]
+[ext_resource type="AudioStream" uid="uid://dj4ywrt2c8cuw" path="res://GameAssets/Music/lassolady.ogg" id="14_gygnk"]
 
 [sub_resource type="Theme" id="Theme_r105y"]
 
@@ -43,9 +46,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Background" type="ColorRect" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.133333, 0.109804, 0.101961, 1)
+
+[node name="TitleScreen" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 63.0
+offset_right = 75.0
+offset_bottom = 115.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/TitleScreen"]
+layout_mode = 2
+texture = ExtResource("2_02bol")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="MainMenu/TitleScreen"]
+layout_mode = 2
+texture = ExtResource("3_omy0u")
+stretch_mode = 3
+
 [node name="World" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="World"]
+visible = false
 
 [node name="BossHealthBar" parent="World/CanvasLayer" instance=ExtResource("2_i5ic4")]
 
@@ -135,3 +171,7 @@ volume_db = -8.0
 
 [node name="ShopMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_8rh3e")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_gygnk")
+autoplay = true
