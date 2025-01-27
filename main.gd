@@ -31,6 +31,8 @@ func load_level(level_name: String) -> void:
 	
 	await tween.finished
 	
+	#Let player see the game ui stuff and hide any main menu stuff
+	$World/CanvasLayer/VBoxContainer.visible = true
 	$MainMenu.visible = false
 	unload_level()
 	var level_path: String = "res://Levels/%s.tscn" % level_name
@@ -42,6 +44,11 @@ func load_level(level_name: String) -> void:
 	
 	current_scene = level_name
 	
+	if level_name != "Shop":
+		$World/CanvasLayer/BossHealthBar.visible = true
+	else:
+		$World/CanvasLayer/BossHealthBar.visible = false
+	
 	tween = create_tween()
 	tween.tween_property(
 		$World/CanvasLayer/SceneTransition.material,
@@ -51,13 +58,15 @@ func load_level(level_name: String) -> void:
 	).from(1.0).set_trans(Tween.TRANS_CUBIC)
 	
 	await tween.finished
-	
+
 	if level_name != "Shop":
 		$BossMusic.play()
 		$ShopMusic.stop()
 	else:
 		$BossMusic.stop()
 		$ShopMusic.play()
+	
+	
 
 func level_success() -> void:
 	var item_instance: ItemDrop = item_drop.instantiate()
@@ -140,8 +149,8 @@ func set_time(value: float) -> void:
 	Global.time_scale = value
 
 func _on_start_button_pressed() -> void:
+	$MainMenu/MenuButtons/StartButton.disabled = true # Remember to re-enable it if the player ever comes back to the main menu!
 	$MenuMusic.stop()
-	$World.visible = true
 	load_level("Level1")
 	
 	# I will set it during load_level() function

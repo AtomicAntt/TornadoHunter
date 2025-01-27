@@ -126,13 +126,14 @@ texture_hover = ExtResource("7_68u6e")
 stretch_mode = 3
 
 [node name="World" type="Node2D" parent="."]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="World"]
 
 [node name="BossHealthBar" parent="World/CanvasLayer" instance=ExtResource("2_i5ic4")]
+visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="World/CanvasLayer"]
+visible = false
 offset_left = 7.0
 offset_top = 7.0
 offset_right = 103.0
@@ -174,6 +175,7 @@ text = "0
 "
 
 [node name="SceneTransition" type="ColorRect" parent="World/CanvasLayer"]
+z_index = 1
 material = SubResource("ShaderMaterial_uysk7")
 anchors_preset = 15
 anchor_right = 1.0
