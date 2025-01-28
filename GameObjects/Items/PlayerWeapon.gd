@@ -31,6 +31,7 @@ func activate_ability() -> void:
 			projectile_instance.global_position = global_position
 			
 			main.level_instance.call_deferred("add_child", projectile_instance)
+			$Spawn.pitch_scale = 1.0
 			$Spawn.play()
 		Weapons.TORNADO:
 			var main: Main = get_tree().get_nodes_in_group("Main")[0]
@@ -39,6 +40,7 @@ func activate_ability() -> void:
 			projectile_instance.global_position = global_position
 			
 			main.level_instance.call_deferred("add_child", projectile_instance)
+			$Spawn.pitch_scale = 0.9
 			$Spawn.play()
 		Weapons.CLOCK:
 			pass
