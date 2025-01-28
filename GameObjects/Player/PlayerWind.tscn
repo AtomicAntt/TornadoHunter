@@ -53,7 +53,7 @@ shape = SubResource("CircleShape2D_4ut0o")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_m3mwp")
 autoplay = "default"
-frame_progress = 0.356277
+frame_progress = 0.370908
 
 [node name="ExpirationTimer" type="Timer" parent="."]
 wait_time = 4.0
