@@ -21,7 +21,7 @@ animations = [{
 [node name="TumbleweedDagger" type="Area2D" groups=["BossItem", "item", "weapon"]]
 script = ExtResource("1_xbe2b")
 weapon = 1
-damage = 5.0
+damage = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)

@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvaxe607ofddf"]
+
+[ext_resource type="Script" path="res://GameObjects/Items/PlayerWeapon.gd" id="1_1mjrj"]
+[ext_resource type="Texture2D" uid="uid://c3x0lw12ioeiu" path="res://GameAssets/Items/Weapon/TornadoKnife-Sheet.png" id="2_yp3u4"]
+[ext_resource type="AudioStream" uid="uid://c41lnqlrdckar" path="res://GameAssets/SFX/Player/PlayerProjectile.wav" id="3_ebvg7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcedo"]
+size = Vector2(11, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7apf"]
+atlas = ExtResource("2_yp3u4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jlh8"]
+atlas = ExtResource("2_yp3u4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usllj"]
+atlas = ExtResource("2_yp3u4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4n1q"]
+atlas = ExtResource("2_yp3u4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbkpn"]
+atlas = ExtResource("2_yp3u4")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ftbtq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7apf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jlh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usllj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4n1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbkpn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="TornadoDagger" type="Area2D" groups=["BossItem", "item", "weapon"]]
+script = ExtResource("1_1mjrj")
+weapon = 2
+damage = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_mcedo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ftbtq")
+autoplay = "default"
+frame_progress = 0.602531
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ebvg7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -6,6 +6,7 @@ enum Weapons {NONE, TUMBLEWEED, TORNADO, CLOCK}
 @export var damage: float = 2.5
 
 var player_tumbleweed: Resource = preload("res://GameObjects/Player/PlayerTumbleweed.tscn")
+var player_wind: Resource = preload("res://GameObjects/Player/PlayerWind.tscn")
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Boss"):
@@ -32,6 +33,12 @@ func activate_ability() -> void:
 			main.level_instance.call_deferred("add_child", projectile_instance)
 			$Spawn.play()
 		Weapons.TORNADO:
-			pass
+			var main: Main = get_tree().get_nodes_in_group("Main")[0]
+			var projectile_instance: PlayerProjectile = player_wind.instantiate()
+			projectile_instance.start(global_position.direction_to(get_global_mouse_position()))
+			projectile_instance.global_position = global_position
+			
+			main.level_instance.call_deferred("add_child", projectile_instance)
+			$Spawn.play()
 		Weapons.CLOCK:
 			pass
