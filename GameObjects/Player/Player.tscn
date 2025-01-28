@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://c24p563j7y18m"]
+[gd_scene load_steps=82 format=3 uid="uid://c24p563j7y18m"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/player.gd" id="1_s0kyb"]
 [ext_resource type="Texture2D" uid="uid://bef07gt21eoas" path="res://GameAssets/Player/idle.png" id="2_r6fpd"]
@@ -59,6 +59,7 @@
 [ext_resource type="AudioStream" uid="uid://crsckx2ysrks1" path="res://GameAssets/SFX/Player/PlayerHit.wav" id="58_mt3s5"]
 [ext_resource type="AudioStream" uid="uid://dbgftv2totyjg" path="res://GameAssets/SFX/Player/PlayerLose.wav" id="59_ogr4d"]
 [ext_resource type="AudioStream" uid="uid://7wd458747mvt" path="res://GameAssets/SFX/Player/GetCoin.wav" id="61_0jx1p"]
+[ext_resource type="AudioStream" uid="uid://darokrhdyaoqd" path="res://GameAssets/SFX/Player/ObtainBossItem.wav" id="61_pmfea"]
 [ext_resource type="Texture2D" uid="uid://uwc32wyji0w5" path="res://GameAssets/Items/Weapon/ItemEnhancer.png" id="62_76ns8"]
 [ext_resource type="AudioStream" uid="uid://d27aoky7b5vur" path="res://GameAssets/SFX/Player/Retro PickUp 18.wav" id="62_ockwp"]
 
@@ -470,6 +471,9 @@ stream = ExtResource("61_0jx1p")
 
 [node name="GetItem" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("62_ockwp")
+
+[node name="GetBossItem" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("61_pmfea")
 
 [node name="WeaponActivator" type="Area2D" parent="." groups=["WeaponActivator"]]
 position = Vector2(0, -45)

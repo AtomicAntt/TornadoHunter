@@ -138,7 +138,10 @@ func add_item_orbit(item: Area2D):
 		$Orbitor1.add_child(item)
 	
 	if not initializing:
-		$GetItem.play()
+		if item.is_in_group("BossItem"):
+			$GetBossItem.play()
+		else:
+			$GetItem.play()
 
 func hurt(damage: int):
 	if !invulnerable and state != States.DEAD:
