@@ -479,8 +479,8 @@ _data = {
 
 [node name="ClockBoss" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_urn8p")
-max_health = 800.0
-health = 800.0
+max_health = 3000.0
+health = 3000.0
 coin_value = 24
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

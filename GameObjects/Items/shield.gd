@@ -1,8 +1,8 @@
 class_name Shield
 extends Area2D
 
-var max_recharge: float = 5.0
-var recharge: float = 5.0
+var max_recharge: float = 25.0
+var recharge: float = 25.0
 
 func _physics_process(delta: float) -> void:
 	if recharge < max_recharge:
