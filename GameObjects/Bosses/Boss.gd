@@ -65,10 +65,16 @@ func death() -> void:
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
 		
 		# Later, if there are double bosses, you must check if there are any boss instances left
-		if is_instance_valid(main):
+		if is_instance_valid(main) and no_bosses_alive():
 			main.level_success()
 		
 		#queue_free()
+
+func no_bosses_alive() -> bool:
+	for boss: Boss in get_tree().get_nodes_in_group("Boss"):
+		if boss.state != States.DISABLED:
+			return false
+	return true
 
 func _on_timer_timeout() -> void:
 	fire_at_player()

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqvl3xbl66xih"]
 
-[ext_resource type="Texture2D" uid="uid://3yksqwp77r20" path="res://GameAssets/UI/HealthBar/HealthBar.png" id="1_16hng"]
+[ext_resource type="Texture2D" uid="uid://bgk18p4k7ckla" path="res://GameAssets/UI/HealthBar/BossHealthProgress2.png" id="1_sm8ke"]
 [ext_resource type="Script" path="res://GameObjects/Bosses/BossHealth.gd" id="2_qaaag"]
-[ext_resource type="Texture2D" uid="uid://cpb035brlp8lw" path="res://GameAssets/UI/HealthBar/ProgressUnder.png" id="3_g2pg7"]
-[ext_resource type="Texture2D" uid="uid://ct32s58mntk1r" path="res://GameAssets/UI/HealthBar/DamageBar.png" id="4_4nxvx"]
+[ext_resource type="Texture2D" uid="uid://d147d0l1f4kvq" path="res://GameAssets/UI/HealthBar/BossHealthFrame2.png" id="3_ywm4t"]
+[ext_resource type="Texture2D" uid="uid://dg21tds3t050x" path="res://GameAssets/UI/HealthBar/BossDamageBar2.png" id="4_6fanw"]
 
 [node name="BossHealthBar" type="TextureProgressBar" groups=["BossHealthBar"]]
 anchors_preset = 7
@@ -11,21 +11,23 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -39.0
-offset_right = 150.0
-offset_bottom = -19.0
+offset_left = -185.0
+offset_top = -24.0
+offset_right = 185.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 0
 value = 100.0
-texture_progress = ExtResource("1_16hng")
+texture_progress = ExtResource("1_sm8ke")
+texture_progress_offset = Vector2(2, 0)
 script = ExtResource("2_qaaag")
 
 [node name="ProgressUnder" type="TextureProgressBar" parent="."]
 show_behind_parent = true
 layout_mode = 0
-offset_right = 300.0
-offset_bottom = 20.0
+offset_right = 374.0
+offset_bottom = 11.0
 value = 100.0
-texture_under = ExtResource("3_g2pg7")
-texture_progress = ExtResource("4_4nxvx")
+texture_under = ExtResource("3_ywm4t")
+texture_progress = ExtResource("4_6fanw")
+texture_progress_offset = Vector2(2, 0)
