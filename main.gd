@@ -74,13 +74,11 @@ func load_level(level_name: String) -> void:
 
 func level_success() -> void:
 	# Logic is that since players can go back levels, the special weapon amount only increments when the level is newly defeated.
-	if Global.special_weapon_count <= current_level:
-		Global.special_weapon_count += 1
 	
-	if Global.special_weapon_count <= current_level:
+	if Global.special_weapon_count < current_level:
 		var item_instance: ItemDrop = item_drop.instantiate()
 		
-		match Global.special_weapon_count:
+		match current_level:
 			1:
 				item_instance.set_item(boss_drop)
 			2:
@@ -98,6 +96,8 @@ func level_success() -> void:
 		item_instance.explode_outwards()
 		item_instance.god_ray()
 	
+		Global.special_weapon_count += 1
+	#if Global.special_weapon_count < current_level:
 	
 	await get_tree().create_timer(1.0).timeout
 	
