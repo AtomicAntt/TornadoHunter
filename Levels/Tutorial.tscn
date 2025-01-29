@@ -1924,6 +1924,15 @@ offset_bottom = -8.0
 theme = ExtResource("11_o1nrd")
 text = "Hold the Left Mouse Button to attack!"
 
+[node name="Label" type="Label" parent="Tutorial/Label"]
+offset_left = -286.0
+offset_top = 3.0
+offset_right = -125.0
+offset_bottom = 26.0
+theme = ExtResource("11_o1nrd")
+text = "WASD or Arrow Keys to move!"
+horizontal_alignment = 1
+
 [node name="Controls" type="Node2D" parent="Tutorial"]
 
 [node name="WASD" type="Node2D" parent="Tutorial/Controls"]
@@ -1949,3 +1958,22 @@ animation = &"D"
 key = "D"
 
 [node name="ArrowKeys" type="Node2D" parent="Tutorial/Controls"]
+
+[node name="Key" parent="Tutorial/Controls/ArrowKeys" instance=ExtResource("13_mkcod")]
+position = Vector2(-220, 31)
+animation = &"Up"
+
+[node name="Key2" parent="Tutorial/Controls/ArrowKeys" instance=ExtResource("13_mkcod")]
+position = Vector2(-235, 45)
+animation = &"Left"
+key = "Left"
+
+[node name="Key3" parent="Tutorial/Controls/ArrowKeys" instance=ExtResource("13_mkcod")]
+position = Vector2(-220, 45)
+animation = &"Down"
+key = "Down"
+
+[node name="Key4" parent="Tutorial/Controls/ArrowKeys" instance=ExtResource("13_mkcod")]
+position = Vector2(-205, 45)
+animation = &"Right"
+key = "Right"
