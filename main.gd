@@ -60,12 +60,15 @@ func load_level(level_name: String) -> void:
 	
 	await tween.finished
 
-	if level_name != "Shop":
-		$BossMusic.play()
-		$ShopMusic.stop()
-	else:
+	if level_name == "Shop":
 		$BossMusic.stop()
 		$ShopMusic.play()
+	elif level_name == "Tutorial":
+		$TutorialMusic.play()
+	else:
+		$BossMusic.play()
+		$ShopMusic.stop()
+		$TutorialMusic.stop()
 	
 	
 
