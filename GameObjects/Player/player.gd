@@ -53,25 +53,25 @@ func _physics_process(_delta: float) -> void:
 			get_basic_movement()
 			if velocity.length() > 0.0:
 				look_at_position(velocity.normalized())
-			check_dash()
+			#check_dash()
 			
 			#if Input.is_action_pressed("fire"):
 				#$AnimatedSprite2D.play("Turn")
 		States.DEAD:
 			velocity = Vector2.ZERO
-		States.DASHING:
-			
-			# This is called, however, it normally transitions out when the roll animation is finished.
-			if !$AnimatedSprite2D.animation == "Roll":
-				state = States.NORMAL
-				velocity = Vector2.ZERO
-				
-			# By the time the rolling animation is halfway through, the distance is already traveled visually in the animation, so no more velocity.
-			if $AnimatedSprite2D.frame >= 9:
-				velocity = Vector2.ZERO
-				get_basic_movement()
-				if velocity.length() > 0: # Looks like the player started moving after checking their input! Lets get them back to normal state.
-					state = States.NORMAL
+		#States.DASHING:
+			#
+			## This is called, however, it normally transitions out when the roll animation is finished.
+			#if !$AnimatedSprite2D.animation == "Roll":
+				#state = States.NORMAL
+				#velocity = Vector2.ZERO
+				#
+			## By the time the rolling animation is halfway through, the distance is already traveled visually in the animation, so no more velocity.
+			#if $AnimatedSprite2D.frame >= 9:
+				#velocity = Vector2.ZERO
+				#get_basic_movement()
+				#if velocity.length() > 0: # Looks like the player started moving after checking their input! Lets get them back to normal state.
+					#state = States.NORMAL
 
 
 func get_basic_movement() -> void:
@@ -107,12 +107,12 @@ func look_at_position(pos: Vector2) -> void:
 	else:
 		$AnimatedSprite2D.flip_h = false
 
-func check_dash() -> void:
-	if Input.is_action_just_pressed("dash") && velocity.length() > 0.0:
-		velocity = velocity.normalized() * SPEED * 2
-		$AnimatedSprite2D.play("Roll")
-		look_at_position(velocity.normalized())
-		state = States.DASHING
+#func check_dash() -> void:
+	#if Input.is_action_just_pressed("dash") && velocity.length() > 0.0:
+		#velocity = velocity.normalized() * SPEED * 2
+		#$AnimatedSprite2D.play("Roll")
+		#look_at_position(velocity.normalized())
+		#state = States.DASHING
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "Roll":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cfd043fyb63cy"]
+[gd_scene load_steps=19 format=4 uid="uid://cfd043fyb63cy"]
 
 [ext_resource type="Texture2D" uid="uid://csufl1i04ooim" path="res://GameAssets/Tileset/Dungeon_Tileset.png" id="1_uvtrb"]
 [ext_resource type="Texture2D" uid="uid://b43b2gvy0payl" path="res://GameAssets/Tileset/TilesetFloor.png" id="2_ymhtj"]
@@ -6,6 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://c24p563j7y18m" path="res://GameObjects/Player/Player.tscn" id="4_8t6au"]
 [ext_resource type="PackedScene" uid="uid://dp87wt6x5n0w5" path="res://GameObjects/Player/Camera.tscn" id="5_flel1"]
 [ext_resource type="PackedScene" uid="uid://byxlinf7oxt6k" path="res://GameObjects/Environment/Gate.tscn" id="6_dcdr4"]
+[ext_resource type="Texture2D" uid="uid://8064nfkl01uh" path="res://GameAssets/UI/Tutorial/TutorialProgressFrame.png" id="7_37yas"]
+[ext_resource type="Script" path="res://Levels/Tutorial.gd" id="7_rv1ph"]
+[ext_resource type="Texture2D" uid="uid://w604n06os6oh" path="res://GameAssets/UI/Tutorial/TutorialProgress.png" id="8_7eqt7"]
+[ext_resource type="Texture2D" uid="uid://c0nnpm0slm0g" path="res://GameAssets/UI/Tutorial/Mouse-Left.png" id="9_koyt5"]
+[ext_resource type="Texture2D" uid="uid://b1s2e7ufya48a" path="res://GameAssets/UI/Tutorial/Mouse.png" id="10_tg4jo"]
+[ext_resource type="Theme" uid="uid://dj388qh6rsv5c" path="res://GameAssets/UI/Themes/GameText.tres" id="11_o1nrd"]
+[ext_resource type="PackedScene" uid="uid://c0dqk23kdmcj" path="res://TutorialKey.tscn" id="13_mkcod"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fv3xd"]
 texture = ExtResource("1_uvtrb")
@@ -1854,7 +1861,29 @@ sources/0 = SubResource("TileSetAtlasSource_fv3xd")
 sources/1 = SubResource("TileSetAtlasSource_oheud")
 sources/2 = SubResource("TileSetAtlasSource_0hltf")
 
-[node name="Level1" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6k5nm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_koyt5")
+}],
+"loop": true,
+"name": &"Hold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_koyt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tg4jo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Tutorial" type="Node2D"]
 texture_filter = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -1870,3 +1899,53 @@ position = Vector2(-90, 58)
 
 [node name="Gate" parent="." instance=ExtResource("6_dcdr4")]
 is_shop = true
+
+[node name="Tutorial" type="Node2D" parent="."]
+script = ExtResource("7_rv1ph")
+
+[node name="TutorialProgressBar" type="TextureProgressBar" parent="Tutorial"]
+offset_right = 136.0
+offset_bottom = 12.0
+texture_under = ExtResource("7_37yas")
+texture_progress = ExtResource("8_7eqt7")
+texture_progress_offset = Vector2(1, 0)
+
+[node name="Mouse" type="AnimatedSprite2D" parent="Tutorial"]
+position = Vector2(67, -13)
+sprite_frames = SubResource("SpriteFrames_6k5nm")
+animation = &"Hold"
+autoplay = "default"
+
+[node name="Label" type="Label" parent="Tutorial"]
+offset_left = -7.0
+offset_top = -31.0
+offset_right = 154.0
+offset_bottom = -8.0
+theme = ExtResource("11_o1nrd")
+text = "Hold the Left Mouse Button to attack!"
+
+[node name="Controls" type="Node2D" parent="Tutorial"]
+
+[node name="WASD" type="Node2D" parent="Tutorial/Controls"]
+position = Vector2(-220, -7)
+
+[node name="Key" parent="Tutorial/Controls/WASD" instance=ExtResource("13_mkcod")]
+animation = &"W"
+key = "W"
+
+[node name="Key2" parent="Tutorial/Controls/WASD" instance=ExtResource("13_mkcod")]
+position = Vector2(-15, 14)
+animation = &"A"
+key = "A"
+
+[node name="Key3" parent="Tutorial/Controls/WASD" instance=ExtResource("13_mkcod")]
+position = Vector2(0, 14)
+animation = &"S"
+key = "S"
+
+[node name="Key4" parent="Tutorial/Controls/WASD" instance=ExtResource("13_mkcod")]
+position = Vector2(15, 14)
+animation = &"D"
+key = "D"
+
+[node name="ArrowKeys" type="Node2D" parent="Tutorial/Controls"]

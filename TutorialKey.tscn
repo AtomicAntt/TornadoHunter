@@ -1,0 +1,204 @@
+[gd_scene load_steps=20 format=3 uid="uid://c0dqk23kdmcj"]
+
+[ext_resource type="Texture2D" uid="uid://dadtgafeqvx3x" path="res://GameAssets/UI/Tutorial/Keyboard Letters and Symbols.png" id="1_fapy3"]
+[ext_resource type="Script" path="res://Levels/TutorialKey.gd" id="2_jj5an"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul7rd"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgojd"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfvnd"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22g7v"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkm86"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiaia"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(96, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itps6"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roj4e"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_baki1"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnilp"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqfyb"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5b1s"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(32, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avwjk"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5os6l"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geytl"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(96, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7en16"]
+atlas = ExtResource("1_fapy3")
+region = Rect2(96, 176, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mlxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul7rd")
+}],
+"loop": true,
+"name": &"A",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgojd")
+}],
+"loop": true,
+"name": &"Apressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfvnd")
+}],
+"loop": true,
+"name": &"D",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22g7v")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkm86")
+}],
+"loop": true,
+"name": &"Downpressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiaia")
+}],
+"loop": true,
+"name": &"Dpressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itps6")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roj4e")
+}],
+"loop": true,
+"name": &"Leftpressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_baki1")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnilp")
+}],
+"loop": true,
+"name": &"Rightpressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqfyb")
+}],
+"loop": true,
+"name": &"S",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5b1s")
+}],
+"loop": true,
+"name": &"Spressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avwjk")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5os6l")
+}],
+"loop": true,
+"name": &"Uppressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geytl")
+}],
+"loop": true,
+"name": &"W",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7en16")
+}],
+"loop": true,
+"name": &"Wpressed",
+"speed": 5.0
+}]
+
+[node name="Key" type="AnimatedSprite2D" groups=["Key"]]
+sprite_frames = SubResource("SpriteFrames_0mlxc")
+animation = &"Rightpressed"
+script = ExtResource("2_jj5an")
