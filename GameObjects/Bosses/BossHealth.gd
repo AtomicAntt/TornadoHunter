@@ -16,4 +16,6 @@ func change_health(max_health: float, health: float) -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(progress_under, "value", health, duration).set_trans(Tween.TRANS_CUBIC)
 	
+	$CenterContainer/Label.text = str(health) + "/" + str(max_health)
+	
 	#tween.tween_property(progress_under, "value", new_value, duration).set_trans(Tween.TRANS_CUBIC)

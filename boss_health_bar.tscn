@@ -1,20 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqvl3xbl66xih"]
+[gd_scene load_steps=6 format=3 uid="uid://cqvl3xbl66xih"]
 
 [ext_resource type="Texture2D" uid="uid://bgk18p4k7ckla" path="res://GameAssets/UI/HealthBar/BossHealthProgress2.png" id="1_sm8ke"]
 [ext_resource type="Script" path="res://GameObjects/Bosses/BossHealth.gd" id="2_qaaag"]
 [ext_resource type="Texture2D" uid="uid://d147d0l1f4kvq" path="res://GameAssets/UI/HealthBar/BossHealthFrame2.png" id="3_ywm4t"]
 [ext_resource type="Texture2D" uid="uid://dg21tds3t050x" path="res://GameAssets/UI/HealthBar/BossDamageBar2.png" id="4_6fanw"]
+[ext_resource type="Theme" uid="uid://dj388qh6rsv5c" path="res://GameAssets/UI/Themes/GameText.tres" id="5_ewiui"]
 
 [node name="BossHealthBar" type="TextureProgressBar" groups=["BossHealthBar"]]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -185.0
-offset_top = -24.0
+offset_top = -31.0
 offset_right = 185.0
-offset_bottom = -13.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 value = 100.0
@@ -31,3 +33,20 @@ value = 100.0
 texture_under = ExtResource("3_ywm4t")
 texture_progress = ExtResource("4_6fanw")
 texture_progress_offset = Vector2(2, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme = ExtResource("5_ewiui")
+text = "400/400"
