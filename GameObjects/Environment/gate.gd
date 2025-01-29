@@ -7,6 +7,7 @@ var current_camera: CameraShaker
 var open: bool = false
 
 @export var is_shop: bool = false
+@export var is_tutorial: bool = false
 
 func _ready() -> void:
 	if is_shop:
@@ -52,11 +53,13 @@ func cutscene() -> void:
 		if area.is_in_group("PlayerHitbox") and get_tree().get_node_count_in_group("ItemDrop") <= 0:
 			open = false
 			var main: Main = get_tree().get_nodes_in_group("Main")[0]
-			if not is_shop:
+			if not is_shop and not is_tutorial:
 				main.load_level("Shop")
+			elif is_tutorial:
+				main.load_level("Level1")
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("PlayerHitbox") and open and get_tree().get_node_count_in_group("ItemDrop") <= 0:
+	if area.is_in_group("PlayerHitbox") and open and get_tree().get_node_count_in_group("ItemDrop") <= 0 and not is_tutorial:
 		open = false
 		print(get_tree().get_node_count_in_group("ItemDrop"))
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
@@ -70,3 +73,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
 		main.load_next_level()
+	if area.is_in_group("PlayerHitbox") and is_tutorial and open:
+		open = false
+		var main: Main = get_tree().get_nodes_in_group("Main")[0]
+		main.load_level("Level1")

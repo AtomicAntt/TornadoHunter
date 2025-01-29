@@ -45,7 +45,7 @@ func load_level(level_name: String) -> void:
 	
 	current_scene = level_name
 	
-	if level_name != "Shop":
+	if level_name != "Shop" and level_name != "Tutorial":
 		$World/CanvasLayer/BossHealthBar.visible = true
 	else:
 		$World/CanvasLayer/BossHealthBar.visible = false
