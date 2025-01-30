@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://baj2uj2cxr74e"]
+[gd_scene load_steps=46 format=3 uid="uid://baj2uj2cxr74e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_s2ssk"]
 [ext_resource type="Texture2D" uid="uid://bxdggoe8dhc3i" path="res://GameAssets/UI/MainMenu/Tornado.png" id="2_02bol"]
@@ -29,6 +29,9 @@
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Highlight.gdshader" id="17_r2yaf"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="18_3a1x1"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Teleport.gdshader" id="19_p03je"]
+[ext_resource type="PackedScene" uid="uid://bpiy22m5o0o6w" path="res://GameObjects/Bosses/Tumbleweed/TinyTumbleweed.tscn" id="20_1mq1t"]
+[ext_resource type="PackedScene" uid="uid://cct8ahr34ib36" path="res://GameObjects/Items/ItemDrop.tscn" id="21_g4o2s"]
+[ext_resource type="PackedScene" uid="uid://brfck1ab6qwlk" path="res://GameObjects/Bosses/Tumbleweed/Tumbleweed.tscn" id="22_xibmb"]
 [ext_resource type="AudioStream" uid="uid://cfgg57ns4cgl2" path="res://GameAssets/SFX/UI/Menu3.wav" id="24_8tq22"]
 [ext_resource type="AudioStream" uid="uid://dta34e4y5xb04" path="res://GameAssets/SFX/UI/Retro Event Acute 11.wav" id="25_m1e3u"]
 
@@ -230,9 +233,17 @@ position = Vector2(30, 341)
 texture = ExtResource("5_o06dv")
 
 [node name="ExpirationTimer" type="Timer" parent="MainMenu/ShaderLoader"]
-wait_time = 0.1
 one_shot = true
 autostart = true
+
+[node name="TinyTumbleweed" parent="MainMenu/ShaderLoader" instance=ExtResource("20_1mq1t")]
+position = Vector2(43, 331)
+
+[node name="ItemDrop" parent="MainMenu/ShaderLoader" instance=ExtResource("21_g4o2s")]
+position = Vector2(43, 331)
+
+[node name="TumbleWeed" parent="MainMenu/ShaderLoader" instance=ExtResource("22_xibmb")]
+position = Vector2(61, 321)
 
 [node name="World" type="Node2D" parent="."]
 

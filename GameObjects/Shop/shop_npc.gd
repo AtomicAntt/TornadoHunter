@@ -1,3 +1,4 @@
+class_name ShopNPC
 extends Area2D
 
 var player: Player
@@ -13,3 +14,11 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.flip_h = false
 	else:
 		player = get_tree().get_nodes_in_group("Player")[0]
+		
+func show_text(new_text: String) -> void:
+	#$DialogueBox/RichTextLabel.text = "Dagger\nDamage: [color=red]2[/color]"
+	$DialogueBox/RichTextLabel.text = new_text
+	$DialogueBox/AnimationPlayer.play("Appear")
+
+func hide_text() -> void:
+	$DialogueBox/AnimationPlayer.play_backwards("Appear")

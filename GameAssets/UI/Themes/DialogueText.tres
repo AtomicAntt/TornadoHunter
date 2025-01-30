@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bp0enqvygic4w"]
+
+[ext_resource type="FontFile" uid="uid://bcoeyr87tur5" path="res://GameAssets/Fonts/quaver.ttf" id="1_lhbid"]
+
+[resource]
+default_font = ExtResource("1_lhbid")
+default_font_size = 8
+RichTextLabel/colors/default_color = Color(0.180005, 0.180005, 0.180005, 1)

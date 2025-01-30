@@ -49,6 +49,7 @@ MinionPosition="Marker2D representing a position which a minion can move to."
 WeaponActivator="Area2D that is a child of the Player. If a weapon touches it and has a special effect, you should activate that effect!"
 BossItem="Area2D that is an item but also from a boss. This group exists so that I can give priority to this item."
 Key="AnimatedSprite2D that represents a key input. Likely for the tutorial for the game."
+ShopNPC="Area2D (totally doesnt need to be) that has show_text(new_text:string) and hide_text functions that are pretty cool."
 
 [input]
 

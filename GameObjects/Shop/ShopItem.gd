@@ -4,6 +4,7 @@ extends Area2D
 
 # So you can calculate the cost of the item by how many items in this group currently exists.
 @export var item_group: String
+@export_multiline var item_description: String
 
 var player_in_range: bool = false
 
@@ -33,11 +34,13 @@ func _on_area_entered(area: Area2D) -> void:
 		if Global.gold >= current_cost:
 			$Instructions.visible = true
 		player_in_range = true
+		display_description()
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("PlayerHitbox"):
 		$Instructions.visible = false
 		player_in_range = false
+		hide_description()
 
 var purchasing: bool = false
 
@@ -82,4 +85,11 @@ func refresh_status(current_gold: int) -> void:
 			$Instructions.visible = true
 		else:
 			$Instructions.visible = false
-			
+
+func display_description() -> void:
+	var shopNPC: ShopNPC = get_tree().get_first_node_in_group("ShopNPC")
+	shopNPC.show_text(item_description)
+
+func hide_description() -> void:
+	var shopNPC: ShopNPC = get_tree().get_first_node_in_group("ShopNPC")
+	shopNPC.hide_text()
