@@ -4,6 +4,8 @@ extends Area2D
 var max_recharge: float = 25.0
 var recharge: float = 25.0
 
+@export var sell_value: int
+
 func _physics_process(delta: float) -> void:
 	if recharge < max_recharge:
 		recharge += delta
