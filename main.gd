@@ -166,7 +166,7 @@ func _on_start_button_pressed() -> void:
 	$ButtonPressed.play()
 	$MenuMusic.stop()
 	Input.set_custom_mouse_cursor(cursor)
-	load_level("Level7")
+	load_level("Tutorial")
 	# I will set it during load_level() function
 	#$MainMenu.visible = false 
 

@@ -6,6 +6,8 @@ extends Area2D
 #@export var item_group: String
 @export_multiline var item_description: String
 
+@export var item_name: String # Purpose: Global will track if the item has been visited. If not yet, this will display on _ready().
+
 var player_in_range: bool = false
 
 var item_drop: Resource = preload("res://GameObjects/Items/ItemDrop.tscn")
@@ -22,6 +24,8 @@ func _ready() -> void:
 	#current_cost = 5 * pow(2, get_tree().get_node_count_in_group(item_group))
 	refresh_status(Global.gold)
 	Global.update_gold.connect(refresh_status)
+	if item_name in Global.items_viewed:
+		$NewLabel.visible = false
 
 #func _physics_process(delta: float) -> void:
 	#if get_tree().get_node_count_in_group("ItemDrop") <= 0:
@@ -35,6 +39,9 @@ func _on_area_entered(area: Area2D) -> void:
 			$Instructions.visible = true
 		player_in_range = true
 		display_description()
+		if item_name not in Global.items_viewed:
+			Global.items_viewed.append(item_name)
+		$NewLabel.visible = false
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("PlayerHitbox"):

@@ -130,6 +130,15 @@ offset_bottom = 2.0
 theme = ExtResource("4_37t3g")
 text = "Press 'F' to purchase!"
 
+[node name="NewLabel" type="Label" parent="."]
+modulate = Color(0.984314, 0.94902, 0.203922, 1)
+offset_left = -17.0
+offset_top = -18.0
+offset_right = 25.0
+offset_bottom = -10.0
+theme = ExtResource("4_37t3g")
+text = "New Item!"
+
 [node name="InvalidPurchase" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_a4p0s")
 

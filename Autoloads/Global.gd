@@ -12,6 +12,8 @@ var health: int = 6
 
 var time_scale: float = 1.0
 
+var items_viewed: Array[String] = []
+
 signal update_gold
 
 func add_gold(amount: int) -> void:
