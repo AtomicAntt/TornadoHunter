@@ -36,6 +36,8 @@ func _ready() -> void:
 	spawn_debris()
 
 func _physics_process(delta):
+	var _delta = delta * Global.time_scale
+	
 	if prev_child_count != get_child_count() and not moving:
 		# Update the variable for checking and reset platform references
 		prev_child_count = get_child_count()
@@ -43,13 +45,13 @@ func _physics_process(delta):
 	
 	# Increment the angle so that it completes one full rotation in the given number of seconds.
 	# TODO: If you intend to use a speed of zero, then you may want to add a zero check here
-	orbit_angle_offset += 2 * PI * delta / float(rotation_duration)
+	orbit_angle_offset += 2 * PI * _delta / float(rotation_duration)
 	# Wrap the angle to keep it nice and tidy, and to prevent unlikely overflow
 	orbit_angle_offset = wrapf(orbit_angle_offset, -PI, PI)
 	# Update platform positions
 	_update_platforms()
 	
-	global_position += direction * speed * delta
+	global_position += direction * speed * _delta
 	
 	if get_tree().get_node_count_in_group("Boss") <= 0:
 		queue_free()
