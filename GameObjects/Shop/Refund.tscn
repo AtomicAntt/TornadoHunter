@@ -22,12 +22,21 @@ shape = SubResource("CircleShape2D_5rrnx")
 texture = ExtResource("2_yvd78")
 
 [node name="Instructions" type="Label" parent="."]
+visible = false
 offset_left = -65.0
 offset_top = -20.0
 offset_right = 74.0
 offset_bottom = 3.0
 theme = ExtResource("3_ncqt4")
 text = "Press 'F' to refund all weapons!"
+
+[node name="WeaponRefundLabel" type="Label" parent="."]
+offset_left = -29.0
+offset_top = 15.0
+offset_right = 34.0
+offset_bottom = 23.0
+theme = ExtResource("3_ncqt4")
+text = "Weapon Refund"
 
 [node name="GetCoin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_2txkr")

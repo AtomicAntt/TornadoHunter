@@ -30,6 +30,7 @@ texture = ExtResource("3_wyk2l")
 position = Vector2(-98, 39)
 
 [node name="Refund" parent="." instance=ExtResource("5_5qn4i")]
+position = Vector2(52, 35)
 description = ""
 
 [editable path="ShopItem2"]
