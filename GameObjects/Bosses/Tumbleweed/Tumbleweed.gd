@@ -37,13 +37,14 @@ func set_disabled() -> void:
 	state = States.DISABLED
 
 func _physics_process(delta: float) -> void:
+	var _delta = delta * Global.time_scale
 	
 	match state:
 		States.IDLE:
 			pass
 		States.ACCELERATING:
-			spin_speed += spin_acceleration * delta
-			rotation_degrees += spin_speed * delta
+			spin_speed += spin_acceleration * _delta
+			rotation_degrees += spin_speed * _delta
 			
 			while rotation_degrees > 360:
 				$Charging.play()
@@ -83,13 +84,13 @@ func _physics_process(delta: float) -> void:
 				state = States.CHARGING
 				
 		States.CHARGING:
-			spin_speed -= spin_acceleration * delta
-			rotation_degrees -= spin_speed * delta
+			spin_speed -= spin_acceleration * _delta
+			rotation_degrees -= spin_speed * _delta
 			
 			while rotation_degrees < -360:
 				rotation_degrees += 360
 			
-			global_position += last_player_direction * speed * delta
+			global_position += last_player_direction * speed * _delta
 		States.STUNNED:
 			pass
 		States.DISABLED:

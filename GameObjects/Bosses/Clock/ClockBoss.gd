@@ -90,7 +90,7 @@ func set_new_marker() -> void:
 	position_index += 1
 	
 	# position_index % 3 basically, which loops from 0, 1, and 2
-	new_marker = get_tree().get_nodes_in_group("BossPosition")[position_index % get_tree().get_node_count_in_group("BossPosition")]
+	new_marker = get_tree().get_nodes_in_group("ClockPosition")[position_index % get_tree().get_node_count_in_group("ClockPosition")]
 
 # current_position is either 0, 1, or 2
 func get_random_projectile_position(current_position: int) -> Vector2:
@@ -125,7 +125,7 @@ func summon_hourglass() -> void:
 
 func summon_clock() -> void:
 	var direction_to_shoot: Vector2
-	var current_position: int = position_index % get_tree().get_node_count_in_group("BossPosition")
+	var current_position: int = position_index % get_tree().get_node_count_in_group("ClockPosition")
 	
 	match current_position:
 		0: # Left location
@@ -169,7 +169,7 @@ func visit_new_marker() -> void:
 
 # This will be called by TeleportAnimation
 func create_warning() -> void:
-	var current_position: int = position_index % get_tree().get_node_count_in_group("BossPosition")
+	var current_position: int = position_index % get_tree().get_node_count_in_group("ClockPosition")
 	var point_position_1: Vector2
 	var point_position_2: Vector2
 	

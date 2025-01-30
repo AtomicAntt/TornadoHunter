@@ -37,13 +37,19 @@ func _ready() -> void:
 		$Rotater.add_child(spawn_point)
 
 func _physics_process(delta: float) -> void:
-	var new_rotation = $Rotater.rotation_degrees + rotation_speed * delta
+	var _delta = delta * Global.time_scale
+	
+	var new_rotation = $Rotater.rotation_degrees + rotation_speed * _delta
 	$Rotater.rotation_degrees = fmod(new_rotation, 360)
+	
+	if is_instance_valid(movement_tween):
+		movement_tween.set_speed_scale(Global.time_scale)
+	$AnimatedSprite2D.speed_scale = Global.time_scale
 	
 	match state:
 		States.IDLE:
 			if $Intro.is_stopped():
-				charge_time += delta
+				charge_time += _delta
 			
 			if charge_time >= charge_cooldown:
 				charge_time = 0.0
@@ -58,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		States.ACCELERATING:
 			pass
 		States.CHARGING:
-			attack_time += delta
+			attack_time += _delta
 			if attack_time >= attack_cooldown:
 				attack_time = 0.0
 				shoot_spiral()

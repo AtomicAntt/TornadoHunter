@@ -442,6 +442,9 @@ radius = Vector2(50, 50)
 [node name="Orbitor3" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(75, 75)
 
+[node name="Orbitor4" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
+radius = Vector2(100, 100)
+
 [node name="Orbitor1" parent="." groups=["orbitor"] instance=ExtResource("14_0hc2s")]
 radius = Vector2(25, 25)
 rotation_duration = 3.0
@@ -476,6 +479,7 @@ stream = ExtResource("62_ockwp")
 stream = ExtResource("61_pmfea")
 
 [node name="WeaponActivator" type="Area2D" parent="." groups=["WeaponActivator"]]
+visible = false
 position = Vector2(0, -45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponActivator"]

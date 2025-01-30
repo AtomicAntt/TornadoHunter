@@ -23,6 +23,7 @@ func restore_items() -> void:
 	if Global.special_weapon_count >= 1:
 		var tumbleweed_dagger_instance = tumbleweed_weapon.instantiate()
 		add_item_orbit(tumbleweed_dagger_instance)
+		$WeaponActivator.visible = true
 	
 	if Global.special_weapon_count >= 2:
 		var tornado_dagger_instance = tornado_weapon.instantiate()
@@ -133,6 +134,8 @@ func add_item_orbit(item: Area2D):
 		elif $Orbitor3.get_child_count() < 12:
 			#$Orbitor3.call_deferred("add_child", item)
 			$Orbitor3.add_child(item)
+		elif $Orbitor4.get_child_count() < 16:
+			$Orbitor4.add_child(item)
 	elif item.is_in_group("shield"):
 		#$Orbitor1.call_deferred("add_child", item)
 		$Orbitor1.add_child(item)
@@ -140,6 +143,7 @@ func add_item_orbit(item: Area2D):
 	if not initializing:
 		if item.is_in_group("BossItem"):
 			$GetBossItem.play()
+			$WeaponActivator.visible = true
 		else:
 			$GetItem.play()
 

@@ -9,11 +9,13 @@ var item_drop: Resource = preload("res://GameObjects/Items/ItemDrop.tscn")
 var boss_drop: PackedScene = preload("res://GameObjects/Items/TumbleweedDagger.tscn")
 var tornado_drop: PackedScene = preload("res://GameObjects/Items/TornadoDagger.tscn")
 
+var cursor: Resource = preload("res://GameAssets/UI/Mouse/Cursor-4.png")
+
 var current_scene: String
 var current_level: int = 1
 
 #func _ready() -> void:
-	#load_level("Level1")
+	#Input.set_custom_mouse_cursor(cursor) # Set to null for the default one
 
 func unload_level() -> void:
 	if is_instance_valid(level_instance):
@@ -163,7 +165,8 @@ func _on_start_button_pressed() -> void:
 	$MainMenu/MenuButtons/StartButton.disabled = true # Remember to re-enable it if the player ever comes back to the main menu!
 	$ButtonPressed.play()
 	$MenuMusic.stop()
-	load_level("Tutorial")
+	Input.set_custom_mouse_cursor(cursor)
+	load_level("Level7")
 	# I will set it during load_level() function
 	#$MainMenu.visible = false 
 

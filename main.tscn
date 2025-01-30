@@ -240,6 +240,7 @@ autostart = true
 position = Vector2(43, 331)
 
 [node name="ItemDrop" parent="MainMenu/ShaderLoader" instance=ExtResource("21_g4o2s")]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(43, 331)
 
 [node name="TumbleWeed" parent="MainMenu/ShaderLoader" instance=ExtResource("22_xibmb")]
