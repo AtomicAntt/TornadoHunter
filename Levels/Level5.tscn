@@ -1877,13 +1877,13 @@ position = Vector2(-203, 35)
 
 [node name="Markers" type="Node2D" parent="."]
 
-[node name="Marker2D" type="Marker2D" parent="Markers" groups=["BossPosition"]]
+[node name="Marker2D" type="Marker2D" parent="Markers" groups=["ClockPosition"]]
 position = Vector2(-293, 68)
 
-[node name="Marker2D2" type="Marker2D" parent="Markers" groups=["BossPosition"]]
+[node name="Marker2D2" type="Marker2D" parent="Markers" groups=["ClockPosition"]]
 position = Vector2(-99, -45)
 
-[node name="Marker2D3" type="Marker2D" parent="Markers" groups=["BossPosition"]]
+[node name="Marker2D3" type="Marker2D" parent="Markers" groups=["ClockPosition"]]
 position = Vector2(94, 68)
 
 [node name="CenterMarker" type="Marker2D" parent="Markers" groups=["CenterMarker"]]
