@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://pj70g6s5tnl5"]
+[gd_scene load_steps=6 format=3 uid="uid://pj70g6s5tnl5"]
 
 [ext_resource type="PackedScene" uid="uid://cx3wqu64bykqr" path="res://GameObjects/Shop/ShopItem.tscn" id="1_riuag"]
 [ext_resource type="PackedScene" uid="uid://cj8h0gsiro8s7" path="res://GameObjects/Items/Shield.tscn" id="2_jjkpr"]
 [ext_resource type="Texture2D" uid="uid://dubuxgcucbbcf" path="res://GameAssets/Items/Shield/prototype shield.png" id="3_wyk2l"]
 [ext_resource type="PackedScene" uid="uid://elo7uc2aknvl" path="res://GameObjects/Shop/ShopNPC.tscn" id="4_bfjiv"]
+[ext_resource type="PackedScene" uid="uid://j6lxobrd11of" path="res://GameObjects/Shop/Refund.tscn" id="5_5qn4i"]
 
 [node name="Shop" type="Node2D"]
 
@@ -27,5 +28,8 @@ texture = ExtResource("3_wyk2l")
 
 [node name="ShopNpc" parent="." instance=ExtResource("4_bfjiv")]
 position = Vector2(-98, 39)
+
+[node name="Refund" parent="." instance=ExtResource("5_5qn4i")]
+description = ""
 
 [editable path="ShopItem2"]

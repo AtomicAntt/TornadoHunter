@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://j6lxobrd11of"]
+
+[ext_resource type="Script" path="res://GameObjects/Shop/Refund.gd" id="1_ppt0s"]
+[ext_resource type="Texture2D" uid="uid://b434t47ccuqte" path="res://GameAssets/NPC/Redo.png" id="2_yvd78"]
+[ext_resource type="Theme" uid="uid://dj388qh6rsv5c" path="res://GameAssets/UI/Themes/GameText.tres" id="3_ncqt4"]
+[ext_resource type="AudioStream" uid="uid://7wd458747mvt" path="res://GameAssets/SFX/Player/GetCoin.wav" id="4_2txkr"]
+[ext_resource type="AudioStream" uid="uid://dhpp16gds6xl" path="res://GameAssets/SFX/Player/InvalidPurchase.wav" id="5_0h6n0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5rrnx"]
+radius = 22.0227
+
+[node name="Refund" type="Area2D"]
+position = Vector2(52, 28)
+script = ExtResource("1_ppt0s")
+description = "Refund all weapons?
+Count: [color=blue]0[/color]"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5rrnx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yvd78")
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = -65.0
+offset_top = -20.0
+offset_right = 74.0
+offset_bottom = 3.0
+theme = ExtResource("3_ncqt4")
+text = "Press 'F' to refund all weapons!"
+
+[node name="GetCoin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2txkr")
+
+[node name="InvalidPurchase" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0h6n0")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

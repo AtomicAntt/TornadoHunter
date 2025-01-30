@@ -21,6 +21,7 @@ animations = [{
 [node name="Dagger" type="Area2D" groups=["item", "weapon"]]
 script = ExtResource("1_0n6bh")
 damage = 2.0
+sell_value = 35
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mcedo")

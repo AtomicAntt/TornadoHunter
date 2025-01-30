@@ -1,9 +1,13 @@
+class_name PlayerWeapon
 extends Area2D
 
 enum Weapons {NONE, TUMBLEWEED, TORNADO, CLOCK}
 @export var weapon: Weapons = Weapons.NONE
 
 @export var damage: float = 2.5
+
+# Sell value should be the same as buy value
+@export var sell_value: int
 
 var player_tumbleweed: Resource = preload("res://GameObjects/Player/PlayerTumbleweed.tscn")
 var player_wind: Resource = preload("res://GameObjects/Player/PlayerWind.tscn")
