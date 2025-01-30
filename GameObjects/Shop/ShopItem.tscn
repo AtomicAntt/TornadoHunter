@@ -85,7 +85,6 @@ _data = {
 [node name="ShopItem" type="Area2D"]
 script = ExtResource("1_kfllk")
 item_sold = ExtResource("2_s5c67")
-item_group = "weapon"
 item_description = "the developer didnt add a description for this item :("
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

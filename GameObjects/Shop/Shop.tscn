@@ -16,7 +16,6 @@ current_cost = 35
 [node name="ShopItem2" parent="." instance=ExtResource("1_riuag")]
 position = Vector2(-149, 85)
 item_sold = ExtResource("2_jjkpr")
-item_group = "shield"
 item_description = "Shield
 Blocks one attack."
 current_cost = 80

@@ -3,7 +3,7 @@ extends Area2D
 @export var item_sold: PackedScene
 
 # So you can calculate the cost of the item by how many items in this group currently exists.
-@export var item_group: String
+#@export var item_group: String
 @export_multiline var item_description: String
 
 var player_in_range: bool = false
@@ -88,8 +88,10 @@ func refresh_status(current_gold: int) -> void:
 
 func display_description() -> void:
 	var shopNPC: ShopNPC = get_tree().get_first_node_in_group("ShopNPC")
-	shopNPC.show_text(item_description)
+	if is_instance_valid(shopNPC):
+		shopNPC.show_text(item_description)
 
 func hide_description() -> void:
 	var shopNPC: ShopNPC = get_tree().get_first_node_in_group("ShopNPC")
-	shopNPC.hide_text()
+	if is_instance_valid(shopNPC):
+		shopNPC.hide_text()

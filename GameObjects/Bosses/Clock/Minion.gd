@@ -104,7 +104,7 @@ func death() -> void:
 		$Death.play()
 		
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
-		main.freeze_time(3.0)
+		main.freeze_time(2.0)
 		
 
 func move_randomly() -> void:
