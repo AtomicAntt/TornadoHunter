@@ -68,11 +68,15 @@ func load_level(level_name: String) -> void:
 
 	if level_name == "Shop":
 		$BossMusic.stop()
+		$DoubleBossMusic.stop()
 		$ShopMusic.play()
 	elif level_name == "Tutorial":
 		$TutorialMusic.play()
 	else:
-		$BossMusic.play()
+		if current_level < 4:
+			$BossMusic.play()
+		else:
+			$DoubleBossMusic.play()
 		$ShopMusic.stop()
 		$TutorialMusic.stop()
 	
