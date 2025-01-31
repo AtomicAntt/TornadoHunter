@@ -8,6 +8,8 @@ extends Area2D
 
 @export var item_name: String # Purpose: Global will track if the item has been visited. If not yet, this will display on _ready().
 
+@export var required_special_weapons: int = 0 # Purpose: Depending on how many special weapons the player has, see if it exists or not, else it is queue_free'd
+
 var player_in_range: bool = false
 
 var item_drop: Resource = preload("res://GameObjects/Items/ItemDrop.tscn")
@@ -21,11 +23,15 @@ var item_drop: Resource = preload("res://GameObjects/Items/ItemDrop.tscn")
 # I will be manually putting the sprite with the correct item to be compatible with shader
 
 func _ready() -> void:
+	
 	#current_cost = 5 * pow(2, get_tree().get_node_count_in_group(item_group))
 	refresh_status(Global.gold)
 	Global.update_gold.connect(refresh_status)
 	if item_name in Global.items_viewed:
 		$NewLabel.visible = false
+	
+	if required_special_weapons > Global.special_weapon_count:
+		queue_free()
 
 #func _physics_process(delta: float) -> void:
 	#if get_tree().get_node_count_in_group("ItemDrop") <= 0:

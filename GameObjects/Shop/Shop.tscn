@@ -23,6 +23,7 @@ item_sold = ExtResource("2_pjil1")
 item_description = "Sword
 Damage: [color=red]5[/color]"
 item_name = "Sword"
+required_special_weapons = 1
 current_cost = 50
 
 [node name="Sprite2D" parent="ShopItem3" index="1"]
