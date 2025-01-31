@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnr2wpd3ufe1g"]
+
+[ext_resource type="Script" path="res://GameObjects/Items/PlayerWeapon.gd" id="1_mwbwn"]
+[ext_resource type="Texture2D" uid="uid://ccmke8qyvet36" path="res://GameAssets/Items/Weapon/FireDagger.png" id="2_4s7dk"]
+[ext_resource type="AudioStream" uid="uid://c41lnqlrdckar" path="res://GameAssets/SFX/Player/PlayerProjectile.wav" id="3_5bh0e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcedo"]
+size = Vector2(11, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ftbtq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4s7dk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="FlameSword" type="Area2D" groups=["FireBlade", "item", "weapon"]]
+script = ExtResource("1_mwbwn")
+weapon = 3
+damage = 5.0
+sell_value = 80
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_mcedo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ftbtq")
+frame_progress = 0.602531
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5bh0e")
+pitch_scale = 1.1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

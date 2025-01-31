@@ -1,59 +1,61 @@
-[gd_scene load_steps=9 format=3 uid="uid://c835jjh8e7ka6"]
+[gd_scene load_steps=9 format=3 uid="uid://crx64tpdbt08a"]
 
-[ext_resource type="Script" path="res://GameObjects/Player/PlayerProjectile.gd" id="1_wsj3o"]
-[ext_resource type="Texture2D" uid="uid://ccoyinmalux0k" path="res://GameAssets/TornadoBoss/TornadoAttack.png" id="2_bkyvd"]
+[ext_resource type="Script" path="res://GameObjects/Player/PlayerProjectile.gd" id="1_btqu8"]
+[ext_resource type="Texture2D" uid="uid://8qjalnb0v7ib" path="res://GameAssets/Items/Weapon/Fireball3.png" id="2_vvj2x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ut0o"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rs2cn"]
-atlas = ExtResource("2_bkyvd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu8gr"]
+atlas = ExtResource("2_vvj2x")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6aiaq"]
-atlas = ExtResource("2_bkyvd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_odi51"]
+atlas = ExtResource("2_vvj2x")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rosbt"]
-atlas = ExtResource("2_bkyvd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_m81ye"]
+atlas = ExtResource("2_vvj2x")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fddjk"]
-atlas = ExtResource("2_bkyvd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f3kx"]
+atlas = ExtResource("2_vvj2x")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m3mwp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rs2cn")
+"texture": SubResource("AtlasTexture_vu8gr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6aiaq")
+"texture": SubResource("AtlasTexture_odi51")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rosbt")
+"texture": SubResource("AtlasTexture_m81ye")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fddjk")
+"texture": SubResource("AtlasTexture_3f3kx")
 }],
 "loop": true,
 "name": &"default",
 "speed": 14.0
 }]
 
-[node name="PlayerWind" type="Area2D"]
-script = ExtResource("1_wsj3o")
+[node name="PlayerFire" type="Area2D"]
+script = ExtResource("1_btqu8")
 speed = 250.0
 steer_force = 15.0
-damage = 15.0
+rotating = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4ut0o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_m3mwp")
 autoplay = "default"
-frame_progress = 0.370908
+frame = 2
+frame_progress = 0.197116
 
 [node name="ExpirationTimer" type="Timer" parent="."]
 wait_time = 4.0

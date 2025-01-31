@@ -6,6 +6,7 @@ extends Area2D
 @export var damage: float = 5
 @export var spinning: bool = false
 @export var rotation_speed: float = 0.0
+@export var rotating: bool = false # DIFFERENT FROM SPINNING, it means looking at the direction it is going.
 
 var velocity: Vector2 = Vector2.ZERO
 var acceleration: Vector2 = Vector2.ZERO
@@ -52,6 +53,9 @@ func _physics_process(delta: float) -> void:
 	velocity += acceleration * delta
 	velocity = velocity.limit_length(speed)
 	position += velocity * delta
+	
+	if rotating:
+		rotation = velocity.angle()
 	
 	if spinning:
 		var new_rotation = rotation_degrees + rotation_speed * delta

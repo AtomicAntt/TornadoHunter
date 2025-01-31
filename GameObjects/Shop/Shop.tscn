@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://pj70g6s5tnl5"]
+[gd_scene load_steps=10 format=3 uid="uid://pj70g6s5tnl5"]
 
 [ext_resource type="PackedScene" uid="uid://cx3wqu64bykqr" path="res://GameObjects/Shop/ShopItem.tscn" id="1_riuag"]
 [ext_resource type="PackedScene" uid="uid://cj8h0gsiro8s7" path="res://GameObjects/Items/Shield.tscn" id="2_jjkpr"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dqd410o32o1d3" path="res://GameAssets/Items/Weapon/Sword.png" id="3_cq3ni"]
 [ext_resource type="Texture2D" uid="uid://dubuxgcucbbcf" path="res://GameAssets/Items/Shield/prototype shield.png" id="3_wyk2l"]
 [ext_resource type="PackedScene" uid="uid://elo7uc2aknvl" path="res://GameObjects/Shop/ShopNPC.tscn" id="4_bfjiv"]
+[ext_resource type="PackedScene" uid="uid://cnr2wpd3ufe1g" path="res://GameObjects/Items/FlameSword.tscn" id="4_y2k54"]
 [ext_resource type="PackedScene" uid="uid://j6lxobrd11of" path="res://GameObjects/Shop/Refund.tscn" id="5_5qn4i"]
+[ext_resource type="Texture2D" uid="uid://ccmke8qyvet36" path="res://GameAssets/Items/Weapon/FireDagger.png" id="5_u18tr"]
 
 [node name="Shop" type="Node2D"]
 
@@ -29,6 +31,19 @@ current_cost = 50
 [node name="Sprite2D" parent="ShopItem3" index="1"]
 position = Vector2(0, -2)
 texture = ExtResource("3_cq3ni")
+
+[node name="ShopItem4" parent="." instance=ExtResource("1_riuag")]
+position = Vector2(-45, 26)
+item_sold = ExtResource("4_y2k54")
+item_description = "[color=orange]Fire Blade[/color]
+Damage: [color=red]5[/color]"
+item_name = "FireBlade"
+required_special_weapons = 2
+current_cost = 80
+
+[node name="Sprite2D" parent="ShopItem4" index="1"]
+position = Vector2(0, -2)
+texture = ExtResource("5_u18tr")
 
 [node name="ShopItem2" parent="." instance=ExtResource("1_riuag")]
 position = Vector2(-149, 85)
@@ -63,5 +78,6 @@ text = "Shield Refund"
 horizontal_alignment = 1
 
 [editable path="ShopItem3"]
+[editable path="ShopItem4"]
 [editable path="ShopItem2"]
 [editable path="ShieldRefund"]

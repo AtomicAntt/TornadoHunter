@@ -18,6 +18,7 @@ animations = [{
 
 [node name="PlayerTumbleweed" type="Area2D"]
 script = ExtResource("1_exuo2")
+damage = 10.0
 spinning = true
 rotation_speed = 500.0
 
