@@ -6,6 +6,9 @@ var gold: int
 var weapon_count: int = 3
 var shield_count: int = 1
 
+var sword_count: int = 0
+var fire_blade_count: int = 0
+
 var special_weapon_count: int = 0
 
 var health: int = 6

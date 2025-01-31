@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://pj70g6s5tnl5"]
+[gd_scene load_steps=8 format=3 uid="uid://pj70g6s5tnl5"]
 
 [ext_resource type="PackedScene" uid="uid://cx3wqu64bykqr" path="res://GameObjects/Shop/ShopItem.tscn" id="1_riuag"]
 [ext_resource type="PackedScene" uid="uid://cj8h0gsiro8s7" path="res://GameObjects/Items/Shield.tscn" id="2_jjkpr"]
+[ext_resource type="PackedScene" uid="uid://y8qm6fqpo1wo" path="res://GameObjects/Items/Sword.tscn" id="2_pjil1"]
+[ext_resource type="Texture2D" uid="uid://dqd410o32o1d3" path="res://GameAssets/Items/Weapon/Sword.png" id="3_cq3ni"]
 [ext_resource type="Texture2D" uid="uid://dubuxgcucbbcf" path="res://GameAssets/Items/Shield/prototype shield.png" id="3_wyk2l"]
 [ext_resource type="PackedScene" uid="uid://elo7uc2aknvl" path="res://GameObjects/Shop/ShopNPC.tscn" id="4_bfjiv"]
 [ext_resource type="PackedScene" uid="uid://j6lxobrd11of" path="res://GameObjects/Shop/Refund.tscn" id="5_5qn4i"]
@@ -14,6 +16,18 @@ item_description = "Dagger
 Damage: [color=red]2[/color]"
 item_name = "Dagger"
 current_cost = 35
+
+[node name="ShopItem3" parent="." instance=ExtResource("1_riuag")]
+position = Vector2(23, 85)
+item_sold = ExtResource("2_pjil1")
+item_description = "Sword
+Damage: [color=red]5[/color]"
+item_name = "Sword"
+current_cost = 50
+
+[node name="Sprite2D" parent="ShopItem3" index="1"]
+position = Vector2(0, -2)
+texture = ExtResource("3_cq3ni")
 
 [node name="ShopItem2" parent="." instance=ExtResource("1_riuag")]
 position = Vector2(-149, 85)
@@ -30,7 +44,7 @@ texture = ExtResource("3_wyk2l")
 position = Vector2(-98, 39)
 
 [node name="Refund" parent="." instance=ExtResource("5_5qn4i")]
-position = Vector2(52, 35)
+position = Vector2(86, 35)
 description = ""
 
 [node name="ShieldRefund" parent="." instance=ExtResource("5_5qn4i")]
@@ -47,5 +61,6 @@ offset_right = 35.0
 text = "Shield Refund"
 horizontal_alignment = 1
 
+[editable path="ShopItem3"]
 [editable path="ShopItem2"]
 [editable path="ShieldRefund"]

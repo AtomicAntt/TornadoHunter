@@ -51,6 +51,9 @@ BossItem="Area2D that is an item but also from a boss. This group exists so that
 Key="AnimatedSprite2D that represents a key input. Likely for the tutorial for the game."
 ShopNPC="Area2D (totally doesnt need to be) that has show_text(new_text:string) and hide_text functions that are pretty cool."
 ClockPosition="Marker2D showing where the clock goes."
+Sword="Area2D that is an item and a weapon. It is the sword from the shop. Purpose: When entering the gate, it will save the # of existing swords."
+FireBlade="Area2D that is an item and a weapon. Purpose: Every time the player exits the shop, the # of weapons in this group is saved by the Global autoload."
+Dagger="Area2D that represents a dagger (weapon and an item). Purpose: When leaving the gate, it counts how many of these exists and adds to weapon_count."
 
 [input]
 

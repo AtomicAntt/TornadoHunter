@@ -369,8 +369,8 @@ _data = {
 "RESET": SubResource("Animation_awhd7")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_txmct"]
-radius = 9.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylgix"]
+height = 64.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpuxl"]
 atlas = ExtResource("62_76ns8")
@@ -483,7 +483,8 @@ visible = false
 position = Vector2(0, -45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponActivator"]
-shape = SubResource("CircleShape2D_txmct")
+position = Vector2(0, -24)
+shape = SubResource("CapsuleShape2D_ylgix")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WeaponActivator"]
 texture_filter = 1

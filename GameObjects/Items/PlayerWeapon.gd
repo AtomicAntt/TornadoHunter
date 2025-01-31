@@ -3,8 +3,8 @@ extends Area2D
 
 enum Weapons {NONE, TUMBLEWEED, TORNADO, CLOCK}
 @export var weapon: Weapons = Weapons.NONE
-
 @export var damage: float = 2.5
+#@export var weapon_name: String = "dagger" # Purpose: When the player leaves the shop, it takes a count of swords and flaming swords. It needs this to know how many there are.
 
 # Sell value should be the same as buy value
 @export var sell_value: int
