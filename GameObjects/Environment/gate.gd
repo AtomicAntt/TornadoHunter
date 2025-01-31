@@ -71,7 +71,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		Global.weapon_count = get_tree().get_node_count_in_group("Dagger")
 		Global.sword_count = get_tree().get_node_count_in_group("Sword")
 		Global.fire_blade_count = get_tree().get_node_count_in_group("FireBlade")
-		Global.shield_count = get_tree().get_node_count_in_group("shield")
+		Global.shield_count = get_tree().get_node_count_in_group("RegularShield")
 		
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
 		main.load_next_level()

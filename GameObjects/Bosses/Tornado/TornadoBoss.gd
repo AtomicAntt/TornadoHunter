@@ -246,6 +246,9 @@ func shoot_debris() -> void:
 			if not wind_instance.attacked:
 				wind_instance.attack(last_player_direction)
 				$TornadoThrow.play()
+				var camera_shaker: CameraShaker = get_tree().get_nodes_in_group("Camera")[0]
+				if is_instance_valid(camera_shaker):
+					camera_shaker.apply_medium_shake()
 				break
 		
 		await get_tree().create_timer(1.0).timeout
