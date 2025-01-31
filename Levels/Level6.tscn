@@ -1973,8 +1973,8 @@ position = Vector2(-99, 38)
 
 [node name="TornadoBoss" parent="." instance=ExtResource("8_pd3ug")]
 position = Vector2(27, 44)
-max_health = 6000.0
-health = 6000.0
+max_health = 4000.0
+health = 4000.0
 
 [node name="TornadoMarkers" type="Node2D" parent="."]
 

@@ -53,8 +53,10 @@ func cutscene() -> void:
 		if area.is_in_group("PlayerHitbox") and get_tree().get_node_count_in_group("ItemDrop") <= 0:
 			open = false
 			var main: Main = get_tree().get_nodes_in_group("Main")[0]
-			if not is_shop and not is_tutorial:
+			if not is_shop and not is_tutorial and main.current_level < 7:
 				main.load_level("Shop")
+			elif not is_shop and not is_tutorial and main.current_level >= 7:
+				main.load_level("Win")
 			elif is_tutorial:
 				main.load_level("Level1")
 
@@ -63,8 +65,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		open = false
 		print(get_tree().get_node_count_in_group("ItemDrop"))
 		var main: Main = get_tree().get_nodes_in_group("Main")[0]
-		if not is_shop:
+		if not is_shop and main.current_level < 7:
 			main.load_level("Shop")
+		elif not is_shop and main.current_level >= 7:
+			main.load_level("Win")
 	if area.is_in_group("PlayerHitbox") and is_shop and get_tree().get_node_count_in_group("ItemDrop") <= 0: # Item drop count must be 0 so it can save your purchases easier
 		is_shop = false # This is just so that you can't activate it again to cause weird stuff.
 		
