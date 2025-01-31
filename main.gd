@@ -50,7 +50,10 @@ func load_level(level_name: String) -> void:
 	
 	if level_name != "Shop" and level_name != "Tutorial":
 		$World/CanvasLayer/BossHealthBar.visible = true
+		$World/CanvasLayer/StageLabel.visible = true
+		$World/CanvasLayer/StageLabel.text = "Stage " + str(current_level)
 	else:
+		$World/CanvasLayer/StageLabel.visible = false
 		$World/CanvasLayer/BossHealthBar.visible = false
 	
 	tween = create_tween()

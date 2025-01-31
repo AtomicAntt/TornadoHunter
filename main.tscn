@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://baj2uj2cxr74e"]
+[gd_scene load_steps=47 format=3 uid="uid://baj2uj2cxr74e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_s2ssk"]
 [ext_resource type="Texture2D" uid="uid://bxdggoe8dhc3i" path="res://GameAssets/UI/MainMenu/Tornado.png" id="2_02bol"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://brfck1ab6qwlk" path="res://GameObjects/Bosses/Tumbleweed/Tumbleweed.tscn" id="22_xibmb"]
 [ext_resource type="AudioStream" uid="uid://cfgg57ns4cgl2" path="res://GameAssets/SFX/UI/Menu3.wav" id="24_8tq22"]
 [ext_resource type="AudioStream" uid="uid://dta34e4y5xb04" path="res://GameAssets/SFX/UI/Retro Event Acute 11.wav" id="25_m1e3u"]
+[ext_resource type="Theme" uid="uid://dj388qh6rsv5c" path="res://GameAssets/UI/Themes/GameText.tres" id="30_go63m"]
 
 [sub_resource type="GDScript" id="GDScript_lv62a"]
 script/source = "extends Node2D
@@ -333,6 +334,15 @@ theme_override_font_sizes/font_size = 8
 text = "0.0
 "
 horizontal_alignment = 1
+
+[node name="StageLabel" type="Label" parent="World/CanvasLayer"]
+visible = false
+offset_left = 589.0
+offset_top = 7.0
+offset_right = 629.0
+offset_bottom = 30.0
+theme = ExtResource("30_go63m")
+text = "Stage 1"
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_54wpx")
