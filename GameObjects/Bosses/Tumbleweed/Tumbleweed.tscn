@@ -310,8 +310,8 @@ _data = {
 
 [node name="TumbleWeed" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_j5o4q")
-max_health = 400.0
-health = 400.0
+max_health = 500.0
+health = 500.0
 coin_value = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -22,7 +22,7 @@ animations = [{
 script = ExtResource("1_mwbwn")
 weapon = 3
 damage = 5.0
-sell_value = 80
+sell_value = 120
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
