@@ -121,7 +121,10 @@ func restart() -> void:
 	#$BossMusic.play()
 	
 	load_level("Shop")
-	current_level = 0
+	if current_level < 4: # so if it's 4 or more, it will be false
+		current_level = 0
+	else:
+		current_level = 3 # 3 beause you enter shop and then that increments to 4
 	Global.health = 6
 
 func level_fail() -> void:
