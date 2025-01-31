@@ -1,6 +1,9 @@
 class_name Shield
 extends Area2D
 
+enum Shields {NONE, TIME}
+@export var shield: Shields = Shields.NONE
+
 var max_recharge: float = 25.0
 var recharge: float = 25.0
 
@@ -22,8 +25,14 @@ func _on_area_entered(area: Area2D) -> void:
 
 func use_shield() -> void:
 	recharge = 0.0
-	$Block.play()
 	
 	var camera_shake: CameraShaker = get_tree().get_nodes_in_group("Camera")[0]
 	if is_instance_valid(camera_shake):
 		camera_shake.apply_weak_shake()
+	
+	if shield == Shields.TIME:
+		var main: Main = get_tree().get_nodes_in_group("Main")[0]
+		main.freeze_time(2.0)
+		$TimeFreeze.play()
+	else:
+		$Block.play()

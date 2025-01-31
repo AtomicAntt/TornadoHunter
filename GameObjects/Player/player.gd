@@ -12,6 +12,7 @@ var dagger: Resource = preload("res://GameObjects/Items/Dagger.tscn")
 var shield: Resource = preload("res://GameObjects/Items/Shield.tscn")
 var tumbleweed_weapon: Resource = preload("res://GameObjects/Items/TumbleweedDagger.tscn")
 var tornado_weapon: Resource = preload("res://GameObjects/Items/TornadoDagger.tscn")
+var time_shield: Resource = preload("res://GameObjects/Items/TimeShield.tscn")
 
 # This bool is set false after ready function, so after initializing
 var initializing: bool = true # Purpose: so that the item drop sound does not play when the player is given all the items after each new scene.
@@ -28,6 +29,10 @@ func restore_items() -> void:
 	if Global.special_weapon_count >= 2:
 		var tornado_dagger_instance = tornado_weapon.instantiate()
 		add_item_orbit(tornado_dagger_instance)
+	
+	if Global.special_weapon_count >= 3:
+		var time_shield_instance = time_shield.instantiate()
+		add_item_orbit(time_shield_instance)
 	
 	for i in range(Global.weapon_count):
 		var dagger_instance = dagger.instantiate()

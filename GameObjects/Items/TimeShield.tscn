@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyawhu32r0qg7"]
+
+[ext_resource type="Script" path="res://GameObjects/Items/shield.gd" id="1_ltt0m"]
+[ext_resource type="Texture2D" uid="uid://buwpr83t63dc0" path="res://GameAssets/Items/Shield/TimeShield.png" id="2_rq07e"]
+[ext_resource type="AudioStream" uid="uid://bhmstsv08jwea" path="res://GameAssets/SFX/Player/Retro Swooosh 02.wav" id="3_fvgn4"]
+[ext_resource type="AudioStream" uid="uid://bgi1o107n2m7x" path="res://GameAssets/SFX/Bosses/GlassBreak.wav" id="4_v6c8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcedo"]
+size = Vector2(8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ftbtq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rq07e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TimeShield" type="Area2D" groups=["BossItem", "item", "shield"]]
+script = ExtResource("1_ltt0m")
+shield = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mcedo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ftbtq")
+
+[node name="Block" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fvgn4")
+
+[node name="TimeFreeze" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v6c8u")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

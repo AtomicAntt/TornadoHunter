@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bqqg4tlxnb13x" path="res://GameAssets/ClockBoss/SmallDamageBar.png" id="6_1gyh4"]
 [ext_resource type="Texture2D" uid="uid://cxykayfyr6o5k" path="res://GameAssets/ClockBoss/SmallProgressUnderModified.png" id="6_otygl"]
 [ext_resource type="AudioStream" uid="uid://bfu0hrnja4bk8" path="res://GameAssets/SFX/Bosses/HurtSound2.wav" id="8_mnidp"]
+[ext_resource type="AudioStream" uid="uid://bgi1o107n2m7x" path="res://GameAssets/SFX/Bosses/GlassBreak.wav" id="9_browq"]
 [ext_resource type="Shader" path="res://GameAssets/Shaders/Slice.gdshader" id="9_cmyh5"]
 [ext_resource type="Texture2D" uid="uid://crvimrcs61whp" path="res://GameAssets/ClockBoss/SingleHourglass2.png" id="10_7vu02"]
-[ext_resource type="AudioStream" uid="uid://bv6iup7wiraqx" path="res://GameAssets/SFX/Bosses/BossDeath.wav" id="11_0t08h"]
 [ext_resource type="Texture2D" uid="uid://bc36emjqwlhc1" path="res://GameAssets/Effects/bossWarning.png" id="11_ukxe5"]
 [ext_resource type="AudioStream" uid="uid://ja3sjterr26g" path="res://GameAssets/SFX/Bosses/TumbleweedImpact2.wav" id="12_xiwnm"]
 [ext_resource type="AudioStream" uid="uid://bvkymva1ituxm" path="res://GameAssets/SFX/Bosses/Alert.wav" id="13_1wjb6"]
@@ -475,7 +475,7 @@ libraries = {
 }
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_0t08h")
+stream = ExtResource("9_browq")
 
 [node name="Node" type="Node" parent="."]
 

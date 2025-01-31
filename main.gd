@@ -8,6 +8,7 @@ var shop: Resource = preload("res://GameObjects/Shop/Shop.tscn")
 var item_drop: Resource = preload("res://GameObjects/Items/ItemDrop.tscn")
 var boss_drop: PackedScene = preload("res://GameObjects/Items/TumbleweedDagger.tscn")
 var tornado_drop: PackedScene = preload("res://GameObjects/Items/TornadoDagger.tscn")
+var clock_drop: PackedScene = preload("res://GameObjects/Items/TimeShield.tscn")
 
 var cursor: Resource = preload("res://GameAssets/UI/Mouse/Cursor-4.png")
 
@@ -77,7 +78,7 @@ func load_level(level_name: String) -> void:
 func level_success() -> void:
 	# Logic is that since players can go back levels, the special weapon amount only increments when the level is newly defeated.
 	
-	if Global.special_weapon_count < current_level:
+	if Global.special_weapon_count < current_level and current_level <= 3:
 		var item_instance: ItemDrop = item_drop.instantiate()
 		
 		match current_level:
@@ -85,6 +86,8 @@ func level_success() -> void:
 				item_instance.set_item(boss_drop)
 			2:
 				item_instance.set_item(tornado_drop)
+			3:
+				item_instance.set_item(clock_drop)
 		
 		item_instance.refresh_sprite()
 		item_instance.global_position = get_tree().get_nodes_in_group("CenterMarker")[0].global_position
