@@ -6,16 +6,16 @@ var attack_index: int = 0 # Basically this loops through the positions of 0 and 
 
 var new_marker: Marker2D
 
-var move_cooldown: float = 3.0 # Time it takes before it takes an action and gets out of idle state
+var move_cooldown: float = 2.0 # Time it takes before it takes an action and gets out of idle state
 var move_time: float = 0.0
 
-var shooting_cooldown: float = 5.0 # Time it takes before it goes back into being idle again
+var shooting_cooldown: float = 3.0 # Time it takes before it goes back into being idle again
 var shooting_time: float = 0.0
 
 var fire_cooldown: float = 0.25 # Time it takes to fire a spinning clock projectile
 var fire_time: float = 0.0
 
-var special_cooldown: float = 3.0
+var special_cooldown: float = 2.0
 var special_time: float = 0.0
 
 var special_attack_time: float = 0.0 # The cooldown will be calculated by special_cooldown / summon_amount. Ex.: If there is 9 to be summoned, it takes only 1/3 seconds to summon one.

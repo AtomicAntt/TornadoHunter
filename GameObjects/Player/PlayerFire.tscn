@@ -44,7 +44,7 @@ animations = [{
 [node name="PlayerFire" type="Area2D"]
 script = ExtResource("1_btqu8")
 speed = 250.0
-steer_force = 15.0
+steer_force = 0.0
 rotating = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
