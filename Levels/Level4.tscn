@@ -1893,5 +1893,5 @@ health = 4000.0
 
 [node name="TumbleWeed" parent="." instance=ExtResource("8_roteg")]
 position = Vector2(-203, 35)
-max_health = 4000.0
-health = 4000.0
+max_health = 2500.0
+health = 2500.0

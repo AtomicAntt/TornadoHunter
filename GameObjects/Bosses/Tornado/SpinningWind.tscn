@@ -22,6 +22,7 @@ shape = SubResource("CircleShape2D_bysc2")
 
 [node name="CatchDebris" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_t6y4g")
+bus = &"SFX"
 
 [connection signal="timeout" from="ExpirationTimer" to="." method="_on_expiration_timer_timeout"]
 [connection signal="area_entered" from="DebrisCatcher" to="." method="_on_debris_catcher_area_entered"]

@@ -40,9 +40,11 @@ text = "Weapon Refund"
 
 [node name="GetCoin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_2txkr")
+bus = &"SFX"
 
 [node name="InvalidPurchase" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_0h6n0")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

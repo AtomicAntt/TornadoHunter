@@ -1987,3 +1987,4 @@ key = "Right"
 
 [node name="Complete" type="AudioStreamPlayer" parent="Tutorial"]
 stream = ExtResource("14_le2ib")
+bus = &"SFX"

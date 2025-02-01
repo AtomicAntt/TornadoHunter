@@ -37,5 +37,6 @@ frame_progress = 0.602531
 [node name="Spawn" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_5bh0e")
 pitch_scale = 1.1
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

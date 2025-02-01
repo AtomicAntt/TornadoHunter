@@ -32,8 +32,10 @@ sprite_frames = SubResource("SpriteFrames_ftbtq")
 
 [node name="Block" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_fvgn4")
+bus = &"SFX"
 
 [node name="TimeFreeze" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_v6c8u")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

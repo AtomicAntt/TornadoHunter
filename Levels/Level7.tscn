@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ybj05h147s3q" path="res://GameObjects/Bosses/Tornado/TornadoBoss.tscn" id="8_3d202"]
 [ext_resource type="PackedScene" uid="uid://brfck1ab6qwlk" path="res://GameObjects/Bosses/Tumbleweed/Tumbleweed.tscn" id="9_85q86"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fv3xd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1cow"]
 texture = ExtResource("1_tgd0p")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -183,7 +183,7 @@ texture = ExtResource("1_tgd0p")
 8:9/0 = 0
 9:9/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oheud"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7omnd"]
 texture = ExtResource("2_ui3ab")
 0:0/0 = 0
 0:0/0/terrain_set = 1
@@ -927,7 +927,7 @@ texture = ExtResource("2_ui3ab")
 18:25/0 = 0
 19:25/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hltf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d2ryy"]
 texture = ExtResource("3_h3a8l")
 0:0/0 = 0
 0:0/0/terrain_set = 2
@@ -1853,9 +1853,9 @@ terrain_set_2/terrain_2/color = Color(0.388572, 0.384013, 0.935806, 1)
 terrain_set_3/mode = 0
 terrain_set_3/terrain_0/name = "Terrain 0"
 terrain_set_3/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_fv3xd")
-sources/1 = SubResource("TileSetAtlasSource_oheud")
-sources/2 = SubResource("TileSetAtlasSource_0hltf")
+sources/0 = SubResource("TileSetAtlasSource_p1cow")
+sources/1 = SubResource("TileSetAtlasSource_7omnd")
+sources/2 = SubResource("TileSetAtlasSource_d2ryy")
 
 [node name="Level7" type="Node2D"]
 texture_filter = 1

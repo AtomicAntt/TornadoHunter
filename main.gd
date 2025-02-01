@@ -188,3 +188,13 @@ func _on_quit_button_pressed() -> void:
 
 func _on_button_mouse_entered() -> void:
 	$ButtonHover.play()
+
+func _on_back_button_pressed() -> void:
+	$MainMenu.visible = true
+	$Settings.visible = false
+	$ButtonPressed.play()
+
+func _on_settings_button_pressed() -> void:
+	$MainMenu.visible = false
+	$Settings.visible = true
+	$ButtonPressed.play()

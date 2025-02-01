@@ -31,5 +31,6 @@ sprite_frames = SubResource("SpriteFrames_ftbtq")
 
 [node name="Block" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_s7bnu")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

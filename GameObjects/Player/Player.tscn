@@ -462,21 +462,27 @@ libraries = {
 
 [node name="Hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("57_jmpfg")
+bus = &"SFX"
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("58_mt3s5")
+bus = &"SFX"
 
 [node name="Lose" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("59_ogr4d")
+bus = &"SFX"
 
 [node name="GetCoin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("61_0jx1p")
+bus = &"SFX"
 
 [node name="GetItem" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("62_ockwp")
+bus = &"SFX"
 
 [node name="GetBossItem" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("61_pmfea")
+bus = &"SFX"
 
 [node name="WeaponActivator" type="Area2D" parent="." groups=["WeaponActivator"]]
 visible = false

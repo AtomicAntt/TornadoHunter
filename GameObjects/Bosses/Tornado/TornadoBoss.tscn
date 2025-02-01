@@ -335,6 +335,7 @@ libraries = {
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ecsat")
+bus = &"SFX"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_b8nn7")
@@ -354,6 +355,7 @@ libraries = {
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_dnokx")
+bus = &"SFX"
 
 [node name="Intro" type="Timer" parent="."]
 wait_time = 1.5
@@ -378,18 +380,23 @@ libraries = {
 
 [node name="Warning" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_rvfcj")
+bus = &"SFX"
 
 [node name="SpecialAttackSignal" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_8rviw")
+bus = &"SFX"
 
 [node name="TornadoThrow" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_aex33")
+bus = &"SFX"
 
 [node name="TornadoMove" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_bngh8")
+bus = &"SFX"
 
 [node name="Hurt2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_1ehd3")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

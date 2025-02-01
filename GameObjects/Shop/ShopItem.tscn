@@ -141,9 +141,11 @@ text = "New Item!"
 
 [node name="InvalidPurchase" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_a4p0s")
+bus = &"SFX"
 
 [node name="Appear" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_6myjg")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

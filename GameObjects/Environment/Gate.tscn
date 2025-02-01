@@ -33,5 +33,6 @@ script = ExtResource("2_dp25o")
 
 [node name="Open" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_2fen0")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

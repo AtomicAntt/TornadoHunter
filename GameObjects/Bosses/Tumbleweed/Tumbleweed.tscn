@@ -310,8 +310,8 @@ _data = {
 
 [node name="TumbleWeed" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_j5o4q")
-max_health = 400.0
-health = 400.0
+max_health = 350.0
+health = 350.0
 coin_value = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -364,15 +364,19 @@ libraries = {
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_0yv5n")
+bus = &"SFX"
 
 [node name="Warning" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_dabk6")
+bus = &"SFX"
 
 [node name="Charging" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_pod3y")
+bus = &"SFX"
 
 [node name="Impact" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_136fk")
+bus = &"SFX"
 
 [node name="DeathSprite" type="Sprite2D" parent="."]
 visible = false
@@ -386,9 +390,11 @@ libraries = {
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_y3321")
+bus = &"SFX"
 
 [node name="Hurt2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_l0pcj")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

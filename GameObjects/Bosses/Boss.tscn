@@ -104,6 +104,7 @@ libraries = {
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_imhm8")
+bus = &"SFX"
 
 [node name="DeathSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_3lumu")
@@ -116,8 +117,10 @@ libraries = {
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_aqvxi")
+bus = &"SFX"
 
 [node name="Hurt2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_e5bnm")
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
