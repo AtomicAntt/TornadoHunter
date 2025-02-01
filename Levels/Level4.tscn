@@ -1888,10 +1888,12 @@ position = Vector2(-181, 58)
 
 [node name="TornadoBoss" parent="." instance=ExtResource("7_00h6a")]
 position = Vector2(-97, 39)
-max_health = 4000.0
-health = 4000.0
+max_health = 3500.0
+health = 3500.0
+coin_value = 24
 
 [node name="TumbleWeed" parent="." instance=ExtResource("8_roteg")]
 position = Vector2(-203, 35)
 max_health = 2500.0
 health = 2500.0
+coin_value = 24

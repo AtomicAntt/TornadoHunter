@@ -1970,11 +1970,14 @@ position = Vector2(-254, 136)
 
 [node name="ClockBoss" parent="." instance=ExtResource("8_ctm3o")]
 position = Vector2(-99, 38)
+max_health = 5000.0
+health = 5000.0
 
 [node name="TornadoBoss" parent="." instance=ExtResource("8_pd3ug")]
 position = Vector2(27, 44)
 max_health = 4000.0
 health = 4000.0
+coin_value = 24
 
 [node name="TornadoMarkers" type="Node2D" parent="."]
 
