@@ -36,18 +36,31 @@ func restore_items() -> void:
 		var time_shield_instance = time_shield.instantiate()
 		add_item_orbit(time_shield_instance)
 	
-	for i in range(Global.sword_count):
-		var sword_instance = sword.instantiate()
-		add_item_orbit(sword_instance)
+	for weapon_name: String in Global.weapon_stack:
+		match weapon_name:
+			"Dagger":
+				var weapon_instance = dagger.instantiate()
+				add_item_orbit(weapon_instance)
+			"Sword":
+				var weapon_instance = sword.instantiate()
+				add_item_orbit(weapon_instance)
+			"FireBlade":
+				var weapon_instance = fire_blade.instantiate()
+				add_item_orbit(weapon_instance)
 	
-	for i in range(Global.fire_blade_count):
-		var fire_blade_instance = fire_blade.instantiate()
-		add_item_orbit(fire_blade_instance)
-	
-	for i in range(Global.weapon_count):
-		var dagger_instance = dagger.instantiate()
-		add_item_orbit(dagger_instance)
-	
+	#Global.weapon_stack.clear()
+	#for i in range(Global.sword_count):
+		#var sword_instance = sword.instantiate()
+		#add_item_orbit(sword_instance)
+	#
+	#for i in range(Global.fire_blade_count):
+		#var fire_blade_instance = fire_blade.instantiate()
+		#add_item_orbit(fire_blade_instance)
+	#
+	#for i in range(Global.weapon_count):
+		#var dagger_instance = dagger.instantiate()
+		#add_item_orbit(dagger_instance)
+	#
 	for i in range(Global.shield_count):
 		var shield_instance = shield.instantiate()
 		add_item_orbit(shield_instance)
@@ -151,6 +164,10 @@ func add_item_orbit(item: Area2D):
 			$Orbitor3.add_child(item)
 		elif $Orbitor4.get_child_count() < 16:
 			$Orbitor4.add_child(item)
+		else:
+			if item is PlayerWeapon:
+				var player_weapon: PlayerWeapon = item
+				Global.add_gold(player_weapon.sell_value)
 	elif item.is_in_group("shield"):
 		#$Orbitor1.call_deferred("add_child", item)
 		$Orbitor1.add_child(item)
@@ -211,3 +228,17 @@ func is_invulnerable() -> bool:
 func get_coin() -> void:
 	$GetCoin.play()
 	#$GetCoin.set_pitch_scale(randf_range(0.9, 1.1))
+
+func update_weapon_stack() -> void:
+	Global.weapon_stack.clear()
+	
+	var weapons_list: Array[String] = ["Dagger", "Sword", "FireBlade"]
+	var orbit_list: Array[Orbitor] = [$Orbitor2, $Orbitor3, $Orbitor4]
+	
+	for current_orbitor: Orbitor in orbit_list:
+		for item in current_orbitor.get_children():
+			if not item.is_in_group("BossItem"):
+				for weapon_name: String in weapons_list:
+					if item.is_in_group(weapon_name):
+						print(weapon_name)
+						Global.weapon_stack.append(weapon_name)

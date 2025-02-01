@@ -3,13 +3,16 @@ extends Node
 var gold: int
 
 # We'll update these when the player enters the gate in the shop area (this is because it's after all the purhcasing stuff is done)
-var weapon_count: int = 3
+#var weapon_count: int = 3
 var shield_count: int = 1
-
-var sword_count: int = 0
-var fire_blade_count: int = 0
-
+#
+#var sword_count: int = 0
+#var fire_blade_count: int = 0
+#
 var special_weapon_count: int = 0
+
+# This should replace all these item count variables above it
+var weapon_stack: Array[String] = ["Dagger", "Dagger", "Dagger"]
 
 var health: int = 6
 
